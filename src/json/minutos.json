@@ -1,0 +1,50 @@
+[
+    {
+      "nombre": "y cinco",
+      "numero": "05"
+    },
+    {
+      "nombre": "y diez",
+      "numero": "10"
+    },
+    {
+      "nombre": "y cuarto",
+      "numero": "15"
+    },
+    {
+      "nombre": "y veinte",
+      "numero": "20"
+    },
+    {
+      "nombre": "y veinticinco",
+      "numero": "25"
+    },
+    {
+      "nombre": "y media",
+      "numero": "30"
+    },
+    {
+      "nombre": "menos veinticinco",
+      "numero": "35"
+    },
+    {
+      "nombre": "menos veinte",
+      "numero": "40"
+    },
+    {
+      "nombre": "menos cuarto",
+      "numero": "45"
+    },
+    {
+      "nombre": "menos diez",
+      "numero": "50"
+    },
+    {
+      "nombre": "menos cinco",
+      "numero": "55"
+    },
+    {
+      "nombre": "en punto",
+      "numero": "00"
+    }
+  ]
