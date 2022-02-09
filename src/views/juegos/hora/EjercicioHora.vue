@@ -1,5 +1,5 @@
 <template>
-  <form @submit.prevent="comprobarHora">
+  <form @submit.prevent="comprobar">
     <p>
       ¿Qué reloj marca las {{ this.horaSeleccionada.hora.nombre }}
       {{ this.horaSeleccionada.minuto.nombre }}?
@@ -53,6 +53,9 @@
         </template>
       </label>
     </b-form-radio-group>
+
+    <!-- <Correcto ref="correcto" :propuesto="parseInt(this.horaPropuesta)" :solucion="this.indiceHora" /> -->
+
     <button type="submit">Comprobar</button>
     <img
       class="correcto"
@@ -70,8 +73,10 @@
 </template>
 
 <script>
+// import Correcto from "@/components/Correcto.vue";
 export default {
   name: "EjercicioHora",
+  // components: { Correcto },
   data() {
     return {
       correcto: null,
@@ -83,12 +88,10 @@ export default {
     horaSeleccionada: Object,
   },
   methods: {
-    comprobarHora() {
+    comprobar() {
       this.correcto = false;
-      console.log("indiceHOra " + this.indiceHora);
-      console.log("Hora Propuesta " + this.horaPropuesta);
 
-      if (this.indiceHora == this.horaPropuesta) {
+      if (parseInt(this.horaPropuesta) == this.indiceHora) {
         this.correcto = true;
       }
     },

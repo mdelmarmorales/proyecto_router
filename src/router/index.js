@@ -7,6 +7,7 @@ import Granja from '../views/juegos/granja/Granja.vue'
 import Operaciones from '../views/juegos/operaciones/Operaciones.vue'
 import Voz from '../views/juegos/voz/Voz.vue'
 import Hora from '../views/juegos/hora/Hora.vue'
+import Registro from '../views/Registro.vue'
 
 const routes = [
   {
@@ -18,6 +19,11 @@ const routes = [
     path: '/juegos',
     name: 'Juegos',
     component: Juegos
+  },
+  {
+    path: '/registro',
+    name: 'Registro',
+    component: Registro
   },
   {
     path: '/juegos/series',
