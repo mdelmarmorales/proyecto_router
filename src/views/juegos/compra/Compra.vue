@@ -1,5 +1,6 @@
 <template>
 <div>
+  <Temporizador />
   <div class="alimentos">
     <img
       class="alimentosImagen"
@@ -18,12 +19,14 @@
 <script>
 import ListaCompra from "./ListaCompra.vue";
 import Ticket from "./Ticket.vue";
+import Temporizador from "@/components/Temporizador.vue";
 
 export default {
   name: "Compra",
   components: {
     ListaCompra,
     Ticket,
+    Temporizador
   },
   data() {
     return {

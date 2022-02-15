@@ -1,4 +1,5 @@
 <template>
+<Temporizador />
 <div>
   <form @submit.prevent="comprobarSerie">
     <div v-for="num in serieSolucion" v-bind:key="num">
@@ -66,8 +67,11 @@
 </template>
 
 <script>
+import Temporizador from "@/components/Temporizador.vue";
+
 export default {
   name: "Ticket",
+  components: { Temporizador },
   data() {
     return {
       tamanyoSerie: 4,

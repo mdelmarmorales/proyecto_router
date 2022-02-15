@@ -1,4 +1,5 @@
 <template>
+<Temporizador />
   <div>
   <EjercicioHora :hora="hora1" :indiceHora="indiceHora1" :horaSeleccionada="horaSeleccionada1"/>
   <EjercicioHora :hora="hora2" :indiceHora="indiceHora2" :horaSeleccionada="horaSeleccionada2"/>
@@ -9,10 +10,12 @@
 import horasJson from "@/json/horas.json";
 import minutosJson from "@/json/minutos.json";
 import EjercicioHora from "./EjercicioHora.vue";
+import Temporizador from "@/components/Temporizador.vue";
 
 export default {
   name: "Hora",
-  components: { EjercicioHora },
+  components: { EjercicioHora,
+  Temporizador },
   data() {
     return {
       horas: horasJson,

@@ -1,5 +1,6 @@
 <template>
   <div>
+    <Temporizador />
     <form
       @submit.prevent="
         this.acierto1 = comprobar(this.numeroVoz.numero, numPropuestoOido)
@@ -83,8 +84,11 @@
 
 <script>
 import json from "@/json/listaNumeros.json";
+import Temporizador from "@/components/Temporizador.vue";
+
 export default {
   name: "Voz",
+  components: { Temporizador },
   data() {
     return {
       synth: window.speechSynthesis,

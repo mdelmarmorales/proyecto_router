@@ -1,5 +1,6 @@
 <template>
 <div>
+  <Temporizador />
     <img
       id="animal"
       :src="imagenAMostrar.imagen"
@@ -28,8 +29,11 @@
 
 
 <script>
+import Temporizador from "@/components/Temporizador.vue";
+
 export default {
   name: "Granja",
+  components: { Temporizador },
   data() {
     return {
       animalABuscar: [],
@@ -208,7 +212,7 @@ export default {
 
       this.correcto = false;
 
-      if (this.numAnimales == this.animalABuscar.contador) {
+      if (parseInt(this.numAnimales) === this.animalABuscar.contador) {
         this.correcto = true;
       }
     },
