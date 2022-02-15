@@ -13,13 +13,13 @@
       </div> -->
 
       <!-- Login Form -->
-      <form>
+      <!-- <form @submit.prevent="btnAlta">
         <p>
           <label for="usuario">Usuario: </label>
           <input
             type="text"
             id="usuario"
-            v_model="usuario"
+            v-model="usuario"
             class="fadeIn second"
             name="registro"
           />
@@ -29,7 +29,7 @@
           <input
             type="text"
             id="correo"
-            v_model="correo"
+            v-model="correo"
             class="fadeIn second"
             name="registro"
           />
@@ -39,7 +39,7 @@
           <input
             type="text"
             id="contrasenya"
-            v_model="contrasenya"
+            v-model="contrasenya"
             class="fadeIn second"
             name="registro"
           />
@@ -49,7 +49,7 @@
           <input
             type="text"
             id="nombreNinyo"
-            v_model="nombreNinyo"
+            v-model="nombreNinyo"
             class="fadeIn second"
             name="registro"
           />
@@ -59,13 +59,13 @@
           <input
             type="number"
             id="edadNinyo"
-            v_model="edadNinyo"
+            v-model="edadNinyo"
             class="fadeIn second"
             name="registro"
           />
         </p>
-        <input type="submit" class="fadeIn fourth" value="Log In" />
-      </form>
+        <button type="submit" class="fadeIn fourth">Registro</button>
+      </form> -->
 
       <!-- Remind Passowrd -->
       <div id="formFooter">
@@ -76,20 +76,26 @@
 </template>
 
 <script>
+import axios from 'axios'
+
 export default {
-  name: "Compra",
+  name: "Registro",
   data() {
     return {
-      url: "bd/crud.php",
-      usuario: null,
-      correo: null,
-      contrasenya: null,
-      nombreNinyo: null,
-      edadNinyo: null,
+      url: "/bd/crud.php"
     };
-  },
+  },created (){            
+   this.listarMoviles();            
+},  
   methods: {
     btnAlta() {
+      console.log("alta");
+      console.log(this.usuario);
+      console.log(this.correo);
+      console.log(this.contrasenya);
+      console.log(this.nombreNinyo);
+      console.log(this.edadNinyo);
+
       if (
         this.usuario &&
         this.correo &&
@@ -98,22 +104,36 @@ export default {
         this.edadNinyo
       ) {
         console.log("alta");
-        this.altaMovil();
+        this.altaUsuario();
       }
     },
-    altaMovil() {
-      axios
-        .post(url, {
+    async altaUsuario() {
+      var data= JSON.stringify({
+       usuario: this.usuario,
+        correo: this.correo,
+        contrasenya: this.contrasenya,
+        nombreNinyo: this.nombreNinyo,
+        edadNinyo: this.edadNinyo,
+      });
+      var config = {
+    headers: {'Access-Control-Allow-Origin': '*'}
+};
+
+     await axios
+        .post(this.url, {
           opcion: 1,
-          marca: this.marca,
-          modelo: this.modelo,
-          stock: this.stock,
+        data, crossdomain: true 
         })
         .then((response) => {
-          this.listarMoviles();
+       console.log (response);
         });
       (this.marca = ""), (this.modelo = ""), (this.stock = 0);
     },
+    listarMoviles (){
+        axios.post(this.url, {opcion:4}).then(response =>{
+           this.moviles = response.data;       
+        });
+    }, 
   },
 };
 </script>

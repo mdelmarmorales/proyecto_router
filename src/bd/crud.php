@@ -31,12 +31,14 @@ switch($opcion){
         $resultado->execute();                           
         break;         
     case 4:
-        $consulta = "SELECT id, marca, modelo, stock FROM moviles";
+        $consulta = "SELECT * FROM jugador";
         $resultado = $conexion->prepare($consulta);
         $resultado->execute();
         $data=$resultado->fetchAll(PDO::FETCH_ASSOC);
         break;
 }
+
+header ("Content-type: application/json; charset=utf-8");
 print json_encode($data, JSON_UNESCAPED_UNICODE);
 $conexion = NULL;
 
