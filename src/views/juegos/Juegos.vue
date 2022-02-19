@@ -1,20 +1,57 @@
 <template>
-  <div>
-    <div v-for="juego in juegosPrimeraFila" :key="juego.id">
-      <!-- <router-link :to="{name: 'Juegos'}"> -->
-      <router-link :to="{ name: juego.url }">
-        <img :src="juego.imagen" :alt="juego.nombre" class="imagen py-2" />
-        <p class="nombreJuego mx-auto">{{ juego.nombre }}</p>
-      </router-link>
+<Header/>
+<div class="row">
+  <div id="cuadro_blanco" class="col-10 mx-auto">
+    <div class="row justify-content-around">
+      <div v-for="juego in juegosPrimeraFila" :key="juego.id" class="col-sm-3">
+        <div class="card m-2 p-2">
+          <router-link :to="{ name: juego.url }">
+            <img
+              :src="juego.imagen"
+              :alt="juego.nombre"
+              class="card-img py-2"
+            />
+            <div class="card-body">
+              <p class="card-title nombreJuego mx-auto">{{ juego.nombre }}</p>
+            </div>
+          </router-link>
+        </div>
+      </div>
     </div>
-    <div v-for="juego in juegosSegundaFila" :key="juego.id">
-      <!-- <router-link :to="{name: 'Juegos'}"> -->
-      <router-link :to="{ name: juego.url }">
-        <img :src="juego.imagen" :alt="juego.nombre" class="imagen py-2" />
-        <p class="nombreJuego mx-auto">{{ juego.nombre }}</p>
-      </router-link>
+       <div class="row justify-content-around">
+      <div v-for="juego in juegosSegundaFila" :key="juego.id" class="col-sm-3">
+        <div class="card m-2 p-2">
+          <router-link :to="{ name: juego.url }">
+            <img
+              :src="juego.imagen"
+              :alt="juego.nombre"
+              class="card-img py-2"
+            />
+            <div class="card-body">
+              <p class="card-title nombreJuego mx-auto">{{ juego.nombre }}</p>
+            </div>
+          </router-link>
+        </div>
+      </div>
     </div>
   </div>
+   </div>
+
+  <!-- <div v-for="juego in juegosPrimeraFila" :key="juego.id">
+      <router-link :to="{name: 'Juegos'}"> -->
+  <!-- <router-link :to="{ name: juego.url }">
+        <img :src="juego.imagen" :alt="juego.nombre" class="imagen py-2" />
+        <p class="nombreJuego mx-auto">{{ juego.nombre }}</p>
+      </router-link>
+    </div>
+    <div v-for="juego in juegosSegundaFila" :key="juego.id"> -->
+  <!-- <router-link :to="{name: 'Juegos'}"> -->
+  <!-- <router-link :to="{ name: juego.url }">
+        <img :src="juego.imagen" :alt="juego.nombre" class="imagen py-2" />
+        <p class="nombreJuego mx-auto">{{ juego.nombre }}</p>
+      </router-link>
+    </div>
+  </div> -->
   <!-- <div class="row filaJuego mt-lg-5 d-flex justify-content-around">
       <a
         :href="juego.nombre"
@@ -48,15 +85,18 @@
 </template>
 
 <script>
+import Fondo from "@/components/Fondo.vue";
+import Header from "@/components/Header.vue";
 export default {
   name: "Juegos",
+  components: { Fondo, Header},
   data() {
     return {
       juegosPrimeraFila: [
         {
           id: 0,
           imagen: require("@/images/boton_operaciones.png"),
-          nombre: "Practica las operaciones",
+          nombre: "Practica operaciones",
           url: "Operaciones",
         },
         {
@@ -98,17 +138,25 @@ export default {
 </script>
 
 <style scoped>
-.boton {
+.card {
   background-color: #e0f7f2;
   border: 2px solid #071488;
   border-radius: 15px;
 }
 
-.imagen {
+.card-img{
   height: 150px;
 }
 
 .nombreJuego {
   color: #071488;
+}
+
+#cuadro_blanco {
+  min-height: 500px;
+  width: 90%;
+  background-color: #ffffff;
+  border: 2px solid blue;
+  border-radius: 10px;
 }
 </style>

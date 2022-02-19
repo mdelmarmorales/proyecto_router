@@ -29,18 +29,12 @@ export default {
 }
 
 #fondo {
-  /* background-image: url("@/images/fondo.png"); */
+  background-image: url("../images/fondo.png");
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-position: center;
 }
 
-#cuadro_blanco {
-  height: 700px;
-  width: 90%;
-  background-color: #ffffff;
-  border: 2px solid blue;
-  border-radius: 10px;
-}
+
 </style>
