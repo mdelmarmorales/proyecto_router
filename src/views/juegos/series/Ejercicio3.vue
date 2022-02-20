@@ -1,0 +1,92 @@
+<template>
+  <div v-if="this.correcto" class="row juego mx-3 mt-4">
+    <form
+      class="col-9 mx-auto p-3"
+      v-if="this.correctoComp"
+      @submit.prevent="comprobarSeleccion"
+    >
+      <div
+        class="row d-flex flex-row justify-content-around align-items-center"
+      >
+        <p>
+          Entre estos números:
+          <span v-for="num in seleccionSerie" v-bind:key="num"
+            >{{ num }},
+          </span>
+          ¿cuál es el {{ this.menorMayorSelec }}?
+        </p>
+        <input class="form-control col-2" v-model="selecPropuesta" />
+        <button class="btn-comprobar" type="submit">Comprobar</button>
+      </div>
+    </form>
+    <img
+      class="correcto"
+      src="@/images/correcto.png"
+      alt="correcto"
+      v-if="this.correctoSelec === true"
+    />
+    <img
+      class="correcto"
+      src="@/images/incorrecto.png"
+      alt="correcto"
+      v-if="this.correctoSelec === false"
+    />
+  </div>
+</template>
+
+<script>
+export default {
+  name: "Ejercicio3",
+  data() {
+    return {
+      correcto: null,
+      correctoComp: null,
+      tipoComparacion: ["menor", "mayor"],
+      correctoSelec: null,
+    };
+  },
+  props: {
+    serieSeleccion: Array,
+  },
+  mounted() {
+    this.emitter.on("correctoComp", (correctoComp) => {
+      //this.productoSeleccionado = productoSeleccionado; //Guardamos el valor leído desde otro componente a un dato de éste
+      this.correcto = correctoComp;
+    });
+  },
+  computed: {
+    menorMayorSelec() {
+      let comparacion, indice;
+
+      indice = this.numeroAleatorio(0, this.tipoComparacion.length - 1);
+      comparacion = this.tipoComparacion[indice];
+
+      return comparacion;
+    },
+  },
+  methods: {
+    comprobarSeleccion() {
+      this.correctoSelec = false;
+
+      if (this.menorMayorSelec == "menor") {
+        if (this.selecPropuesta == this.seleccionSerie[0]) {
+          this.correctoSelec = true;
+        }
+      } else {
+        console.log(this.seleccionSerie[this.seleccionSerie.length - 1]);
+        console.log(this.selecPropuesta);
+        if (
+          this.selecPropuesta ==
+          this.seleccionSerie[this.seleccionSerie.length - 1]
+        ) {
+          this.correctoSelec = true;
+        }
+      }
+      return this.correctoSelec;
+    },
+  },
+};
+</script>
+
+<style>
+</style>

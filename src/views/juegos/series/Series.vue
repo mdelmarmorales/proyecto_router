@@ -3,68 +3,12 @@
     <div id="cuadro_blanco" class="col-10 mx-auto mt-5">
       <Temporizador />
       <div>
-        <form @submit.prevent="comprobarSerie">
-          <div v-for="num in serieSolucion" v-bind:key="num">
-            <p v-if="num != valorPosicionVacia">{{ num }}</p>
+        <Ejercicio1 :serieSolucion="serieSolucion"/>
+        <Ejercicio2 :serieSolucion="serieSolucion"/>
+        <Ejercicio3 :serieSeleccion="serieSeleccion"/>
+       
 
-            <input v-else v-model="numPropuesto" />
-          </div>
-          <button type="submit">Comprobar</button>
-          <img
-            class="correcto"
-            src="@/images/correcto.png"
-            alt="correcto"
-            v-if="this.correcto === true"
-          />
-          <img
-            class="correcto"
-            src="@/images/incorrecto.png"
-            alt="correcto"
-            v-if="this.correcto === false"
-          />
-        </form>
-
-        <form v-if="this.correcto" @submit.prevent="comprobarComparacion">
-          <p>De los números anteriores, ¿cuál es el {{ this.menorMayor }}?</p>
-          <input v-model="comparacionPropuesta" />
-          <button type="submit">Comprobar</button>
-          <img
-            class="correcto"
-            src="@/images/correcto.png"
-            alt="correcto"
-            v-if="this.correctoComp === true"
-          />
-          <img
-            class="correcto"
-            src="@/images/incorrecto.png"
-            alt="correcto"
-            v-if="this.correctoComp === false"
-          />
-        </form>
-
-        <form v-if="this.correctoComp" @submit.prevent="comprobarSeleccion">
-          <p>
-            Entre estos números:
-            <span v-for="num in seleccionSerie" v-bind:key="num"
-              >{{ num }},
-            </span>
-            ¿cuál es el {{ this.menorMayorSelec }}?
-          </p>
-          <input v-model="selecPropuesta" />
-          <button type="submit">Comprobar</button>
-          <img
-            class="correcto"
-            src="@/images/correcto.png"
-            alt="correcto"
-            v-if="this.correctoSelec === true"
-          />
-          <img
-            class="correcto"
-            src="@/images/incorrecto.png"
-            alt="correcto"
-            v-if="this.correctoSelec === false"
-          />
-        </form>
+        
       </div>
     </div>
   </div>
@@ -72,17 +16,19 @@
 
 <script>
 import Temporizador from "@/components/Temporizador.vue";
+import Ejercicio1 from "./Ejercicio1.vue";
+import Ejercicio2 from "./Ejercicio2.vue";
 
 export default {
   name: "Ticket",
-  components: { Temporizador },
+  components: { Temporizador, Ejercicio1, Ejercicio2 },
   data() {
     return {
       tamanyoSerie: 4,
       tiposSerie: ["suma", "resta", "multiplicacion"],
-      tipoComparacion: ["menor", "mayor"],
-      correcto: null,
-      correctoComp: null,
+      // tipoComparacion: ["menor", "mayor"],
+      // correcto: null,
+      // correctoComp: null,
       correctoSelec: null,
     };
   },
@@ -108,28 +54,28 @@ export default {
 
       return seleccion;
     },
-    valorPosicionVacia() {
-      let indice = this.numeroAleatorio(0, this.serieSolucion.length - 1);
-      let valor = this.serieSolucion[indice];
+    // valorPosicionVacia() {
+    //   let indice = this.numeroAleatorio(0, this.serieSolucion.length - 1);
+    //   let valor = this.serieSolucion[indice];
 
-      return valor;
-    },
-    menorMayor() {
-      let comparacion, indice;
+    //   return valor;
+    // },
+    // menorMayor() {
+    //   let comparacion, indice;
 
-      indice = this.numeroAleatorio(0, this.tipoComparacion.length - 1);
-      comparacion = this.tipoComparacion[indice];
+    //   indice = this.numeroAleatorio(0, this.tipoComparacion.length - 1);
+    //   comparacion = this.tipoComparacion[indice];
 
-      return comparacion;
-    },
-    menorMayorSelec() {
-      let comparacion, indice;
+    //   return comparacion;
+    // },
+    // menorMayorSelec() {
+    //   let comparacion, indice;
 
-      indice = this.numeroAleatorio(0, this.tipoComparacion.length - 1);
-      comparacion = this.tipoComparacion[indice];
+    //   indice = this.numeroAleatorio(0, this.tipoComparacion.length - 1);
+    //   comparacion = this.tipoComparacion[indice];
 
-      return comparacion;
-    },
+    //   return comparacion;
+    // },
   },
   methods: {
     numeroAleatorio(min, max) {
@@ -187,34 +133,33 @@ export default {
           console.log("Ha ocurrido un error");
           break;
       }
-
       return serieSolucion;
     },
-    comprobarSerie() {
-      this.correcto = false;
+  //   comprobarSerie() {
+  //     this.correcto = false;
 
-      if (this.valorPosicionVacia == this.numPropuesto) {
-        this.correcto = true;
-      }
-    },
-    comprobarComparacion() {
-      this.correctoComp = false;
+  //     if (this.valorPosicionVacia == this.numPropuesto) {
+  //       this.correcto = true;
+  //     }
+  //   },
+    // comprobarComparacion() {
+    //   this.correctoComp = false;
 
-      this.serieSolucion = this.serieSolucion.sort((a, b) => a - b);
+    //   this.serieSolucion = this.serieSolucion.sort((a, b) => a - b);
 
-      if (this.menorMayor == "menor") {
-        if (this.comparacionPropuesta == this.serieSolucion[0]) {
-          this.correctoComp = true;
-        }
-      } else {
-        if (
-          this.comparacionPropuesta ==
-          this.serieSolucion[this.serieSolucion.length - 1]
-        ) {
-          this.correctoComp = true;
-        }
-      }
-    },
+    //   if (this.menorMayor == "menor") {
+    //     if (this.comparacionPropuesta == this.serieSolucion[0]) {
+    //       this.correctoComp = true;
+    //     }
+    //   } else {
+    //     if (
+    //       this.comparacionPropuesta ==
+    //       this.serieSolucion[this.serieSolucion.length - 1]
+    //     ) {
+    //       this.correctoComp = true;
+    //     }
+    //   }
+    // },
     construyeSeleccion() {
       let indice,
         tamanyo = 3;
@@ -258,14 +203,32 @@ export default {
 </script>
 
 <style scoped>
-.correcto {
+.juego {
+  background-color: #faea7d;
+  border: 2px solid #071488;
+  border-radius: 15px;
+}
+
+.btn-comprobar {
+  background-color: #3fcfba;
+  border: 2px solid #071488;
+  border-radius: 10px;
+}
+
+.numero {
+  border: 1px solid black;
+  background-color: white;
+}
+
+.correcto,
+.flecha {
   height: 30px;
 }
 #cuadro_blanco {
   min-height: 500px;
   width: 90%;
   background-color: #ffffff;
-  border: 2px solid blue;
+  border: 3px solid #071488;
   border-radius: 10px;
 }
 </style>
