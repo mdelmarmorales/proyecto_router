@@ -1,5 +1,7 @@
 <template>
-   <div class="container-fluid">
+  <div class="container-fluid">
+    <Header />
+    <Menu />
     <!-- <div id="fondo" class="m-0 row justify-content-center">
         <div class="row" id="nav">
         <router-link to="/">Home</router-link> |
@@ -7,9 +9,19 @@
         <router-link :to="{ name: 'Registro' }">Registro</router-link>
         <router-view /> 
       </div>   -->
-       <router-view />      
-  </div> 
+    <router-view />
+  </div>
 </template>
+
+<script>
+import Header from "@/components/Header.vue";
+import Menu from "@/components/Menu.vue";
+
+export default {
+  name: "Juegos",
+  components: { Header, Menu},
+  };
+</script>
 
 <style>
 #app {
@@ -25,7 +37,6 @@
   background-position: center;
   min-height: 100vh;
 }
-
 
 #nav {
   padding: 30px;

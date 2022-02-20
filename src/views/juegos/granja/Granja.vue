@@ -1,5 +1,7 @@
 <template>
 <div>
+  <div class="row">
+  <div id="cuadro_blanco" class="col-10 mx-auto mt-5">
   <Temporizador />
     <img
       id="animal"
@@ -25,6 +27,8 @@
     />
         </form>
         </div>
+         </div>
+          </div>
 </template>
 
 
@@ -229,5 +233,12 @@ img {
 
 .correcto {
   height: 50px;
+}
+#cuadro_blanco {
+  min-height: 500px;
+  width: 90%;
+  background-color: #ffffff;
+  border: 2px solid blue;
+  border-radius: 10px;
 }
 </style>

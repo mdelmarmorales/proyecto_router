@@ -1,9 +1,11 @@
 <template>
-  <div class="wrapper fadeInDown">
-    <div id="formContent">
-      <!-- Tabs Titles -->
+  <div class="row">
+    <div id="cuadro_blanco" class="col-10 mx-auto mt-5">
+      <div class="wrapper fadeInDown">
+        <div id="formContent">
+          <!-- Tabs Titles -->
 
-      <!-- Icon
+          <!-- Icon
       <div class="fadeIn first">
         <img
           src="http://danielzawadzki.com/codepen/01/icon.svg"
@@ -12,8 +14,8 @@
         />
       </div> -->
 
-      <!-- Login Form -->
-      <!-- <form @submit.prevent="btnAlta">
+          <!-- Login Form -->
+          <!-- <form @submit.prevent="btnAlta">
         <p>
           <label for="usuario">Usuario: </label>
           <input
@@ -67,26 +69,29 @@
         <button type="submit" class="fadeIn fourth">Registro</button>
       </form> -->
 
-      <!-- Remind Passowrd -->
-      <div id="formFooter">
-        <a class="underlineHover" href="#">Forgot Password?</a>
+          <!-- Remind Passowrd -->
+          <div id="formFooter">
+            <a class="underlineHover" href="#">Forgot Password?</a>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import axios from 'axios'
+import axios from "axios";
 
 export default {
   name: "Registro",
   data() {
     return {
-      url: "/bd/crud.php"
+      url: "/bd/crud.php",
     };
-  },created (){            
-   this.listarMoviles();            
-},  
+  },
+  created() {
+    this.listarMoviles();
+  },
   methods: {
     btnAlta() {
       console.log("alta");
@@ -108,32 +113,33 @@ export default {
       }
     },
     async altaUsuario() {
-      var data= JSON.stringify({
-       usuario: this.usuario,
+      var data = JSON.stringify({
+        usuario: this.usuario,
         correo: this.correo,
         contrasenya: this.contrasenya,
         nombreNinyo: this.nombreNinyo,
         edadNinyo: this.edadNinyo,
       });
       var config = {
-    headers: {'Access-Control-Allow-Origin': '*'}
-};
+        headers: { "Access-Control-Allow-Origin": "*" },
+      };
 
-     await axios
+      await axios
         .post(this.url, {
           opcion: 1,
-        data, crossdomain: true 
+          data,
+          crossdomain: true,
         })
         .then((response) => {
-       console.log (response);
+          console.log(response);
         });
       (this.marca = ""), (this.modelo = ""), (this.stock = 0);
     },
-    listarMoviles (){
-        axios.post(this.url, {opcion:4}).then(response =>{
-           this.moviles = response.data;       
-        });
-    }, 
+    listarMoviles() {
+      axios.post(this.url, { opcion: 4 }).then((response) => {
+        this.moviles = response.data;
+      });
+    },
   },
 };
 </script>
@@ -414,5 +420,12 @@ input[type="text"]:placeholder {
 
 #icon {
   width: 60%;
+}
+#cuadro_blanco {
+  min-height: 500px;
+  width: 90%;
+  background-color: #ffffff;
+  border: 2px solid blue;
+  border-radius: 10px;
 }
 </style>

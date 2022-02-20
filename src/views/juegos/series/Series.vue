@@ -1,68 +1,72 @@
 <template>
-<Temporizador />
-<div>
-  <form @submit.prevent="comprobarSerie">
-    <div v-for="num in serieSolucion" v-bind:key="num">
-      <p v-if="num != valorPosicionVacia">{{ num }}</p>
+  <div class="row">
+    <div id="cuadro_blanco" class="col-10 mx-auto mt-5">
+      <Temporizador />
+      <div>
+        <form @submit.prevent="comprobarSerie">
+          <div v-for="num in serieSolucion" v-bind:key="num">
+            <p v-if="num != valorPosicionVacia">{{ num }}</p>
 
-      <input v-else v-model="numPropuesto" />
+            <input v-else v-model="numPropuesto" />
+          </div>
+          <button type="submit">Comprobar</button>
+          <img
+            class="correcto"
+            src="@/images/correcto.png"
+            alt="correcto"
+            v-if="this.correcto === true"
+          />
+          <img
+            class="correcto"
+            src="@/images/incorrecto.png"
+            alt="correcto"
+            v-if="this.correcto === false"
+          />
+        </form>
+
+        <form v-if="this.correcto" @submit.prevent="comprobarComparacion">
+          <p>De los números anteriores, ¿cuál es el {{ this.menorMayor }}?</p>
+          <input v-model="comparacionPropuesta" />
+          <button type="submit">Comprobar</button>
+          <img
+            class="correcto"
+            src="@/images/correcto.png"
+            alt="correcto"
+            v-if="this.correctoComp === true"
+          />
+          <img
+            class="correcto"
+            src="@/images/incorrecto.png"
+            alt="correcto"
+            v-if="this.correctoComp === false"
+          />
+        </form>
+
+        <form v-if="this.correctoComp" @submit.prevent="comprobarSeleccion">
+          <p>
+            Entre estos números:
+            <span v-for="num in seleccionSerie" v-bind:key="num"
+              >{{ num }},
+            </span>
+            ¿cuál es el {{ this.menorMayorSelec }}?
+          </p>
+          <input v-model="selecPropuesta" />
+          <button type="submit">Comprobar</button>
+          <img
+            class="correcto"
+            src="@/images/correcto.png"
+            alt="correcto"
+            v-if="this.correctoSelec === true"
+          />
+          <img
+            class="correcto"
+            src="@/images/incorrecto.png"
+            alt="correcto"
+            v-if="this.correctoSelec === false"
+          />
+        </form>
+      </div>
     </div>
-    <button type="submit">Comprobar</button>
-    <img
-      class="correcto"
-      src="@/images/correcto.png"
-      alt="correcto"
-      v-if="this.correcto === true"
-    />
-    <img
-      class="correcto"
-      src="@/images/incorrecto.png"
-      alt="correcto"
-      v-if="this.correcto === false"
-    />
-  </form>
-
-  <form v-if="this.correcto" @submit.prevent="comprobarComparacion">
-    <p>De los números anteriores, ¿cuál es el {{ this.menorMayor }}?</p>
-    <input v-model="comparacionPropuesta" />
-    <button type="submit">Comprobar</button>
-    <img
-      class="correcto"
-      src="@/images/correcto.png"
-      alt="correcto"
-      v-if="this.correctoComp === true"
-    />
-    <img
-      class="correcto"
-      src="@/images/incorrecto.png"
-      alt="correcto"
-      v-if="this.correctoComp === false"
-    />
-  </form>
-
-  <form v-if="this.correctoComp" @submit.prevent="comprobarSeleccion">
-    <p>
-      Entre estos números:
-      <span v-for="num in seleccionSerie" v-bind:key="num"
-        >{{ num }},
-      </span>
-      ¿cuál es el {{ this.menorMayorSelec }}?
-    </p>
-    <input v-model="selecPropuesta" />
-    <button type="submit">Comprobar</button>
-    <img
-      class="correcto"
-      src="@/images/correcto.png"
-      alt="correcto"
-      v-if="this.correctoSelec === true"
-    />
-    <img
-      class="correcto"
-      src="@/images/incorrecto.png"
-      alt="correcto"
-      v-if="this.correctoSelec === false"
-    />
-  </form>
   </div>
 </template>
 
@@ -212,7 +216,7 @@ export default {
       }
     },
     construyeSeleccion() {
-           let indice,
+      let indice,
         tamanyo = 3;
 
       let seleccion = [];
@@ -256,5 +260,12 @@ export default {
 <style scoped>
 .correcto {
   height: 30px;
+}
+#cuadro_blanco {
+  min-height: 500px;
+  width: 90%;
+  background-color: #ffffff;
+  border: 2px solid blue;
+  border-radius: 10px;
 }
 </style>

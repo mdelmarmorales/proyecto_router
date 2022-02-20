@@ -1,84 +1,86 @@
 <template>
-  <div>
-    <Temporizador />
-    <form
-      @submit.prevent="
-        this.acierto1 = comprobar(this.numeroVoz.numero, numPropuestoOido)
-      "
-    >
-      <p>Pulsa el icono para escuchar el número y luego escríbelo</p>
-      <button type="button" @click="speak(this.numeroVoz.numero)">
-        <img class="altavoz" src="@/images/altavoz.png" />
-      </button>
+  <div class="row">
+    <div id="cuadro_blanco" class="col-10 mx-auto mt-5">
+      <Temporizador />
+      <form
+        @submit.prevent="
+          this.acierto1 = comprobar(this.numeroVoz.numero, numPropuestoOido)
+        "
+      >
+        <p>Pulsa el icono para escuchar el número y luego escríbelo</p>
+        <button type="button" @click="speak(this.numeroVoz.numero)">
+          <img class="altavoz" src="@/images/altavoz.png" />
+        </button>
 
-      <input v-model="numPropuestoOido" />
-      <button type="submit">Comprobar</button>
-      <img
-        class="correcto"
-        src="@/images/correcto.png"
-        alt="correcto"
-        v-if="this.acierto1 === true"
-      />
-      <img
-        class="correcto"
-        src="@/images/incorrecto.png"
-        alt="correcto"
-        v-if="this.acierto1 === false"
-      />
-    </form>
+        <input v-model="numPropuestoOido" />
+        <button type="submit">Comprobar</button>
+        <img
+          class="correcto"
+          src="@/images/correcto.png"
+          alt="correcto"
+          v-if="this.acierto1 === true"
+        />
+        <img
+          class="correcto"
+          src="@/images/incorrecto.png"
+          alt="correcto"
+          v-if="this.acierto1 === false"
+        />
+      </form>
 
-    <form
-      v-if="this.acierto1"
-      @submit.prevent="this.acierto2 = comprobar(this.numeroVoz2.nombre, num)"
-    >
-      <p>¿Cómo se escribe el nombre de este número? (con letras)</p>
-      <button type="button" @click="speak(this.numeroVoz2.numero)">
-        <img class="altavoz" src="@/images/altavoz.png" />
-      </button>
-      <input v-model="num" />
-      <button type="submit">Comprobar</button>
-      <img
-        class="correcto"
-        src="@/images/correcto.png"
-        alt="correcto"
-        v-if="this.acierto2 === true"
-      />
-      <img
-        class="correcto"
-        src="@/images/incorrecto.png"
-        alt="correcto"
-        v-if="this.acierto2 === false"
-      />
-    </form>
+      <form
+        v-if="this.acierto1"
+        @submit.prevent="this.acierto2 = comprobar(this.numeroVoz2.nombre, num)"
+      >
+        <p>¿Cómo se escribe el nombre de este número? (con letras)</p>
+        <button type="button" @click="speak(this.numeroVoz2.numero)">
+          <img class="altavoz" src="@/images/altavoz.png" />
+        </button>
+        <input v-model="num" />
+        <button type="submit">Comprobar</button>
+        <img
+          class="correcto"
+          src="@/images/correcto.png"
+          alt="correcto"
+          v-if="this.acierto2 === true"
+        />
+        <img
+          class="correcto"
+          src="@/images/incorrecto.png"
+          alt="correcto"
+          v-if="this.acierto2 === false"
+        />
+      </form>
 
-    <form
-      v-if="this.acierto2"
-      @submit.prevent="
-        this.acierto3 = comprobar(this.numeroVoz3, numero, letras)
-      "
-    >
-      <p>Esucha y escribe con números y con letras</p>
-      <button type="button" @click="speak(this.numeroVoz3.numero)">
-        <img class="altavoz" src="@/images/altavoz.png" />
-      </button>
-      <p>Número:</p>
-      <input v-model="numero" />
-      <p>Letras:</p>
-      <input v-model="letras" />
-      <button type="submit">Comprobar</button>
-      <img
-        class="correcto"
-        src="@/images/correcto.png"
-        alt="correcto"
-        v-if="this.acierto3 === true"
-      />
-      <img
-        class="correcto"
-        src="@/images/incorrecto.png"
-        alt="correcto"
-        v-if="this.acierto3 === false"
-      />
-    </form>
+      <form
+        v-if="this.acierto2"
+        @submit.prevent="
+          this.acierto3 = comprobar(this.numeroVoz3, numero, letras)
+        "
+      >
+        <p>Esucha y escribe con números y con letras</p>
+        <button type="button" @click="speak(this.numeroVoz3.numero)">
+          <img class="altavoz" src="@/images/altavoz.png" />
+        </button>
+        <p>Número:</p>
+        <input v-model="numero" />
+        <p>Letras:</p>
+        <input v-model="letras" />
+        <button type="submit">Comprobar</button>
+        <img
+          class="correcto"
+          src="@/images/correcto.png"
+          alt="correcto"
+          v-if="this.acierto3 === true"
+        />
+        <img
+          class="correcto"
+          src="@/images/incorrecto.png"
+          alt="correcto"
+          v-if="this.acierto3 === false"
+        />
+      </form>
+    </div>
   </div>
 </template>
 
@@ -188,5 +190,13 @@ export default {
 .correcto,
 .altavoz {
   height: 30px;
+}
+
+#cuadro_blanco {
+  min-height: 500px;
+  width: 90%;
+  background-color: #ffffff;
+  border: 2px solid blue;
+  border-radius: 10px;
 }
 </style>

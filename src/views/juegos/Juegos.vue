@@ -1,9 +1,10 @@
 <template>
-<Header/>
+<!-- <Header/>
+<Menu/> -->
 <div class="row">
-  <div id="cuadro_blanco" class="col-10 mx-auto">
+  <div id="cuadro_blanco" class="col-10 mx-auto mt-5">
     <div class="row justify-content-around">
-      <div v-for="juego in juegosPrimeraFila" :key="juego.id" class="col-sm-3">
+      <div v-for="juego in juegosPrimeraFila" :key="juego.id" class="col-sm-3 mt-2">
         <div class="card m-2 p-2">
           <router-link :to="{ name: juego.url }">
             <img
@@ -19,7 +20,7 @@
       </div>
     </div>
        <div class="row justify-content-around">
-      <div v-for="juego in juegosSegundaFila" :key="juego.id" class="col-sm-3">
+      <div v-for="juego in juegosSegundaFila" :key="juego.id" class="col-sm-3 mb-2">
         <div class="card m-2 p-2">
           <router-link :to="{ name: juego.url }">
             <img
@@ -85,11 +86,12 @@
 </template>
 
 <script>
-import Fondo from "@/components/Fondo.vue";
-import Header from "@/components/Header.vue";
+// import Header from "@/components/Header.vue";
+// import Menu from "@/components/Menu.vue";
+
 export default {
   name: "Juegos",
-  components: { Fondo, Header},
+  // components: { Header, Menu},
   data() {
     return {
       juegosPrimeraFila: [

@@ -1,9 +1,13 @@
 <template>
+  <div class="row">
+  <div id="cuadro_blanco" class="col-10 mx-auto mt-5">
 <Temporizador />
   <div>
   <EjercicioHora :hora="hora1" :indiceHora="indiceHora1" :horaSeleccionada="horaSeleccionada1"/>
   <EjercicioHora :hora="hora2" :indiceHora="indiceHora2" :horaSeleccionada="horaSeleccionada2"/>
   </div>
+   </div>
+    </div>
 </template>
 
 <script>
@@ -78,5 +82,12 @@ export default {
 </script>
 
 <style scoped>
+#cuadro_blanco {
+  min-height: 500px;
+  width: 90%;
+  background-color: #ffffff;
+  border: 2px solid blue;
+  border-radius: 10px;
+}
 
 </style>

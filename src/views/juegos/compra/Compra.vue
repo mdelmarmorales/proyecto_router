@@ -1,5 +1,7 @@
 <template>
-<div>
+
+  <div class="row">
+  <div id="cuadro_blanco" class="col-10 mx-auto mt-5">
   <Temporizador />
   <div class="alimentos">
     <img
@@ -14,6 +16,8 @@
   <ListaCompra :productos="productos" />
   <Ticket :productos="productos" />
   </div>
+   </div>
+
 </template>
 
 <script>
@@ -79,5 +83,13 @@ export default {
 
 <style scoped>
 .alimentosImagen {  height: 30px;
+}
+
+#cuadro_blanco {
+  min-height: 500px;
+  width: 90%;
+  background-color: #ffffff;
+  border: 2px solid blue;
+  border-radius: 10px;
 }
 </style>
