@@ -5,10 +5,8 @@
       <div>
         <Ejercicio1 :serieSolucion="serieSolucion"/>
         <Ejercicio2 :serieSolucion="serieSolucion"/>
-        <Ejercicio3 :serieSeleccion="serieSeleccion"/>
+        <Ejercicio3 :seleccionSerie="seleccionSerie"/>
        
-
-        
       </div>
     </div>
   </div>
@@ -18,10 +16,11 @@
 import Temporizador from "@/components/Temporizador.vue";
 import Ejercicio1 from "./Ejercicio1.vue";
 import Ejercicio2 from "./Ejercicio2.vue";
+import Ejercicio3 from "./Ejercicio3.vue";
 
 export default {
   name: "Ticket",
-  components: { Temporizador, Ejercicio1, Ejercicio2 },
+  components: { Temporizador, Ejercicio1, Ejercicio2, Ejercicio3 },
   data() {
     return {
       tamanyoSerie: 4,

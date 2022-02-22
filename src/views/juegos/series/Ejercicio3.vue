@@ -1,10 +1,7 @@
 <template>
   <div v-if="this.correcto" class="row juego mx-3 mt-4">
     <form
-      class="col-9 mx-auto p-3"
-      v-if="this.correctoComp"
-      @submit.prevent="comprobarSeleccion"
-    >
+      class="col-9 mx-auto p-3" @submit.prevent="comprobarSeleccion">
       <div
         class="row d-flex flex-row justify-content-around align-items-center"
       >
@@ -46,12 +43,13 @@ export default {
     };
   },
   props: {
-    serieSeleccion: Array,
+    seleccionSerie: Array,
   },
   mounted() {
     this.emitter.on("correctoComp", (correctoComp) => {
       //this.productoSeleccionado = productoSeleccionado; //Guardamos el valor leído desde otro componente a un dato de éste
       this.correcto = correctoComp;
+      console.log(this.correcto);
     });
   },
   computed: {
@@ -65,8 +63,12 @@ export default {
     },
   },
   methods: {
+    numeroAleatorio(min, max) {
+      return Math.floor(Math.random() * (max - min + 1) + min);
+    },
     comprobarSeleccion() {
       this.correctoSelec = false;
+      console.log("sel" +this.seleccionSerie);
 
       if (this.menorMayorSelec == "menor") {
         if (this.selecPropuesta == this.seleccionSerie[0]) {

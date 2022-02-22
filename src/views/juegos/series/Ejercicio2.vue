@@ -32,9 +32,11 @@ export default {
       correcto: null,
       correctoComp: null,
       tipoComparacion: ["menor", "mayor"],
+      serieSolucionCopia:
+        [] /*Tenemos que copiar porque las props son de sólo lectura */,
     };
   },
-    props: {
+  props: {
     serieSolucion: Array,
   },
   computed: {
@@ -60,10 +62,10 @@ export default {
     });
   },
   methods: {
-        numeroAleatorio(min, max) {
+    numeroAleatorio(min, max) {
       return Math.floor(Math.random() * (max - min + 1) + min);
     },
-       construyeSeleccion() {
+    construyeSeleccion() {
       let indice,
         tamanyo = 3;
 
@@ -85,16 +87,16 @@ export default {
     comprobarComparacion() {
       this.correctoComp = false;
 
-      this.serieSolucion = this.serieSolucion.sort((a, b) => a - b);
+      this.serieSolucionCopia = this.serieSolucion.sort((a, b) => a - b);
 
       if (this.menorMayor == "menor") {
-        if (this.comparacionPropuesta == this.serieSolucion[0]) {
+        if (this.comparacionPropuesta == this.serieSolucionCopia[0]) {
           this.correctoComp = true;
         }
       } else {
         if (
           this.comparacionPropuesta ==
-          this.serieSolucion[this.serieSolucion.length - 1]
+          this.serieSolucionCopia[this.serieSolucionCopia.length - 1]
         ) {
           this.correctoComp = true;
         }
