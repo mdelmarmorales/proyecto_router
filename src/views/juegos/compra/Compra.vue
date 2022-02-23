@@ -1,23 +1,25 @@
 <template>
-
   <div class="row">
-  <div id="cuadro_blanco" class="col-10 mx-auto mt-5">
-  <Temporizador />
-  <div class="alimentos">
-    <img
-      class="alimentosImagen"
-      v-for="item in productos"
-      v-bind:key="item"
-      :src="item.imagen"
-      :alt="item.nombre"
-      @click="llenarCesta"
-    />
+    <div id="cuadro_blanco" class="col-10 mx-auto mt-5">
+      <div class="row d-flex my-2">
+        <Temporizador class="col-1 ml-auto" />
+      </div>
+      <div class="row d-flex flex-row justify-content-around my-2">
+      <ListaCompra :productos="productos" />
+      <Ticket :productos="productos" />
+      </div>
+      <div class="alimentos">
+        <img
+          class="alimentosImagen"
+          v-for="item in productos"
+          v-bind:key="item"
+          :src="item.imagen"
+          :alt="item.nombre"
+          @click="llenarCesta"
+        />
+      </div>
+    </div>
   </div>
-  <ListaCompra :productos="productos" />
-  <Ticket :productos="productos" />
-  </div>
-   </div>
-
 </template>
 
 <script>
@@ -30,7 +32,7 @@ export default {
   components: {
     ListaCompra,
     Ticket,
-    Temporizador
+    Temporizador,
   },
   data() {
     return {
@@ -82,7 +84,8 @@ export default {
 </script>
 
 <style scoped>
-.alimentosImagen {  height: 30px;
+.alimentosImagen {
+  height: 30px;
 }
 
 #cuadro_blanco {

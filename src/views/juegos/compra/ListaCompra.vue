@@ -1,11 +1,15 @@
 <template>
-  <div>
-    <ul class="lista">
-      <li v-for="item in listaCompra" v-bind:key="item">
-        {{ item.producto }}: {{ item.cantidad }}
-      </li>
-    </ul>
-    <div v-if="cesta">
+     <div id="cuadroLista" class="col-3">
+      <h3 id="tituloLista">Lista de la compra</h3>
+      <ul class="lista">
+        <li v-for="item in listaCompra" v-bind:key="item">
+          {{ item.producto }}: {{ item.cantidad }}
+        </li>
+      </ul>
+      </div>
+   
+    <div id="cuadroCesta" v-if="cesta" class="col-3">
+      <h3 id="tituloCesta">Cesta</h3>
       <img
         v-for="item in cesta"
         v-bind:key="item"
@@ -13,29 +17,29 @@
         :alt="item.nombre"
         class="alimentosImagen"
       />
+
+      <form @submit.prevent="comprobarCesta">
+        <button type="submit">Comprobar</button>
+        <img
+          class="correcto"
+          src="@/images/correcto.png"
+          alt="correcto"
+          v-if="this.correctoCesta === true"
+        />
+        <img
+          class="correcto"
+          src="@/images/incorrecto.png"
+          alt="correcto"
+          v-if="this.correctoCesta === false"
+        />
+        <p v-if="this.correctoCesta === false">¡Ups! Revisa la cesta.</p>
+      </form>
     </div>
 
-    <form @submit.prevent="comprobarCesta">
-      <button type="submit">Comprobar</button>
-      <img
-        class="correcto"
-        src="@/images/correcto.png"
-        alt="correcto"
-        v-if="this.correctoCesta === true"
-      />
-      <img
-        class="correcto"
-        src="@/images/incorrecto.png"
-        alt="correcto"
-        v-if="this.correctoCesta === false"
-      />
-      <p v-if="this.correctoCesta === false">¡Ups! Revisa la cesta.</p>
-    </form>
-
-    <div v-if="correctoCesta">
-      <Ticket :cesta="cesta" />
+    <div v-if="correctoCesta" class="col-4">
+      <Ticket :cesta="cesta"  />
     </div>
-  </div>
+
 </template>
 
 
@@ -128,4 +132,23 @@ export default {
 .alimentosImagen {
   height: 50px;
 }
+
+#cuadroLista{
+  background-color: #faea7d;
+  border-radius: 10px;
+}
+
+#tituloLista {
+  background-color: #fdcc4b;
+}
+
+#cuadroCesta{
+  background-color: #e0f7f2;
+  border-radius: 10px;
+}
+
+#tituloCesta{
+  background-color: #3fcfba;
+}
+
 </style>

@@ -1,5 +1,5 @@
 <template>
-  <div class="row juego mx-3">
+  <div class="row juego mx-3 d-flex">
     <form class="col-9 mx-auto p-3" @submit.prevent="comprobarSerie">
       <div class="row">
         <!-- Recorremos el array. Si hay un número, lo escribirmos.
