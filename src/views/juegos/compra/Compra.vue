@@ -4,34 +4,24 @@
       <div class="row d-flex my-2">
         <Temporizador class="col-1 ml-auto" />
       </div>
-      <div class="row d-flex flex-row justify-content-around my-2">
-      <ListaCompra :productos="productos" />
-      <Ticket :productos="productos" />
+      <div class="row d-flex flex-row justify-content-around">
+        <ListaCompra :productos="productos" />
       </div>
-      <div class="alimentos">
-        <img
-          class="alimentosImagen"
-          v-for="item in productos"
-          v-bind:key="item"
-          :src="item.imagen"
-          :alt="item.nombre"
-          @click="llenarCesta"
-        />
-      </div>
+      <Alimentos :productos="productos" />
     </div>
   </div>
 </template>
 
 <script>
 import ListaCompra from "./ListaCompra.vue";
-import Ticket from "./Ticket.vue";
+import Alimentos from "./Alimentos.vue";
 import Temporizador from "@/components/Temporizador.vue";
 
 export default {
   name: "Compra",
   components: {
     ListaCompra,
-    Ticket,
+    Alimentos,
     Temporizador,
   },
   data() {
@@ -75,19 +65,10 @@ export default {
       ],
     };
   },
-  methods: {
-    llenarCesta(event) {
-      this.emitter.emit("productoSelec", event.target.alt);
-    },
-  },
 };
 </script>
 
 <style scoped>
-.alimentosImagen {
-  height: 30px;
-}
-
 #cuadro_blanco {
   min-height: 500px;
   width: 90%;
