@@ -4,6 +4,13 @@
       <div class="row d-flex my-2">
         <Temporizador class="col-1 ml-auto" />
       </div>
+      <div class="row d-flex m-2 text-left">
+        <p class="enunciado">
+          Lee la lista de la compra y pincha los alimentos para introducirlos en
+          la cesta. Después calcula cuánto han costado y cuánto dinero te sobra
+          al pagar.
+        </p>
+      </div>
       <div class="row d-flex flex-row justify-content-around">
         <ListaCompra :productos="productos" />
       </div>
@@ -75,5 +82,9 @@ export default {
   background-color: #ffffff;
   border: 2px solid blue;
   border-radius: 10px;
+}
+
+.enunciado{
+  font-weight: bold;
 }
 </style>

@@ -68,7 +68,7 @@ export default {
 
 <style scoped>
 #cuadroLista {
-  background-color: #faea7d;
+  background-color: #fff4ad;
   border-radius: 10px;
 }
 

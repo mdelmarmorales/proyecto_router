@@ -6,8 +6,8 @@
         <table class="table table-striped">
           <thead class="thead">
             <tr>
-              <th>Producto</th>
-              <th>Precio</th>
+              <th class="col-2">Producto</th>
+              <th class="col-2">Precio</th>
             </tr>
           </thead>
           <tbody>
@@ -26,7 +26,7 @@
     
       <form @submit.prevent="comprobarPrecio">
         <input v-model="precioPropuesto" />
-        <button class="btn-comprobar my-2" type="submit">Comprobar</button>
+        <button class="btn-comprobar m-2" type="submit">Comprobar</button>
         <img
           class="correcto"
           src="@/images/correcto.png"
@@ -49,11 +49,14 @@
                  <table class="table">
             <tbody>
               <tr>
-                <td>{{ this.dineroDisponible }}</td>
+                <th>Disponible</th>
+                <td></td>
+                <td class="text-left">{{ this.dineroDisponible }}</td>
               </tr>
               <tr>
-                <td>-</td>
-                <td>{{ this.precioPropuesto }}</td>
+                <th>Gastado</th>
+                <td class="ctext-right">-</td>
+                <td class="text-left">{{ this.precioPropuesto }}</td>
               </tr>
             </tbody>
           </table>
@@ -141,9 +144,6 @@ export default {
   filter: drop-shadow(0 6px 3px rgba(0,0,0,0.7));
 }
 
-.precioUnit {
-  border: 1px solid black;
-}
 .btn-comprobar {
   background-color: #3fcfba;
   border: 2px solid #071488;
