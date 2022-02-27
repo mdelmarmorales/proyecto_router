@@ -1,8 +1,10 @@
 <template>
   <div class="row">
     <div id="cuadro_blanco" class="col-10 mx-auto mt-5">
-      <Temporizador />
-      <div>
+       <div class="row d-flex my-2">
+      <Temporizador class="col-1 ml-auto" />
+      </div>
+      <div class="mt-2 d-flex flex-column justify-content-around">
         <Ejercicio1 :serieSolucion="serieSolucion"/>
         <Ejercicio2 :serieSolucion="serieSolucion"/>
         <Ejercicio3 :seleccionSerie="seleccionSerie"/>
@@ -53,28 +55,6 @@ export default {
 
       return seleccion;
     },
-    // valorPosicionVacia() {
-    //   let indice = this.numeroAleatorio(0, this.serieSolucion.length - 1);
-    //   let valor = this.serieSolucion[indice];
-
-    //   return valor;
-    // },
-    // menorMayor() {
-    //   let comparacion, indice;
-
-    //   indice = this.numeroAleatorio(0, this.tipoComparacion.length - 1);
-    //   comparacion = this.tipoComparacion[indice];
-
-    //   return comparacion;
-    // },
-    // menorMayorSelec() {
-    //   let comparacion, indice;
-
-    //   indice = this.numeroAleatorio(0, this.tipoComparacion.length - 1);
-    //   comparacion = this.tipoComparacion[indice];
-
-    //   return comparacion;
-    // },
   },
   methods: {
     numeroAleatorio(min, max) {
@@ -134,31 +114,6 @@ export default {
       }
       return serieSolucion;
     },
-  //   comprobarSerie() {
-  //     this.correcto = false;
-
-  //     if (this.valorPosicionVacia == this.numPropuesto) {
-  //       this.correcto = true;
-  //     }
-  //   },
-    // comprobarComparacion() {
-    //   this.correctoComp = false;
-
-    //   this.serieSolucion = this.serieSolucion.sort((a, b) => a - b);
-
-    //   if (this.menorMayor == "menor") {
-    //     if (this.comparacionPropuesta == this.serieSolucion[0]) {
-    //       this.correctoComp = true;
-    //     }
-    //   } else {
-    //     if (
-    //       this.comparacionPropuesta ==
-    //       this.serieSolucion[this.serieSolucion.length - 1]
-    //     ) {
-    //       this.correctoComp = true;
-    //     }
-    //   }
-    // },
     construyeSeleccion() {
       let indice,
         tamanyo = 3;

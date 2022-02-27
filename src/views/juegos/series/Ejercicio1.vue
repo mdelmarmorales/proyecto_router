@@ -1,5 +1,5 @@
 <template>
-  <div class="row juego mx-3 d-flex">
+  <div class="row juego mx-3 my-4 d-flex justify-content-around align-items-center">
     <form class="col-9 mx-auto p-3" @submit.prevent="comprobarSerie">
       <div class="row">
         <!-- Recorremos el array. Si hay un número, lo escribirmos.
@@ -63,13 +63,6 @@ export default {
 
       return tipo;
     },
-    // serieSolucion() {
-    //   let serie = [];
-
-    //   serie = this.construyeSerie();
-
-    //   return serie;
-    // },
     valorPosicionVacia() {
       let indice = this.numeroAleatorio(0, this.serieSolucion.length - 1);
       let valor = this.serieSolucion[indice];
@@ -81,61 +74,6 @@ export default {
     numeroAleatorio(min, max) {
       return Math.floor(Math.random() * (max - min + 1) + min);
     },
-    // construyeSerie() {
-    //   let inicial, paso;
-    //   let serieSolucion = [];
-
-    //   inicial = this.numeroAleatorio(0, 5);
-    //   paso = this.numeroAleatorio(1, 5);
-
-    //   switch (this.tipoSerie) {
-    //     case "suma":
-    //       inicial = this.numeroAleatorio(0, 5);
-    //       paso = this.numeroAleatorio(1, 5);
-
-    //       for (let i = 0; i <= this.tamanyoSerie; i++) {
-    //         if (i == 0) {
-    //           serieSolucion[i] = inicial;
-    //         } else {
-    //           serieSolucion[i] = serieSolucion[i - 1] + paso;
-    //         }
-    //       }
-    //       break;
-
-    //     case "resta":
-    //       inicial = this.numeroAleatorio(20, 50);
-    //       paso = this.numeroAleatorio(1, 5);
-
-    //       for (let i = 0; i <= this.tamanyoSerie; i++) {
-    //         if (i == 0) {
-    //           serieSolucion[i] = inicial;
-    //         } else {
-    //           serieSolucion[i] = serieSolucion[i - 1] - paso;
-    //         }
-    //       }
-    //       break;
-
-    //     case "multiplicacion":
-    //       console.log("multi");
-    //       inicial = this.numeroAleatorio(1, 5);
-    //       paso = this.numeroAleatorio(2, 3);
-
-    //       for (let i = 0; i <= this.tamanyoSerie; i++) {
-    //         if (i == 0) {
-    //           serieSolucion[i] = inicial;
-    //         } else {
-    //           serieSolucion[i] = serieSolucion[i - 1] * paso;
-    //         }
-    //       }
-    //       break;
-
-    //     default:
-    //       console.log("Ha ocurrido un error");
-    //       break;
-    //   }
-
-    //   return serieSolucion;
-    // },
     comprobarSerie() {
       this.correcto = false;
 

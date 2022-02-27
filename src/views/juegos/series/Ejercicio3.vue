@@ -1,5 +1,5 @@
 <template>
-  <div v-if="this.correcto" class="row juego mx-3 mt-4">
+  <div v-if="this.correcto" class="row juego mx-3 my-4 d-flex justify-content-around align-items-center">
     <form
       class="col-9 mx-auto p-3" @submit.prevent="comprobarSeleccion">
       <div

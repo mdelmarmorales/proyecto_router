@@ -1,5 +1,5 @@
 <template>
-  <div v-if="this.correcto" class="row juego mx-3 mt-4">
+  <div v-if="this.correcto" class="row juego mx-3 my-4 d-flex justify-content-around align-items-center">
     <form class="col-9 mx-auto p-3" @submit.prevent="comprobarComparacion">
       <div
         class="row d-flex flex-row justify-content-around align-items-center"
@@ -64,25 +64,6 @@ export default {
   methods: {
     numeroAleatorio(min, max) {
       return Math.floor(Math.random() * (max - min + 1) + min);
-    },
-    construyeSeleccion() {
-      let indice,
-        tamanyo = 3;
-
-      let seleccion = [];
-
-      for (let i = 0; i < tamanyo; i++) {
-        indice = this.numeroAleatorio(0, this.serieSolucion.length - 1);
-
-        while (seleccion.includes(this.serieSolucion[indice])) {
-          indice = this.numeroAleatorio(0, this.serieSolucion.length - 1);
-        }
-
-        seleccion.push(this.serieSolucion[indice]);
-      }
-      seleccion = seleccion.sort((a, b) => a - b);
-
-      return seleccion;
     },
     comprobarComparacion() {
       this.correctoComp = false;

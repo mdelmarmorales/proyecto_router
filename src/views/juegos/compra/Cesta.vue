@@ -28,7 +28,6 @@
           v-if="this.correctoCesta === false"
         />
       </form>
-      <p v-if="this.correctoCesta === false">¡Ups! Revisa la cesta.</p>
     </div>
   </div>
 

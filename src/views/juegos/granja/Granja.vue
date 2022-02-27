@@ -1,34 +1,42 @@
 <template>
-<div>
+  <div class="row mt-3">
+    <form
+      @submit.prevent="comprobarAnimales"
+      id="pregunta"
+      class="col-10 mx-auto "
+    >
+      <p class="mt-2">
+        ¿Cuántas veces ha aparecido este animal?
+        <span>{{ this.animalABuscar.nombre }}</span>
+      </p>
+      <input v-model="numAnimales" />
+      <button class="btn-comprobar mt-1 mb-2 mx-2" type="submit">Comprobar</button>
+      <img
+        class="correcto"
+        src="@/images/correcto.png"
+        alt="correcto"
+        v-if="this.correcto === true"
+      />
+      <img
+        class="correcto"
+        src="@/images/incorrecto.png"
+        alt="correcto"
+        v-if="this.correcto === false"
+      />
+    </form>
+  </div>
   <div class="row">
-  <div id="cuadro_blanco" class="col-10 mx-auto mt-5">
-  <Temporizador />
-    <img
-      id="animal"
-      :src="imagenAMostrar.imagen"
-      :alt="imagenAMostrar.nombre"
-    />
-    <form @submit.prevent="comprobarAnimales">
-      <p>¿Cuántas veces ha aparecido este animal? {{this.animalABuscar.nombre}}</p>
-               <!-- ¿Quitar este div ? -->
-        <input v-model="numAnimales" />
-        <button type="submit">Comprobar</button>
-         <img
-      class="correcto"
-      src="@/images/correcto.png"
-      alt="correcto"
-      v-if="this.correcto === true"
-    />
-    <img
-      class="correcto"
-      src="@/images/incorrecto.png"
-      alt="correcto"
-      v-if="this.correcto === false"
-    />
-        </form>
-        </div>
-         </div>
-          </div>
+    <div id="cuadro_granja" class="col-10 mx-auto my-3">
+      <div class="row d-flex my-2">
+        <Temporizador class="col-1 ml-auto" />
+      </div>
+      <img
+        id="animal"
+        :src="imagenAMostrar.imagen"
+        :alt="imagenAMostrar.nombre"
+      />
+    </div>
+  </div>
 </template>
 
 
@@ -158,12 +166,12 @@ export default {
       Cuando llegue a 0 haremos lo contrario, pondremos el flag a true para indicar
       que debe empezar a aumentar */
       if (this.aumentarOpacidad) {
-        this.opacidad = this.opacidad + 0.1;
+        this.opacidad = this.opacidad + 0.05;
         if (this.opacidad >= 1) {
           this.aumentarOpacidad = false;
         }
       } else {
-        this.opacidad = this.opacidad - 0.1;
+        this.opacidad = this.opacidad - 0.05;
         if (this.opacidad <= 0) {
           this.aumentarOpacidad = true;
         }
@@ -195,16 +203,16 @@ export default {
 
       let x, y;
 
-      x = this.numeroAleatorio(-500, 500);
-      y = this.numeroAleatorio(150, 570);
+      x = this.numeroAleatorio(-700, 700);
+      y = this.numeroAleatorio(-50, 330);
 
       img.style.marginLeft = `${x}px`;
       img.style.marginTop = `${y}px`;
 
-      if (0 < y && y < 200) {
+      if (-50 < y && y < 100) {
         img.style.transform = "scale(0.7)";
       } else {
-        if (200 < y && y < 400) {
+        if (100 < y && y < 200) {
           img.style.transform = "scale(0.9)";
         } else {
           img.style.transform = "scale(1.2)";
@@ -234,11 +242,33 @@ img {
 .correcto {
   height: 50px;
 }
-#cuadro_blanco {
-  min-height: 500px;
-  width: 90%;
+#cuadro_granja {
+  height: 500px;
+  /* width: 90%; */
   background-color: #ffffff;
-  border: 2px solid blue;
+  border: 2px solid #071488;
   border-radius: 10px;
+  background-image: url("../../../images/fondo_granja.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+}
+
+#pregunta {
+  background-color: #e0f7f2;
+   border: 2px solid #071488;
+  border-radius: 10px;
+}
+
+.btn-comprobar {
+  background-color: #3fcfba;
+  border: 2px solid #071488;
+  border-radius: 10px;   
+}
+
+span{
+  font-weight: bold;
+
 }
 </style>

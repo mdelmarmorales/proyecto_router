@@ -39,7 +39,6 @@
           alt="correcto"
           v-if="this.correcto === false"
         />
-        <p v-if="this.correcto === false">¡Ups! Revisa el ticket.</p>
       </form>
     </div>
     <div class="col-5">
@@ -62,7 +61,7 @@
           </table>
         
         <input v-model="vueltaPropuesta" />
-        <button class="btn-comprobar my-2" type="submit">Comprobar</button>
+        <button class="btn-comprobar m-2" type="submit">Comprobar</button>
         <img
           class="correcto"
           src="@/images/correcto.png"
@@ -75,7 +74,6 @@
           alt="correcto"
           v-if="this.correctaVuelta === false"
         />
-        <p v-if="this.correctaVuelta === false">¡Ups! Revisa la cuenta.</p>
       </form>
     </div>
 

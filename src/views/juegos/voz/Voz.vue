@@ -1,57 +1,13 @@
 <template>
   <div class="row">
     <div id="cuadro_blanco" class="col-10 mx-auto mt-5">
-      <Temporizador />
-      <form
-        @submit.prevent="
-          this.acierto1 = comprobar(this.numeroVoz.numero, numPropuestoOido)
-        "
-      >
-        <p>Pulsa el icono para escuchar el número y luego escríbelo</p>
-        <button type="button" @click="speak(this.numeroVoz.numero)">
-          <img class="altavoz" src="@/images/altavoz.png" />
-        </button>
+       <div class="row d-flex my-2">
+      <Temporizador class="col-1 ml-auto" />
+      </div>
+      <Ejercicio1 :numeroVoz="numeroVoz" />
+      <Ejercicio2 :numeroVoz="numeroVoz" />
 
-        <input v-model="numPropuestoOido" />
-        <button type="submit">Comprobar</button>
-        <img
-          class="correcto"
-          src="@/images/correcto.png"
-          alt="correcto"
-          v-if="this.acierto1 === true"
-        />
-        <img
-          class="correcto"
-          src="@/images/incorrecto.png"
-          alt="correcto"
-          v-if="this.acierto1 === false"
-        />
-      </form>
-
-      <form
-        v-if="this.acierto1"
-        @submit.prevent="this.acierto2 = comprobar(this.numeroVoz2.nombre, num)"
-      >
-        <p>¿Cómo se escribe el nombre de este número? (con letras)</p>
-        <button type="button" @click="speak(this.numeroVoz2.numero)">
-          <img class="altavoz" src="@/images/altavoz.png" />
-        </button>
-        <input v-model="num" />
-        <button type="submit">Comprobar</button>
-        <img
-          class="correcto"
-          src="@/images/correcto.png"
-          alt="correcto"
-          v-if="this.acierto2 === true"
-        />
-        <img
-          class="correcto"
-          src="@/images/incorrecto.png"
-          alt="correcto"
-          v-if="this.acierto2 === false"
-        />
-      </form>
-
+      
       <form
         v-if="this.acierto2"
         @submit.prevent="
@@ -87,10 +43,12 @@
 <script>
 import json from "@/json/listaNumeros.json";
 import Temporizador from "@/components/Temporizador.vue";
+import Ejercicio1 from "./Ejercicio1.vue";
+import Ejercicio2 from "./Ejercicio2.vue";
 
 export default {
   name: "Voz",
-  components: { Temporizador },
+  components: { Temporizador, Ejercicio1, Ejercicio2 },
   data() {
     return {
       synth: window.speechSynthesis,
@@ -131,6 +89,12 @@ export default {
       speechSynthesis.onvoiceschanged = this.populateVoiceList;
     }
   },
+    mounted() {
+    this.emitter.on("numeroVoz", (numeroVoz) => {
+      //this.productoSeleccionado = productoSeleccionado; //Guardamos el valor leído desde otro componente a un dato de éste
+      this.speak(numeroVoz);
+    });
+  },
   methods: {
     numeroAleatorio(min, max) {
       return Math.floor(Math.random() * (max - min + 1) + min);
@@ -142,10 +106,7 @@ export default {
       return this.numeros[indice];
     },
     comprobar() {
-      console.log("solucion" + arguments[0].nombre);
-      console.log("solucion" + arguments[0].numero);
-      console.log("propuesto" + arguments[1]);
-      console.log("propuesto" + arguments[2]);
+  
       let acierto = false;
       if (arguments.length == 2) {
         acierto = arguments[0] == arguments[1];
