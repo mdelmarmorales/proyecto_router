@@ -1,27 +1,33 @@
 <template>
-  <form
-    v-if="this.acierto1"
-    @submit.prevent="this.acierto2 = comprobar(this.numeroVoz2.nombre, num)"
+<div v-if="this.acierto1" class="row juego mx-3 my-4">
+  <form class="col-9 mx-auto my-4"
+    
+    @submit.prevent="comprobar(this.numeroVoz.nombre, numPropuestoOido)"
   >
+  <div class="row justify-content-center">
     <p>¿Cómo se escribe el nombre de este número? (con letras)</p>
-    <button type="button" @click="speak(this.numeroVoz2.numero)">
+    </div>
+    <div class="row justify-content-center">
+    <button class="mr-5" type="button" @click="habla(this.numeroVoz.numero)">
       <img class="altavoz" src="@/images/altavoz.png" />
     </button>
-    <input v-model="num" />
-    <button type="submit">Comprobar</button>
+    <input  col="col-4 mx-2 text-center" type="text" v-model="numPropuestoOido" />
+    <button class="btn-comprobar mx-2"  type="submit">Comprobar</button>
     <img
       class="correcto"
       src="@/images/correcto.png"
       alt="correcto"
-      v-if="this.acierto2 === true"
+      v-if="this.correcto === true"
     />
     <img
       class="correcto"
       src="@/images/incorrecto.png"
       alt="correcto"
-      v-if="this.acierto2 === false"
+      v-if="this.correcto === false"
     />
+    </div>
   </form>
+  </div>
 </template>
 
 <script>
@@ -37,16 +43,37 @@ export default {
       acierto1: null,
     };
   },
-    mounted() {
+  mounted() {
     this.emitter.on("correcto", (correcto) => {
       //this.productoSeleccionado = productoSeleccionado; //Guardamos el valor leído desde otro componente a un dato de éste
       this.acierto1 = correcto;
     });
   },
+  methods: {
+    habla(lectura) {
+      this.emitter.emit("numeroVoz", this.numeroVoz.numero);
+    },
+    comprobar() {
+      this.correcto = arguments[0] == arguments[1];
+      this.emitter.emit("correcto2", this.correcto);
+    },
+  },
 };
 </script>
 
 <style scoped>
+.juego {
+  background-color: #faea7d;
+  border: 2px solid #071488;
+  border-radius: 15px;
+}
+
+.btn-comprobar {
+  background-color: #3fcfba;
+  border: 2px solid #071488;
+  border-radius: 10px;
+}
+
 .correcto,
 .altavoz {
   height: 30px;

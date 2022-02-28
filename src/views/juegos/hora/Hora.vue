@@ -1,13 +1,28 @@
 <template>
   <div class="row">
-  <div id="cuadro_blanco" class="col-10 mx-auto mt-5">
-<Temporizador />
-  <div>
-  <EjercicioHora :hora="hora1" :indiceHora="indiceHora1" :horaSeleccionada="horaSeleccionada1"/>
-  <EjercicioHora :hora="hora2" :indiceHora="indiceHora2" :horaSeleccionada="horaSeleccionada2"/>
-  </div>
-   </div>
+    <div id="cuadro_blanco" class="col-10 mx-auto mt-5">
+      <div class="row d-flex my-2">
+        <Temporizador class="col-1 ml-auto" />
+      </div>
+      <div>
+        <EjercicioHora
+          :hora="hora1"
+          :indiceHora="indiceHora1"
+          :horaSeleccionada="horaSeleccionada1"
+        />
+        <EjercicioHora
+          :hora="hora2"
+          :indiceHora="indiceHora2"
+          :horaSeleccionada="horaSeleccionada2"
+        />
+          <EjercicioHora
+          :hora="hora3"
+          :indiceHora="indiceHora3"
+          :horaSeleccionada="horaSeleccionada3"
+        />
+      </div>
     </div>
+  </div>
 </template>
 
 <script>
@@ -18,8 +33,7 @@ import Temporizador from "@/components/Temporizador.vue";
 
 export default {
   name: "Hora",
-  components: { EjercicioHora,
-  Temporizador },
+  components: { EjercicioHora, Temporizador },
   data() {
     return {
       horas: horasJson,
@@ -41,11 +55,20 @@ export default {
     indiceHora2() {
       return this.numeroAleatorio(0, this.hora2.length - 1);
     },
+     hora3() {
+      return this.arrayHoras();
+    },
+    indiceHora3() {
+      return this.numeroAleatorio(0, this.hora3.length - 1);
+    },
     horaSeleccionada1() {
       return this.hora1[this.indiceHora1];
     },
     horaSeleccionada2() {
       return this.hora2[this.indiceHora2];
+    },
+    horaSeleccionada3() {
+      return this.hora3[this.indiceHora3];
     },
   },
   methods: {
@@ -70,13 +93,6 @@ export default {
 
       return dato;
     },
-    // comprobarHora() {
-    //   this.correcto = false;
-
-    //   if (this.indiceHora1 == this.horaPropuesta) {
-    //     this.correcto = true;
-    //   }
-    // },
   },
 };
 </script>
@@ -84,10 +100,8 @@ export default {
 <style scoped>
 #cuadro_blanco {
   min-height: 500px;
-  width: 90%;
   background-color: #ffffff;
-  border: 2px solid blue;
+  border: 2px solid #071488;
   border-radius: 10px;
 }
-
 </style>

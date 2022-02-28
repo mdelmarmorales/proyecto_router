@@ -83,7 +83,7 @@ export default {
   min-height: 500px;
   width: 90%;
   background-color: #ffffff;
-  border: 2px solid blue;
+  border: 2px solid #071488;
   border-radius: 10px;
 }
 </style>

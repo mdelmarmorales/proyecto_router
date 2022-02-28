@@ -2,24 +2,19 @@
   <div class="container-fluid">
     <Header />
     <Menu />
-    <!-- <div id="fondo" class="m-0 row justify-content-center">
-        <div class="row" id="nav">
-        <router-link to="/">Home</router-link> |
-        <router-link :to="{ name: 'Juegos' }">Juegos</router-link> |
-        <router-link :to="{ name: 'Registro' }">Registro</router-link>
-        <router-view /> 
-      </div>   -->
     <router-view />
+    <Footer />
   </div>
 </template>
 
 <script>
 import Header from "@/components/Header.vue";
 import Menu from "@/components/Menu.vue";
+import Footer from "@/components/Footer.vue";
 
 export default {
   name: "Juegos",
-  components: { Header, Menu},
+  components: { Header, Menu, Footer},
   };
 </script>
 

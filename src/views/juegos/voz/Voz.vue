@@ -5,37 +5,9 @@
       <Temporizador class="col-1 ml-auto" />
       </div>
       <Ejercicio1 :numeroVoz="numeroVoz" />
-      <Ejercicio2 :numeroVoz="numeroVoz" />
-
+      <Ejercicio2 :numeroVoz="numeroVoz2" />
+      <Ejercicio3 :numeroVoz="numeroVoz3" />     
       
-      <form
-        v-if="this.acierto2"
-        @submit.prevent="
-          this.acierto3 = comprobar(this.numeroVoz3, numero, letras)
-        "
-      >
-        <p>Esucha y escribe con números y con letras</p>
-        <button type="button" @click="speak(this.numeroVoz3.numero)">
-          <img class="altavoz" src="@/images/altavoz.png" />
-        </button>
-        <p>Número:</p>
-        <input v-model="numero" />
-        <p>Letras:</p>
-        <input v-model="letras" />
-        <button type="submit">Comprobar</button>
-        <img
-          class="correcto"
-          src="@/images/correcto.png"
-          alt="correcto"
-          v-if="this.acierto3 === true"
-        />
-        <img
-          class="correcto"
-          src="@/images/incorrecto.png"
-          alt="correcto"
-          v-if="this.acierto3 === false"
-        />
-      </form>
     </div>
   </div>
 </template>
@@ -45,10 +17,11 @@ import json from "@/json/listaNumeros.json";
 import Temporizador from "@/components/Temporizador.vue";
 import Ejercicio1 from "./Ejercicio1.vue";
 import Ejercicio2 from "./Ejercicio2.vue";
+import Ejercicio3 from "./Ejercicio3.vue";
 
 export default {
   name: "Voz",
-  components: { Temporizador, Ejercicio1, Ejercicio2 },
+  components: { Temporizador, Ejercicio1, Ejercicio2, Ejercicio3 },
   data() {
     return {
       synth: window.speechSynthesis,
@@ -157,7 +130,7 @@ export default {
   min-height: 500px;
   width: 90%;
   background-color: #ffffff;
-  border: 2px solid blue;
+  border: 2px solid #071488;
   border-radius: 10px;
 }
 </style>

@@ -42,5 +42,85 @@
   {
     "nombre": "diez",
     "numero": "10"
+  },
+  {
+    "nombre": "once",
+    "numero": "11"
+  },
+  {
+    "nombre": "doce",
+    "numero": "12"
+  },
+  {
+    "nombre": "trece",
+    "numero": "13"
+  },
+  {
+    "nombre": "catorce",
+    "numero": "14"
+  },
+  {
+    "nombre": "quince",
+    "numero": "15"
+  },
+  {
+    "nombre": "dieciseis",
+    "numero": "16"
+  },
+  {
+    "nombre": "diecisiete",
+    "numero": "17"
+  },
+  {
+    "nombre": "dieciocho",
+    "numero": "18"
+  },
+  {
+    "nombre": "diecinueve",
+    "numero": "19"
+  },
+  {
+    "nombre": "veinte",
+    "numero": "20"
+  },
+  {
+    "nombre": "veintiuno",
+    "numero": "21"
+  },
+  {
+    "nombre": "veintidos",
+    "numero": "22"
+  },
+  {
+    "nombre": "veintitres",
+    "numero": "23"
+  },
+  {
+    "nombre": "veinticuatro",
+    "numero": "24"
+  },
+  {
+    "nombre": "veinticinco",
+    "numero": "25"
+  },
+  {
+    "nombre": "veintiseis",
+    "numero": "26"
+  },
+  {
+    "nombre": "veintisiete",
+    "numero": "27"
+  },
+  {
+    "nombre": "veintiocho",
+    "numero": "28"
+  },
+  {
+    "nombre": "veintinueve",
+    "numero": "29"
+  },
+  {
+    "nombre": "treinta",
+    "numero": "30"
   }
 ]
