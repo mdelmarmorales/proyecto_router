@@ -7,7 +7,7 @@ export default {
   name: "Temporizador",
   data() {
     return {
-      timer: 15,
+      timer: 5,
       interval: "",
     };
   },
@@ -19,6 +19,7 @@ export default {
       this.interval = setInterval(() => {
         if (this.timer == 0) {
           clearInterval(this.interval);
+          this.emitter.emit("finTiempo", true);
         } else {
           this.timer--;
         }

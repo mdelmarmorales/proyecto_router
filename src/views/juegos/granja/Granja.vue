@@ -43,6 +43,7 @@
 <script>
 import Temporizador from "@/components/Temporizador.vue";
 
+
 export default {
   name: "Granja",
   components: { Temporizador },

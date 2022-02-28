@@ -1,14 +1,13 @@
 <template>
   <div class="row">
     <div id="cuadro_blanco" class="col-10 mx-auto mt-5">
-       <div class="row d-flex my-2">
-      <Temporizador class="col-1 ml-auto" />
+      <div class="row d-flex my-2">
+        <Temporizador class="col-1 ml-auto" />
       </div>
       <div class="mt-2 d-flex flex-column justify-content-around">
-        <Ejercicio1 :serieSolucion="serieSolucion"/>
-        <Ejercicio2 :serieSolucion="serieSolucion"/>
-        <Ejercicio3 :seleccionSerie="seleccionSerie"/>
-       
+        <Ejercicio1 :serieSolucion="serieSolucion" />
+        <Ejercicio2 :serieSolucion="serieSolucion" />
+        <Ejercicio3 :seleccionSerie="seleccionSerie" />
       </div>
     </div>
   </div>
@@ -27,9 +26,7 @@ export default {
     return {
       tamanyoSerie: 4,
       tiposSerie: ["suma", "resta", "multiplicacion"],
-      // tipoComparacion: ["menor", "mayor"],
-      // correcto: null,
-      // correctoComp: null,
+      finTiempo: null,
       correctoSelec: null,
     };
   },
