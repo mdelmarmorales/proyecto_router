@@ -32,7 +32,7 @@ export default {
     this.emitter.on("comprueba", (propuesto, solucion) => {
          console.log ("solucion" + solucion);
         console.log ("propuesto" + propuesto);
-      //this.productoSeleccionado = productoSeleccionado; //Guardamos el valor leído desde otro componente a un dato de éste
+      
       this.comprobar(propuesto, solucion);
     });
   },

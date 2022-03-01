@@ -235,7 +235,6 @@ export default {
 
 <style scoped>
 img {
-  /* opacity: 0; */
   position: relative;
   height: 100px;
 }

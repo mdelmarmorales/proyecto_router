@@ -55,7 +55,6 @@
       </label>
     </b-form-radio-group>
 
-    <!-- <Correcto ref="correcto" :propuesto="parseInt(this.horaPropuesta)" :solucion="this.indiceHora" /> -->
 
     <button class="btn-comprobar mx-2" type="submit">Comprobar</button>
     <img
@@ -75,10 +74,8 @@
 </template>
 
 <script>
-// import Correcto from "@/components/Correcto.vue";
 export default {
   name: "EjercicioHora",
-  // components: { Correcto },
   data() {
     return {
       correcto: null,

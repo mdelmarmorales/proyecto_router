@@ -78,19 +78,6 @@ export default {
       let nombreProducto = "";
       this.correctoCesta = true;
 
-      //       this.listaCompra.forEach((element) => {
-      //                 nombreProducto = element.producto;
-      //         const hayProducto = this.cesta.filter(
-      //           (alimento) => alimento.nombre === nombreProducto
-      //         );
-      //         console.log (hayProducto);
-      // console.log (hayProducto.length, element.cantidad);
-      //         if (hayProducto.length == element.cantidad) {
-      //           this.correctoCesta = true;
-      //         } else {
-      //           this.correctoCesta = false;
-      //         }
-      //       });
 
       /*Comprobamos que todos los productos de la lista estén en la cesta 
     con la misma cantidad */
@@ -125,7 +112,6 @@ Si lo hay, lo marcamos como incorrecto */
       });
     },
     corregirCesta() {
-      // this.cesta.splice(0, this.cesta.length);
       this.cesta.pop();
     },
   },
@@ -158,7 +144,6 @@ Si lo hay, lo marcamos como incorrecto */
 .alimentosImagen {
   height: 50px;
   filter: drop-shadow(0 6px 3px rgba(0, 0, 0, 0.7));
-  /* margin: 10px; */
 }
 .correcto {
   height: 40px;

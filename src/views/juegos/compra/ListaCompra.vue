@@ -28,6 +28,25 @@ export default {
     };
   },
   computed: {
+    max() {
+      let maximo;
+
+      if (this.edad <= 6) {
+        maximo = 3;
+      } else {
+        if (this.edad <= 8) {
+          maximo = 6;
+        } else {
+          if (this.edad <= 10) {
+            maximo = 10;
+          } else {
+            maximo = 15;
+          }
+        }
+      }
+      console.log(maximo);
+      return maximo;
+    },
     listaCompra() {
       let lista = [];
       let producto, cantidad, indiceProducto;
@@ -36,7 +55,7 @@ export default {
       let copiaProductos = [...this.productos];
 
       //Obtenemos de manera aleatoria el total de productos que vamos a comprar
-      let totalProductos = this.numeroAleatorio(1, 6);
+      let totalProductos = this.numeroAleatorio(1, this.max);
 
       do {
         indiceProducto = this.numeroAleatorio(0, copiaProductos.length - 1);

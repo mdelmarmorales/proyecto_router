@@ -2,54 +2,64 @@
 <template>
   <div class="row">
     <div id="cuadro_blanco" class="col-10 mx-auto mt-5">
-      <Temporizador />
-      <div>
-        <div class="custom-control custom-radio">
-          <input
-            type="radio"
-            v-model="radio"
-            class="custom-control-input"
-            name="grupoOperaciones"
-            id="suma"
-            value="suma"
-            @change="onChange($event)"
-          />
-          <label class="custom-control-label">Sumar</label>
-          <input
-            type="radio"
-            v-model="radio"
-            class="custom-control-input"
-            name="grupoOperaciones"
-            id="resta"
-            value="resta"
-            @change="onChange($event)"
-          />
-          <label class="custom-control-label">Restar</label>
-          <input
-            type="radio"
-            v-model="radio"
-            class="custom-control-input"
-            name="grupoOperaciones"
-            id="multiplicacion"
-            value="multiplicacion"
-            @change="onChange($event)"
-          />
-          <label class="custom-control-label">Multiplicar</label>
-          <input
-            type="radio"
-            v-model="radio"
-            class="custom-control-input"
-            name="grupoOperaciones"
-            id="division"
-            value="division"
-            @change="onChange($event)"
-          />
-          <label class="custom-control-label">Dividir</label>
-        </div>
-        <div class="mt-3">
-          Selected: <strong>{{ radio }}</strong>
-        </div>
+      <div class="row d-flex my-2">
+        <Temporizador class="col-1 ml-auto" />
+      </div>
+      <div class="row mx-auto my-4 py-2 d-flex justify-content-around">
+        <p class="enunciado col-5">¿Qué operación quieres practicar?</p>
+        <b-form-radio-group class="col-6">
+          <label class="form-check-label mr-5">
+            <input
+              type="radio"
+              class="form-check-input"
+              v-model="radio"
+              name="grupoOperaciones"
+              value="suma"
+              @change="onChange($event)"
+            />
+            Sumar
+          </label>
+
+          <label class="form-check-label mr-5">
+            <input
+              type="radio"
+              class="form-check-input"
+              v-model="radio"
+              name="grupoOperaciones"
+              value="resta"
+              @change="onChange($event)"
+            />
+            Restar
+          </label>
+
+          <label class="form-check-label mr-5">
+            <input
+              type="radio"
+              class="form-check-input"
+              v-model="radio"
+              name="grupoOperaciones"
+              value="multiplicacion"
+              @change="onChange($event)"
+            />
+            Multiplicar
+          </label>
+
+          <label class="form-check-label mr-5">
+            <input
+              type="radio"
+              class="form-check-input"
+              v-model="radio"
+              name="grupoOperaciones"
+              value="division"
+              @change="onChange($event)"
+            />
+            Dividir
+          </label>
+        </b-form-radio-group>
+      </div>
+      <div class="row mx-auto my-4 py-2 d-flex justify-content-around align-items-center">
         <Calculadora />
+        <Manzanas />
       </div>
     </div>
   </div>
@@ -57,11 +67,12 @@
 
 <script>
 import Calculadora from "./Calculadora.vue";
+import Manzanas from "./Manzanas.vue";
 import Temporizador from "@/components/Temporizador.vue";
 
 export default {
   name: "Operaciones",
-  components: { Calculadora, Temporizador },
+  components: { Calculadora, Manzanas, Temporizador },
   data() {
     return {
       radio: "",
@@ -85,5 +96,15 @@ export default {
   background-color: #ffffff;
   border: 2px solid #071488;
   border-radius: 10px;
+}
+
+.juego {
+  background-color: #faea7d;
+  border: 2px solid #071488;
+  border-radius: 15px;
+}
+
+.enunciado {
+  font-weight: bold;
 }
 </style>

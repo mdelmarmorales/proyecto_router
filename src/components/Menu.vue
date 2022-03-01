@@ -10,7 +10,7 @@
       </button>
       <div class="dropdown-menu mt-0">
         <div class="dropdown-item">
-          <router-link :to="{ name: 'Home' }" class="item">Inicio</router-link>
+          <router-link :to="{ name: 'Home' }">Inicio</router-link>
         </div>
         <div class="dropdown-item">
           <router-link :to="{ name: 'Juegos' }">Juegos</router-link>
@@ -26,7 +26,7 @@
 <script>
 </script>
 
-<style>
+<style scoped>
 .dropdown {
   padding: 3px;
   background: #fdcc4b;
@@ -40,12 +40,8 @@
   font-weight: bold;
 }
 
-.item {
-  color: #071488;
-  font-weight: bold;
-}
 
 .dropdown a.router-link-exact-active {
-  color: #42b983;
+  color: #071488;
 }
 </style>

@@ -47,7 +47,6 @@ export default {
   },
   mounted() {
     this.emitter.on("correctoComp", (correctoComp) => {
-      //this.productoSeleccionado = productoSeleccionado; //Guardamos el valor leído desde otro componente a un dato de éste
       this.correcto = correctoComp;
       console.log(this.correcto);
     });

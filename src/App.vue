@@ -35,16 +35,9 @@ export default {
   min-height: 100vh;
 }
 
-#nav {
-  padding: 30px;
-}
-
-#nav a {
+a {
   font-weight: bold;
-  color: #2c3e50;
+  color: black;
 }
 
-#nav a.router-link-exact-active {
-  color: #42b983;
-}
 </style>

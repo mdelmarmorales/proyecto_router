@@ -11,10 +11,11 @@ const emitter = mitt();
 
 const app=createApp(App).use(router, axios, vueAxios)
 
+
+// Variables globales
 app.config.globalProperties.emitter = emitter;
+app.config.globalProperties.edad = 8;
 
 app.mount('#app')
 
 
-
-// createApp(App).use(router).mount('#app')

@@ -36,6 +36,25 @@ export default {
     };
   },
   computed: {
+    max() {
+      let maximo;
+
+      if (this.edad <= 6) {
+        maximo = 10;
+      } else {
+        if (this.edad <= 8) {
+          maximo = 30;
+        } else {
+          if (this.edad <= 10) {
+            maximo = 50;
+          } else {
+            maximo = 100;
+          }
+        }
+      }
+      console.log(maximo);
+      return maximo;
+    },
     voiceSelect() {
       return document.querySelector("select");
     },
@@ -64,7 +83,7 @@ export default {
   },
     mounted() {
     this.emitter.on("numeroVoz", (numeroVoz) => {
-      //this.productoSeleccionado = productoSeleccionado; //Guardamos el valor leído desde otro componente a un dato de éste
+  
       this.speak(numeroVoz);
     });
   },
@@ -101,7 +120,7 @@ export default {
         return;
       }
 
-      // if (this.inputTxt.value !== "") {
+  
       if (this.numeroVoz !== "") {
         this.speakText = new SpeechSynthesisUtterance(lectura);
 

@@ -31,8 +31,37 @@ export default {
     };
   },
   computed: {
+    max() {
+      let maximo;
+
+      if (this.edad <= 6) {
+        maximo = 3;
+      } else {
+        if (this.edad <= 8) {
+          maximo = 6;
+        } else {
+          if (this.edad <= 10) {
+            maximo = 10;
+          } else {
+            maximo = 15;
+          }
+        }
+      }
+      console.log(maximo);
+      return maximo;
+    },
     tipoSerie() {
-      let tipo, indice;
+      let tipo, indice, maxTipos;
+
+      if (this.edad <= 8) {
+        maxTipos = 0;
+      } else {
+        if (this.edad <= 10) {
+          maxTipos = 1;
+        } else {
+          maxTipos = 2;
+        }
+      }
 
       indice = this.numeroAleatorio(0, this.tiposSerie.length - 1);
       tipo = this.tiposSerie[indice];
@@ -61,13 +90,10 @@ export default {
       let inicial, paso;
       let serieSolucion = [];
 
-      inicial = this.numeroAleatorio(0, 5);
-      paso = this.numeroAleatorio(1, 5);
-
       switch (this.tipoSerie) {
         case "suma":
-          inicial = this.numeroAleatorio(0, 5);
-          paso = this.numeroAleatorio(1, 5);
+          inicial = this.numeroAleatorio(0, this.max);
+          paso = this.numeroAleatorio(1, this.max);
 
           for (let i = 0; i <= this.tamanyoSerie; i++) {
             if (i == 0) {
@@ -79,8 +105,8 @@ export default {
           break;
 
         case "resta":
-          inicial = this.numeroAleatorio(20, 50);
-          paso = this.numeroAleatorio(1, 5);
+          inicial = this.numeroAleatorio(this.max * 4, this.max * 6);
+          paso = this.numeroAleatorio(1, this.max);
 
           for (let i = 0; i <= this.tamanyoSerie; i++) {
             if (i == 0) {
@@ -93,7 +119,7 @@ export default {
 
         case "multiplicacion":
           console.log("multi");
-          inicial = this.numeroAleatorio(1, 5);
+          inicial = this.numeroAleatorio(1, this.max);
           paso = this.numeroAleatorio(2, 3);
 
           for (let i = 0; i <= this.tamanyoSerie; i++) {

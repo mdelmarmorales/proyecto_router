@@ -57,7 +57,7 @@ export default {
   },
   mounted() {
     this.emitter.on("correctoSerie", (correctoSerie) => {
-      //this.productoSeleccionado = productoSeleccionado; //Guardamos el valor leído desde otro componente a un dato de éste
+      
       this.correcto = correctoSerie;
     });
   },

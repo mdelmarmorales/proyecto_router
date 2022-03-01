@@ -45,7 +45,6 @@ export default {
     return {
       correctoVoz: null,
       correcto: null,
-      //   acierto1: null,
     };
   },
   methods: {

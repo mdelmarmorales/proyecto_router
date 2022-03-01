@@ -1,6 +1,4 @@
 <template>
-<!-- <Header/>
-<Menu/> -->
 <div class="row">
   <div id="cuadro_blanco" class="col-10 mx-auto mt-5">
     <div class="row justify-content-around">
@@ -37,61 +35,12 @@
     </div>
   </div>
    </div>
-
-  <!-- <div v-for="juego in juegosPrimeraFila" :key="juego.id">
-      <router-link :to="{name: 'Juegos'}"> -->
-  <!-- <router-link :to="{ name: juego.url }">
-        <img :src="juego.imagen" :alt="juego.nombre" class="imagen py-2" />
-        <p class="nombreJuego mx-auto">{{ juego.nombre }}</p>
-      </router-link>
-    </div>
-    <div v-for="juego in juegosSegundaFila" :key="juego.id"> -->
-  <!-- <router-link :to="{name: 'Juegos'}"> -->
-  <!-- <router-link :to="{ name: juego.url }">
-        <img :src="juego.imagen" :alt="juego.nombre" class="imagen py-2" />
-        <p class="nombreJuego mx-auto">{{ juego.nombre }}</p>
-      </router-link>
-    </div>
-  </div> -->
-  <!-- <div class="row filaJuego mt-lg-5 d-flex justify-content-around">
-      <a
-        :href="juego.nombre"
-        class="boton col-lg-3 my-lg-2 text-decoration-none font-weight-bold"
-        v-bind:key="juego.id"
-        v-for="juego in juegosPrimeraFila"
-      >
-        <img :src="juego.imagen" :alt="juego.nombre" class="imagen py-2" />
-        <p class="nombreJuego mx-auto">{{ juego.nombre }}</p>
-      </a>
-    </div>
-
-    <div class="row filaJuego mt-lg-5">
-      <a
-        :href="juego.nombre"
-        class="
-          boton
-          col-lg-3
-          my-lg-2
-          mx-auto
-          text-decoration-none
-          font-weight-bold
-        "
-        v-bind:key="juego.id"
-        v-for="juego in juegosSegundaFila"
-      >
-        <img :src="juego.imagen" :alt="juego.nombre" class="imagen py-2" />
-        <p class="nombreJuego mx-auto">{{ juego.nombre }}</p>
-      </a>
-    </div> -->
 </template>
 
 <script>
-// import Header from "@/components/Header.vue";
-// import Menu from "@/components/Menu.vue";
 
 export default {
   name: "Juegos",
-  // components: { Header, Menu},
   data() {
     return {
       juegosPrimeraFila: [
@@ -144,6 +93,11 @@ export default {
   background-color: #e0f7f2;
   border: 2px solid #071488;
   border-radius: 15px;
+}
+
+/* Enlace del router link es transformado a un "a", por eso se formatea así */
+.card a{
+  text-decoration:none;
 }
 
 .card-img{

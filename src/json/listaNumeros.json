@@ -122,5 +122,285 @@
   {
     "nombre": "treinta",
     "numero": "30"
+  },
+  {
+    "nombre": "treinta y uno",
+    "numero": "31"
+  },
+  {
+    "nombre": "treinta y dos",
+    "numero": "32"
+  },
+  {
+    "nombre": "treinta y tres",
+    "numero": "33"
+  },
+  {
+    "nombre": "treinta y cuatro",
+    "numero": "34"
+  },
+  {
+    "nombre": "treinta y cinco",
+    "numero": "35"
+  },
+  {
+    "nombre": "treinta y seis",
+    "numero": "36"
+  },
+  {
+    "nombre": "treinta y siete",
+    "numero": "37"
+  },
+  {
+    "nombre": "treinta y ocho",
+    "numero": "38"
+  },
+  {
+    "nombre": "treinta y nueve",
+    "numero": "39"
+  },
+  {
+    "nombre": "cuarenta",
+    "numero": "40"
+  },
+  {
+    "nombre": "cuarenta y uno",
+    "numero": "41"
+  },
+  {
+    "nombre": "cuarenta y dos",
+    "numero": "42"
+  },
+  {
+    "nombre": "cuarenta y tres",
+    "numero": "43"
+  },
+  {
+    "nombre": "cuarenta y cuatro",
+    "numero": "44"
+  },
+  {
+    "nombre": "cuarenta y cinco",
+    "numero": "45"
+  },
+  {
+    "nombre": "cuarenta y seis",
+    "numero": "46"
+  },
+  {
+    "nombre": "cuarenta y siete",
+    "numero": "47"
+  },
+  {
+    "nombre": "cuarenta y ocho",
+    "numero": "48"
+  },
+  {
+    "nombre": "cuarenta y nueve",
+    "numero": "49"
+  },
+  {
+    "nombre": "cincuenta",
+    "numero": "50"
+  },
+  {
+    "nombre": "cincuenta y uno",
+    "numero": "51"
+  },
+  {
+    "nombre": "cincuenta y dos",
+    "numero": "52"
+  },
+  {
+    "nombre": "cincuenta y tres",
+    "numero": "53"
+  },
+  {
+    "nombre": "cincuenta y cuatro",
+    "numero": "54"
+  },
+  {
+    "nombre": "cincuenta y cinco",
+    "numero": "55"
+  },
+  {
+    "nombre": "cincuenta y seis",
+    "numero": "56"
+  },
+  {
+    "nombre": "cincuenta y siete",
+    "numero": "57"
+  },
+  {
+    "nombre": "cincuenta y ocho",
+    "numero": "58"
+  },
+  {
+    "nombre": "cincuenta y nueve",
+    "numero": "59"
+  },
+  {
+    "nombre": "sesenta",
+    "numero": "60"
+  },
+  {
+    "nombre": "sesenta y uno",
+    "numero": "61"
+  },
+  {
+    "nombre": "sesenta y dos",
+    "numero": "62"
+  },
+  {
+    "nombre": "sesenta y tres",
+    "numero": "63"
+  },
+  {
+    "nombre": "sesenta y cuatro",
+    "numero": "64"
+  },
+  {
+    "nombre": "sesenta y cinco",
+    "numero": "65"
+  },
+  {
+    "nombre": "sesenta y seis",
+    "numero": "66"
+  },
+  {
+    "nombre": "sesenta y siete",
+    "numero": "67"
+  },
+  {
+    "nombre": "sesenta y ocho",
+    "numero": "68"
+  },
+  {
+    "nombre": "sesenta y nueve",
+    "numero": "69"
+  },
+  {
+    "nombre": "setenta",
+    "numero": "70"
+  },
+  {
+    "nombre": "setenta y uno",
+    "numero": "71"
+  },
+  {
+    "nombre": "setenta y dos",
+    "numero": "72"
+  },
+  {
+    "nombre": "setenta y tres",
+    "numero": "73"
+  },
+  {
+    "nombre": "setenta y cuatro",
+    "numero": "74"
+  },
+  {
+    "nombre": "setenta y cinco",
+    "numero": "75"
+  },
+  {
+    "nombre": "setenta y seis",
+    "numero": "76"
+  },
+  {
+    "nombre": "setenta y siete",
+    "numero": "77"
+  },
+  {
+    "nombre": "setenta y ocho",
+    "numero": "78"
+  },
+  {
+    "nombre": "setenta y nueve",
+    "numero": "79"
+  },
+  {
+    "nombre": "ochenta",
+    "numero": "80"
+  },
+  {
+    "nombre": "ochenta y uno",
+    "numero": "81"
+  },
+  {
+    "nombre": "ochenta y dos",
+    "numero": "82"
+  },
+  {
+    "nombre": "ochenta y tres",
+    "numero": "83"
+  },
+  {
+    "nombre": "ochenta y cuatro",
+    "numero": "84"
+  },
+  {
+    "nombre": "ochenta y cinco",
+    "numero": "85"
+  },
+  {
+    "nombre": "ochenta y seis",
+    "numero": "86"
+  },
+  {
+    "nombre": "ochenta y siete",
+    "numero": "87"
+  },
+  {
+    "nombre": "ochenta y ocho",
+    "numero": "88"
+  },
+  {
+    "nombre": "ochenta y nueve",
+    "numero": "89"
+  },
+  {
+    "nombre": "noventa",
+    "numero": "90"
+  },
+  {
+    "nombre": "noventa y uno",
+    "numero": "91"
+  },
+  {
+    "nombre": "noventa y dos",
+    "numero": "92"
+  },
+  {
+    "nombre": "noventa y tres",
+    "numero": "93"
+  },
+  {
+    "nombre": "noventa y cuatro",
+    "numero": "94"
+  },
+  {
+    "nombre": "noventa y cinco",
+    "numero": "95"
+  },
+  {
+    "nombre": "noventa y seis",
+    "numero": "96"
+  },
+  {
+    "nombre": "noventa y siete",
+    "numero": "97"
+  },
+  {
+    "nombre": "noventa y ocho",
+    "numero": "98"
+  },
+  {
+    "nombre": "noventa y nueve",
+    "numero": "99"
+  },
+  {
+    "nombre": "cien",
+    "numero": "100"
   }
 ]

@@ -1,27 +1,29 @@
 <template>
   <div>
     <form @submit.prevent="comprobarResultado">
-      <div v-if="this.operacion">
-        <p>Cálculo</p>
-        <table>
-          <tr>
-            <td>
-              {{ this.operandos.oper1 }}
-            </td>
-          </tr>
-          <tr>
-            <td>
-              {{ this.operandos.simbolo }}
-            </td>
-            <td>
-              {{ this.operandos.oper2 }}
-            </td>
-          </tr>
+      <div v-if="this.operacion" id="calculos" class="float-left col-12 my-4">
+        <p id="tituloCalculos">Cálculo</p>
+        <table class="table">
+          <tbody>
+            <tr>
+              <td></td>
+              <td>
+                {{ this.operandos.oper1 }}
+              </td>
+            </tr>
+            <tr>
+              <td>
+                {{ this.operandos.simbolo }}
+              </td>
+              <td>
+                {{ this.operandos.oper2 }}
+              </td>
+            </tr>
+          </tbody>
         </table>
-        <div id="v-model-basic" class="demo">
-          <!-- ¿Quitar este div ? -->
-          <input v-model="resultado" />
-          <button type="submit">Comprobar</button>
+        <div>
+          <input class="col-3" v-model="resultado" />
+          <button class="btn-comprobar m-2" type="submit">Comprobar</button>
         </div>
         <img
           class="correcto"
@@ -37,18 +39,12 @@
         />
       </div>
     </form>
-
-    <div id="imagenes" v-if="this.correcto">
-      <Manzanas :resultado="this.resultado"/>
-    </div>
   </div>
 </template>
 
 <script>
-import Manzanas from "./Manzanas.vue";
 export default {
   name: "Calculadora",
-  components: { Manzanas },
   data() {
     return {
       resultado: "",
@@ -59,21 +55,39 @@ export default {
     };
   },
   computed: {
+    max() {
+      let maximo;
+
+      if (this.edad <= 6) {
+        maximo = 10;
+      } else {
+        if (this.edad <= 8) {
+          maximo = 30;
+        } else {
+          if (this.edad <= 10) {
+            maximo = 50;
+          } else {
+            maximo = 100;
+          }
+        }
+      }
+      console.log(maximo);
+      return maximo;
+    },
     operandos() {
-      const MAX = 10,
-        MIN = 0;
+      const MIN = 0;
       let oper1, oper2, aux, simbolo;
 
       if (this.operacion === "suma") {
-        oper1 = this.numeroAleatorio(MIN, MAX);
-        oper2 = this.numeroAleatorio(MIN, MAX - oper1);
+        oper1 = this.numeroAleatorio(MIN, this.max);
+        oper2 = this.numeroAleatorio(MIN, this.max - oper1);
         simbolo = "+";
       } else if (this.operacion === "resta") {
-        oper1 = this.numeroAleatorio(MIN, MAX);
+        oper1 = this.numeroAleatorio(MIN, this.max);
         oper2 = this.numeroAleatorio(MIN, oper1);
         simbolo = "-";
       } else if (this.operacion === "multiplicacion") {
-        oper1 = this.numeroAleatorio(MIN, MAX);
+        oper1 = this.numeroAleatorio(MIN, this.max);
         oper2 = this.numeroAleatorio(MIN, oper1);
         simbolo = "x";
       }
@@ -82,11 +96,11 @@ export default {
         el dividendo. Cualquiera de los otros dos será el divisor. Así nos aseguramos
         de tener divisiones exactas. Evitamos que cualquier de los numeros sea 0 */
         do {
-          aux = this.numeroAleatorio(MIN, MAX); //Entre 0 y MAX
+          aux = this.numeroAleatorio(MIN, this.max); //Entre 0 y MAX
         } while (aux == 0);
 
         do {
-          oper2 = this.numeroAleatorio(MIN, MAX); //Entre 0 y MAX
+          oper2 = this.numeroAleatorio(MIN, this.max); //Entre 0 y MAX
         } while (oper2 == 0);
 
         oper1 = aux * oper2; //Dividendo
@@ -111,52 +125,40 @@ export default {
         case "suma":
           if (this.operandos.oper1 + this.operandos.oper2 == this.resultado)
             this.correcto = true;
-           
+          this.emitter.emit("calculos", {
+            correcto: this.correcto,
+            resultado: this.resultado,
+          });
           break;
         case "resta":
           if (this.operandos.oper1 - this.operandos.oper2 == this.resultado)
             this.correcto = true;
-          
+          this.emitter.emit("calculos", {
+            correcto: this.correcto,
+            resultado: this.resultado,
+          });
+
           break;
         case "multiplicacion":
           if (this.operandos.oper1 * this.operandos.oper2 == this.resultado)
             this.correcto = true;
-            
+          this.emitter.emit("calculos", {
+            correcto: this.correcto,
+            resultado: this.resultado,
+          });
+
           break;
         case "division":
           if (this.operandos.oper1 / this.operandos.oper2 == this.resultado)
-            this.correcto = true;            
+            this.correcto = true;
+          this.emitter.emit("calculos", {
+            correcto: this.correcto,
+            resultado: this.resultado,
+          });
           break;
         default:
           break;
       }
-    },
-    comprobarManzanas() {
-      this.correctoManzana = false;
-
-      if (this.resultado == this.contadorManzanas) {
-        this.correctoManzana = true;
-      }
-    },
-    sumarManzanas(event) {
-      let imagen = event.target.getAttribute("src");
-      let item;
-
-      if (imagen.includes("10manzanas")) {
-        this.contadorManzanas += 10;
-        item = {
-          url: require("@/images/10manzanas.png"),
-          name: "10 manzanas",
-        };
-      } else {
-        this.contadorManzanas += 1;
-        item = {
-          url: require("@/images/manzana.png"),
-          name: "1 manzana",
-        };
-      }
-
-      this.manzanas.push(item);
     },
   },
 };
@@ -166,5 +168,21 @@ export default {
 .correcto,
 .manzana {
   height: 50px;
+}
+
+#calculos {
+  background-color: #fff4ad;
+  border-radius: 10px;
+}
+
+#tituloCalculos {
+  background-color: #fdcc4b;
+  color: #071488;
+}
+
+.btn-comprobar {
+  background-color: #3fcfba;
+  border: 2px solid #071488;
+  border-radius: 10px;
 }
 </style>

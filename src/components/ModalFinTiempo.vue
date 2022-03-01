@@ -38,10 +38,6 @@ export default {
   },
   mounted() {
     this.emitter.on("finTiempo", (finTiempo) => {
-      $(".modal").modal({ show: false });
-      //this.productoSeleccionado = productoSeleccionado; //Guardamos el valor leído desde otro componente a un dato de éste
-      // this.finTiempo = finTiempo;
-      
       $(".modal").modal("show");
     });
   },
@@ -49,23 +45,30 @@ export default {
 </script>
 
 <style scoped>
-
-.modal-header{
-background-color: #3fcfba;
-color: #071488;
-font-weight: bold;
+.modal-header {
+  background-color: #3fcfba;
+  color: #071488;
+  font-weight: bold;
 }
 
-.btnRecargar{
-   background-color: #3fcfba;
+.btnRecargar {
+  background-color: #3fcfba;
   border: 2px solid #071488;
   border-radius: 5px;
-  color: black;
 }
 
-.btnJuegos{
-    background-color: #ffa934;
+.btnJuegos {
+  background-color: #ffa934;
   border: 2px solid #fd6400;
   border-radius: 5px;
+}
+
+.btnRecargar a{
+  color:#071488;
+  text-decoration: none;
+}
+.btnJuegos a {
+  color: #3f332b;
+  text-decoration: none;
 }
 </style>

@@ -48,7 +48,7 @@ export default {
   },
   mounted() {
     this.emitter.on("correcto2", (correcto) => {
-      //this.productoSeleccionado = productoSeleccionado; //Guardamos el valor leído desde otro componente a un dato de éste
+      
       this.acierto2 = correcto;
     });
   },
@@ -59,7 +59,7 @@ export default {
     comprobar() {
       this.correcto =
         arguments[0].numero == arguments[1] &&
-        arguments[0].nombre == arguments[2];
+        arguments[0].nombre == arguments[2].toLowerCase();
     },
   },
 };

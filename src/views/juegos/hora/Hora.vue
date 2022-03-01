@@ -38,7 +38,6 @@ export default {
     return {
       horas: horasJson,
       minutos: minutosJson,
-      // correcto: null,
     };
   },
 
