@@ -47,7 +47,6 @@ export default {
           }
         }
       }
-      console.log(maximo);
       return maximo;
     },
     tipoSerie() {
@@ -118,7 +117,6 @@ export default {
           break;
 
         case "multiplicacion":
-          console.log("multi");
           inicial = this.numeroAleatorio(1, this.max);
           paso = this.numeroAleatorio(2, 3);
 
@@ -164,8 +162,6 @@ export default {
           this.correctoSelec = true;
         }
       } else {
-        console.log(this.seleccionSerie[this.seleccionSerie.length - 1]);
-        console.log(this.selecPropuesta);
         if (
           this.selecPropuesta ==
           this.seleccionSerie[this.seleccionSerie.length - 1]
@@ -189,7 +185,9 @@ export default {
 .btn-comprobar {
   background-color: #3fcfba;
   border: 2px solid #071488;
-  border-radius: 10px;
+   border-radius: 5px;
+  width: 100px;
+  height:40px;
 }
 
 .numero {

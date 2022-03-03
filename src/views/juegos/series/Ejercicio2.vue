@@ -71,12 +71,12 @@ export default {
       this.serieSolucionCopia = this.serieSolucion.sort((a, b) => a - b);
 
       if (this.menorMayor == "menor") {
-        if (this.comparacionPropuesta == this.serieSolucionCopia[0]) {
+        if (parseInt(this.comparacionPropuesta) == this.serieSolucionCopia[0]) {
           this.correctoComp = true;
         }
       } else {
         if (
-          this.comparacionPropuesta ==
+          parseInt(this.comparacionPropuesta) ==
           this.serieSolucionCopia[this.serieSolucionCopia.length - 1]
         ) {
           this.correctoComp = true;

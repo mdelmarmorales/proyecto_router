@@ -1,6 +1,6 @@
 <template>
-<div class="row">
-      <div class="dropdown dropleft d-flex col-12">
+  <div class="row">
+    <div class="dropdown dropleft d-flex col-12">
       <button
         type="button"
         class="btn dropdown-toggle py-0 ml-auto"
@@ -20,7 +20,7 @@
         </div>
       </div>
     </div>
-    </div>
+  </div>
 </template>
 
 <script>
@@ -39,7 +39,6 @@
   color: #071488;
   font-weight: bold;
 }
-
 
 .dropdown a.router-link-exact-active {
   color: #071488;

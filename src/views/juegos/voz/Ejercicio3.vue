@@ -2,7 +2,7 @@
   <div v-if="this.acierto2" class="row juego mx-3 my-4">
     <form
       class="col-9 mx-auto my-4"
-      @submit.prevent="comprobar(this.numeroVoz, numero, letras)"
+      @submit.prevent="comprobar(this.numeroVoz, parseInt(numero), letras)"
     >
       <div class="row justify-content-center">
         <p>Escucha y escribe con números y con letras</p>
@@ -75,7 +75,9 @@ export default {
 .btn-comprobar {
   background-color: #3fcfba;
   border: 2px solid #071488;
-  border-radius: 10px;
+   border-radius: 5px;
+  width: 100px;
+  height:40px;
 }
 .correcto,
 .altavoz {

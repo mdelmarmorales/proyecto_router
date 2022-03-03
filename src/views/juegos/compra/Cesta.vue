@@ -61,8 +61,9 @@ export default {
   mounted() {
     this.emitter.on("productoSelec", (productoSeleccionado) => {
       this.productoSeleccionado = productoSeleccionado; //Guardamos el valor leído desde otro componente a un dato de éste
-
-      this.llenarCesta(productoSeleccionado);
+      if(!this.correctoCesta){
+        this.llenarCesta(productoSeleccionado);
+      }      
     });
   },
   methods: {
@@ -70,14 +71,12 @@ export default {
       const nuevoProducto = this.productos.find(
         (producto) => producto.nombre === productoSeleccionado
       );
-      console.log("Selec" + nuevoProducto);
+
       this.cesta.push(nuevoProducto);
-      console.log(this.cesta);
     },
     comprobarCesta() {
       let nombreProducto = "";
       this.correctoCesta = true;
-
 
       /*Comprobamos que todos los productos de la lista estén en la cesta 
     con la misma cantidad */
@@ -86,25 +85,19 @@ export default {
         const hayProducto = this.cesta.filter(
           (alimento) => alimento.nombre === nombreProducto
         );
-        console.log(hayProducto);
-        console.log(hayProducto.length, element.cantidad);
+
         if (hayProducto.length !== element.cantidad) {
           return (this.correctoCesta = false);
         }
       });
 
-    
       /*Luego buscamos productos en la cesta que no estén en la lista.
 Si lo hay, lo marcamos como incorrecto */
       this.cesta.some((element) => {
-        
         nombreProducto = element.nombre;
         const hayProducto = this.listaCompra.filter(
-          (alimento) => alimento.producto === nombreProducto        
-
+          (alimento) => alimento.producto === nombreProducto
         );
-
-        console.log("Cesta" + element.nombre + hayProducto.length);
 
         if (!hayProducto.length) {
           return (this.correctoCesta = false);
@@ -112,7 +105,9 @@ Si lo hay, lo marcamos como incorrecto */
       });
     },
     corregirCesta() {
+      if(!this.correctoCesta){
       this.cesta.pop();
+      }
     },
   },
 };
@@ -132,6 +127,7 @@ Si lo hay, lo marcamos como incorrecto */
   border: 2px solid #071488;
   border-radius: 5px;
   width: 100px;
+  height:40px;
 }
 
 .btn-vaciar {
@@ -139,6 +135,7 @@ Si lo hay, lo marcamos como incorrecto */
   border: 2px solid #fd6400;
   border-radius: 5px;
   width: 100px;
+  height:40px;
 }
 
 .alimentosImagen {

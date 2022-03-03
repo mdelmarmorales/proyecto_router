@@ -49,6 +49,7 @@ export default {
   components: { Temporizador },
   data() {
     return {
+      intervalID: null,
       animalABuscar: [],
       numAnimales: "",
       opacidad: 0,
@@ -145,7 +146,14 @@ export default {
     };
   },
   beforeMount() {
-    this.carga();
+    setTimeout(this.carga(),3000);
+  },
+  mounted() {
+    /* Cuando el tiempo finaliza, detenemos el temporizador */
+    this.emitter.on("finTiempo", (finTiempo) => {
+        clearInterval(this.intervalID);
+      
+    });
   },
   methods: {
     eligeAnimal() {
@@ -182,7 +190,7 @@ export default {
     },
     carga() {
       this.eligeAnimal();
-      setInterval(this.cambiaOpacidad, 100);
+      this.intervalID=setInterval(this.cambiaOpacidad, 100);
     },
     numeroAleatorio(min, max) {
       return Math.floor(Math.random() * (max - min + 1) + min);
@@ -195,7 +203,9 @@ export default {
       this.imagenAMostrar = this.listaAnimales[indice];
 
       this.imagenAMostrar.contador = this.imagenAMostrar.contador + 1;
-      console.log(this.imagenAMostrar);
+
+      console.log (this.imagenAMostrar);
+ 
       //Calculamos su posición
       this.posicionImagen();
     },
@@ -221,8 +231,6 @@ export default {
       }
     },
     comprobarAnimales() {
-      console.log("comrpou");
-
       this.correcto = false;
 
       if (parseInt(this.numAnimales) === this.animalABuscar.contador) {
@@ -263,7 +271,9 @@ img {
 .btn-comprobar {
   background-color: #3fcfba;
   border: 2px solid #071488;
-  border-radius: 10px;   
+   border-radius: 5px;
+  width: 100px;
+  height:40px; 
 }
 
 span{

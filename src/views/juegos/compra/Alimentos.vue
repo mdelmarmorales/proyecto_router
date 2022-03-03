@@ -23,7 +23,6 @@ export default {
   },
   methods: {
     llenarCesta(event) {
-      console.log(this.edad);
       this.emitter.emit("productoSelec", event.target.alt);
     },
   },

@@ -48,7 +48,6 @@ export default {
   mounted() {
     this.emitter.on("correctoComp", (correctoComp) => {
       this.correcto = correctoComp;
-      console.log(this.correcto);
     });
   },
   computed: {
@@ -67,17 +66,14 @@ export default {
     },
     comprobarSeleccion() {
       this.correctoSelec = false;
-      console.log("sel" +this.seleccionSerie);
 
       if (this.menorMayorSelec == "menor") {
-        if (this.selecPropuesta == this.seleccionSerie[0]) {
+        if (parseInt(this.selecPropuesta) == this.seleccionSerie[0]) {
           this.correctoSelec = true;
         }
       } else {
-        console.log(this.seleccionSerie[this.seleccionSerie.length - 1]);
-        console.log(this.selecPropuesta);
         if (
-          this.selecPropuesta ==
+          parseInt(this.selecPropuesta) ==
           this.seleccionSerie[this.seleccionSerie.length - 1]
         ) {
           this.correctoSelec = true;

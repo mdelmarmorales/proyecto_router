@@ -1,8 +1,8 @@
 <template>
-<ModalFinTiempo />
+  <ModalFinTiempo />
   <div class="container-fluid">
     <Header />
-    <Menu />
+    <Menu v-if="this.home"/>
     <router-view />
     <Footer />
   </div>
@@ -16,8 +16,13 @@ import ModalFinTiempo from "@/components/ModalFinTiempo.vue";
 
 export default {
   name: "Juegos",
-  components: { Header, Menu, Footer, ModalFinTiempo},
-  };
+  components: { Header, Menu, Footer, ModalFinTiempo },
+  data() {
+    return {
+      home: document.getElementById("home"),
+    };
+  },
+};
 </script>
 
 <style>
@@ -39,5 +44,4 @@ a {
   font-weight: bold;
   color: black;
 }
-
 </style>

@@ -108,7 +108,9 @@ export default {
 .btn-comprobar {
   background-color: #3fcfba;
   border: 2px solid #071488;
-  border-radius: 10px;
+   border-radius: 5px;
+  width: 100px;
+  height:40px;
 }
 
 .hora{

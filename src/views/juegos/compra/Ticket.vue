@@ -54,7 +54,7 @@
               </tr>
               <tr>
                 <th>Gastado</th>
-                <td class="ctext-right">-</td>
+                <td class="text-right">-</td>
                 <td class="text-left">{{ this.precioPropuesto }}</td>
               </tr>
             </tbody>
@@ -110,10 +110,9 @@ export default {
 
       this.cesta.forEach((producto) => (precio += producto.precio));
 
-      if (precio == this.precioPropuesto) {
+      if (precio == parseInt(this.precioPropuesto)) {
         this.correcto = true;
       }
-      console.log(this.correcto);
     },
     numeroAleatorio(min, max) {
       return Math.floor(Math.random() * (max - min + 1) + min);
@@ -122,8 +121,8 @@ export default {
       this.correctaVuelta = false;
 
       if (
-        this.dineroDisponible - this.precioPropuesto ==
-        this.vueltaPropuesta
+        this.dineroDisponible - parseInt(this.precioPropuesto) ==
+        parseInt(this.vueltaPropuesta)
       ) {
         this.correctaVuelta = true;
       }
@@ -145,7 +144,9 @@ export default {
 .btn-comprobar {
   background-color: #3fcfba;
   border: 2px solid #071488;
-  border-radius: 10px;
+   border-radius: 5px;
+  width: 100px;
+  height:40px;
 }
 .table {
   background-color: #e0f7f2;

@@ -15,7 +15,7 @@
           :indiceHora="indiceHora2"
           :horaSeleccionada="horaSeleccionada2"
         />
-          <EjercicioHora
+        <EjercicioHora
           :hora="hora3"
           :indiceHora="indiceHora3"
           :horaSeleccionada="horaSeleccionada3"
@@ -54,7 +54,7 @@ export default {
     indiceHora2() {
       return this.numeroAleatorio(0, this.hora2.length - 1);
     },
-     hora3() {
+    hora3() {
       return this.arrayHoras();
     },
     indiceHora3() {
@@ -79,7 +79,6 @@ export default {
       let indiceMinutos = this.numeroAleatorio(0, this.minutos.length - 1);
       let hora = this.horas[indiceHora];
       let minuto = this.minutos[indiceMinutos];
-      console.log("indiceMinutos " + indiceMinutos);
 
       return { hora, minuto };
     },

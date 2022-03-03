@@ -2,7 +2,7 @@
   <div class="row juego mx-3 my-4">
     <form
       class="col-9 mx-auto my-4"
-      @submit.prevent="comprobar(this.numeroVoz.numero, numPropuestoOido)"
+      @submit.prevent="comprobar(this.numeroVoz.numero, parseInt(numPropuestoOido))"
     >
       <div class="row justify-content-center">
         <p>Pulsa el icono para escuchar el número y luego escríbelo</p>
@@ -70,7 +70,9 @@ export default {
 .btn-comprobar {
   background-color: #3fcfba;
   border: 2px solid #071488;
-  border-radius: 10px;
+   border-radius: 5px;
+  width: 100px;
+  height:40px;
 }
 .correcto,
 .altavoz {

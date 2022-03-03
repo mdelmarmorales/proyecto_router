@@ -71,7 +71,6 @@ export default {
           }
         }
       }
-      console.log(maximo);
       return maximo;
     },
     operandos() {
@@ -123,40 +122,41 @@ export default {
 
       switch (this.operacion) {
         case "suma":
-          if (this.operandos.oper1 + this.operandos.oper2 == this.resultado)
+          if (this.operandos.oper1 + this.operandos.oper2 == parseInt(this.resultado))
             this.correcto = true;
           this.emitter.emit("calculos", {
             correcto: this.correcto,
-            resultado: this.resultado,
+            resultado: parseInt(this.resultado),
           });
           break;
         case "resta":
-          if (this.operandos.oper1 - this.operandos.oper2 == this.resultado)
+          if (this.operandos.oper1 - this.operandos.oper2 == parseInt(this.resultado))
             this.correcto = true;
           this.emitter.emit("calculos", {
             correcto: this.correcto,
-            resultado: this.resultado,
+            resultado: parseInt(this.resultado),
           });
 
           break;
         case "multiplicacion":
-          if (this.operandos.oper1 * this.operandos.oper2 == this.resultado)
+          if (this.operandos.oper1 * this.operandos.oper2 == parseInt(this.resultado))
             this.correcto = true;
           this.emitter.emit("calculos", {
             correcto: this.correcto,
-            resultado: this.resultado,
+            resultado: parseInt(this.resultado),
           });
 
           break;
         case "division":
-          if (this.operandos.oper1 / this.operandos.oper2 == this.resultado)
+          if (this.operandos.oper1 / this.operandos.oper2 == parseInt(this.resultado))
             this.correcto = true;
           this.emitter.emit("calculos", {
             correcto: this.correcto,
-            resultado: this.resultado,
+            resultado: parseInt(this.resultado),
           });
           break;
         default:
+          console.log("Ha ocurrido un error. Operación no válida.")
           break;
       }
     },
@@ -183,6 +183,8 @@ export default {
 .btn-comprobar {
   background-color: #3fcfba;
   border: 2px solid #071488;
-  border-radius: 10px;
+   border-radius: 5px;
+  width: 100px;
+  height:40px;
 }
 </style>

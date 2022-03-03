@@ -1,5 +1,5 @@
 <template>
-<div class="row">
+<div id="home" class="row">
     <div
       id="cuadro_blanco"
       class="col-10 mx-auto mt-5 d-flex align-items-center"
@@ -46,7 +46,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;

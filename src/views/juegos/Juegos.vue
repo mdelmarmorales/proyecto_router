@@ -100,8 +100,8 @@ export default {
   text-decoration:none;
 }
 
-.card-img{
-  height: 150px;
+.card img{
+  height: 200px;
 }
 
 .nombreJuego {

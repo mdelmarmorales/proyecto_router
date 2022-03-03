@@ -30,9 +30,7 @@ export default {
   },
    mounted() {
     this.emitter.on("comprueba", (propuesto, solucion) => {
-         console.log ("solucion" + solucion);
-        console.log ("propuesto" + propuesto);
-      
+     
       this.comprobar(propuesto, solucion);
     });
   },

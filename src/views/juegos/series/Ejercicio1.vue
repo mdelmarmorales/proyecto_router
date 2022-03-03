@@ -77,7 +77,7 @@ export default {
     comprobarSerie() {
       this.correcto = false;
 
-      if (this.valorPosicionVacia == this.numPropuesto) {
+      if (this.valorPosicionVacia == parseInt(this.numPropuesto)) {
         this.correcto = true;
       }
 
@@ -97,7 +97,9 @@ export default {
 .btn-comprobar {
   background-color: #3fcfba;
   border: 2px solid #071488;
-  border-radius: 10px;
+  border-radius: 5px;
+  width: 100px;
+  height:40px;
 }
 
 .numero {

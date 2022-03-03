@@ -7,7 +7,7 @@
       </li>
     </ul>
   </div>
-  <Cesta :productos="productos" :listaCompra="listaCompra"/>
+  <Cesta :productos="productos" :listaCompra="listaCompra" />
 </template>
 
 
@@ -18,13 +18,14 @@ export default {
   name: "ListaCompra",
   components: {
     Cesta,
-  }, props: {
+  },
+  props: {
     productos: Array,
   },
   data() {
     return {
-       cantidad: "",
-       productos: this.productos,
+      cantidad: "",
+      productos: this.productos,
     };
   },
   computed: {
@@ -44,7 +45,6 @@ export default {
           }
         }
       }
-      console.log(maximo);
       return maximo;
     },
     listaCompra() {
@@ -71,8 +71,6 @@ export default {
         totalProductos = totalProductos - cantidad;
       } while (totalProductos > 0);
 
-    console.log ("lista ", lista);
-    console.log ("lista length", lista.length);
       return lista;
     },
   },

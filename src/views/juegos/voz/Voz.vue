@@ -52,7 +52,6 @@ export default {
           }
         }
       }
-      console.log(maximo);
       return maximo;
     },
     voiceSelect() {
@@ -94,7 +93,6 @@ export default {
     obtenerNumero() {
       let indice;
       indice = this.numeroAleatorio(0, this.numeros.length - 1);
-      console.log(this.numeros[indice]);
       return this.numeros[indice];
     },
     comprobar() {
@@ -107,7 +105,6 @@ export default {
           arguments[0].numero == arguments[1] &&
           arguments[0].nombre == arguments[2];
       }
-      console.log("acierto " + acierto);
       return acierto;
     },
     //Recuperamos el listado de voces disponibles en la API
@@ -119,7 +116,6 @@ export default {
         console.error("Already speaking...");
         return;
       }
-
   
       if (this.numeroVoz !== "") {
         this.speakText = new SpeechSynthesisUtterance(lectura);
