@@ -1,6 +1,9 @@
 <template>
   <div class="row">
-    <div id="cuadro_blanco" class="col-10 mx-auto mt-5 d-flex align-items-center">
+    <div
+      id="cuadro_blanco"
+      class="col-10 mx-auto mt-5 d-flex align-items-center"
+    >
       <div class="row d-flex justify-content-around">
         <img
           class="col-5"
@@ -8,30 +11,50 @@
           alt="niños jugando con números"
         />
 
-        <div class="col-6 d-flex flex-column justify-content-around ">
+        <div class="col-6 d-flex flex-column justify-content-around">
           <h1>Registro</h1>
-          <form id="formulario" class="p-3" > 
+          <form id="formulario" class="p-3" @submit.prevent="registrar">
             <div class="form-group row">
               <label class="col-4 my-auto">Usuario: </label>
-              <input type="text" class="form-control col-7" />
+              <input
+                type="text"
+                class="form-control col-7"
+                v-model="jugador.usuario"
+              />
             </div>
             <div class="form-group row">
               <label class="col-4 my-auto">Correo: </label>
-              <input type="email" class="form-control col-7" />
+              <input
+                type="email"
+                class="form-control col-7"
+                v-model="jugador.correo"
+              />
             </div>
             <div class="form-group row">
               <label class="col-4 my-auto">Contraseña: </label>
-              <input type="text" class="form-control col-7" />
+              <input
+                type="text"
+                class="form-control col-7"
+                v-model="jugador.contrasenya"
+              />
             </div>
             <div class="form-group row">
               <label class="col-4 my-auto">Nombre del niño: </label>
-              <input type="text" class="form-control col-7" />
+              <input
+                type="text"
+                class="form-control col-7"
+                v-model="jugador.nombreNinyo"
+              />
             </div>
             <div class="form-group row">
               <label class="col-4 my-auto">Edad del niño: </label>
-              <input type="text" class="form-control col-7" />
+              <input
+                type="text"
+                class="form-control col-7"
+                v-model="jugador.edadNinyo"
+              />
             </div>
-              <div>
+            <div>
               <input type="submit" class="boton" value="Registrar" />
             </div>
           </form>
@@ -48,59 +71,25 @@ export default {
   name: "Registro",
   data() {
     return {
-      url: "/bd/crud.php",
+      jugador: {},
     };
   },
-  created() {
-    this.listarMoviles();
-  },
   methods: {
-    btnAlta() {
-      console.log("alta");
-      console.log(this.usuario);
-      console.log(this.correo);
-      console.log(this.contrasenya);
-      console.log(this.nombreNinyo);
-      console.log(this.edadNinyo);
-
-      if (
-        this.usuario &&
-        this.correo &&
-        this.contrasenya &&
-        this.nombreNinyo &&
-        this.edadNinyo
-      ) {
-        console.log("alta");
-        this.altaUsuario();
-      }
-    },
-    async altaUsuario() {
-      var data = JSON.stringify({
-        usuario: this.usuario,
-        correo: this.correo,
-        contrasenya: this.contrasenya,
-        nombreNinyo: this.nombreNinyo,
-        edadNinyo: this.edadNinyo,
-      });
-      var config = {
-        headers: { "Access-Control-Allow-Origin": "*" },
+    registrar() {
+      let datosRegistro = {
+        usuario: this.jugador.usuario,
+        correo: this.jugador.correo,
+        contrasenya: this.jugador.contrasenya,
+        nombreNinyo: this.jugador.nombreNinyo,
+        edadNinyo: this.jugador.edadNinyo,
       };
 
-      await axios
-        .post(this.url, {
-          opcion: 1,
-          data,
-          crossdomain: true,
-        })
-        .then((response) => {
-          console.log(response);
-        });
-      (this.marca = ""), (this.modelo = ""), (this.stock = 0);
-    },
-    listarMoviles() {
-      axios.post(this.url, { opcion: 4 }).then((response) => {
-        this.moviles = response.data;
-      });
+      fetch("http://localhost/API_proyecto/jugadores", {
+        mode: "cors",
+        method: "POST",
+        body: JSON.stringify(datosRegistro),
+      }).then((respuesta) => respuesta.json());
+    this.emitter.emit("registroRealizado", true);
     },
   },
 };
@@ -121,7 +110,7 @@ export default {
   border-radius: 5px;
 }
 
-h1{
+h1 {
   color: #071488;
   font-weight: bold;
 }

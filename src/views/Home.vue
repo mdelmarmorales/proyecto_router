@@ -5,7 +5,7 @@
       class="col-10 mx-auto mt-5 d-flex align-items-center"
     >
     <div v-for="people in this.people" :key="people.id">
-      {{people.name}}
+      {{people.usuario}}
     </div>
     </div>
   </div>
@@ -24,12 +24,12 @@ export default {
   },
   methods: {
     consultarPeoples() {
-      fetch('http://localhost/API_people/peoples', 
+      fetch('http://localhost/API_proyecto/jugadores', 
       {mode: 'cors'})
         .then((respuesta) => respuesta.json())
         .then((datosRespuesta) => {
           console.log(datosRespuesta);
-          this.people=datosRespuesta;
+          // this.people=datosRespuesta;
         })
         .catch(console.log);
     },

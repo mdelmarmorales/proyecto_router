@@ -1,5 +1,6 @@
 <template>
   <ModalFinTiempo />
+  <ModalRegistro />
   <div class="container-fluid">
     <Header />
     <Menu v-if="this.home"/>
@@ -13,10 +14,11 @@ import Header from "@/components/Header.vue";
 import Menu from "@/components/Menu.vue";
 import Footer from "@/components/Footer.vue";
 import ModalFinTiempo from "@/components/ModalFinTiempo.vue";
+import ModalRegistro from "@/components/ModalRegistro.vue";
 
 export default {
   name: "Juegos",
-  components: { Header, Menu, Footer, ModalFinTiempo },
+  components: { Header, Menu, Footer, ModalFinTiempo, ModalRegistro },
   data() {
     return {
       home: document.getElementById("home"),
