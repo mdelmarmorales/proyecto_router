@@ -14,7 +14,8 @@ const app=createApp(App).use(router, axios, vueAxios)
 
 // Variables globales
 app.config.globalProperties.emitter = emitter;
-app.config.globalProperties.edad =3;
+app.config.globalProperties.edad =0;
+app.config.globalProperties.nombre ="";
 
 app.mount('#app')
 

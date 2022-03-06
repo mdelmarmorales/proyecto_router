@@ -75,7 +75,7 @@ export default {
     };
   },
   methods: {
-    registrar() {
+    async registrar() {
       let datosRegistro = {
         usuario: this.jugador.usuario,
         correo: this.jugador.correo,
@@ -84,12 +84,30 @@ export default {
         edadNinyo: this.jugador.edadNinyo,
       };
 
-      fetch("http://localhost/API_proyecto/jugadores", {
-        mode: "cors",
-        method: "POST",
-        body: JSON.stringify(datosRegistro),
-      }).then((respuesta) => respuesta.json());
-    this.emitter.emit("registroRealizado", true);
+      // fetch("http://localhost/API_proyecto/jugadores", {
+      //   mode: "cors",
+      //   method: "POST",
+      //   body: JSON.stringify(datosRegistro),
+      // }).then((respuesta) => respuesta.json());
+
+      try {
+        const respuesta = await fetch(
+          "http://localhost/API_proyecto/jugadores",
+          {
+            // mode: "cors",
+            method: "POST",
+            body: JSON.stringify(datosRegistro),
+          }
+        );
+        if (!respuesta.ok) {
+          throw new Error("Respuesta de red ok. Respuesta HTTP errónea.");
+        }
+
+        const respuestaJson = await respuesta.json();
+      } catch (e) {
+        console.log(e);
+      }
+      window.location.href='/';
     },
   },
 };

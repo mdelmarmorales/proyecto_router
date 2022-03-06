@@ -4,9 +4,46 @@
       id="cuadro_blanco"
       class="col-10 mx-auto mt-5 d-flex align-items-center"
     >
-    <div v-for="people in this.people" :key="people.id">
-      {{people.usuario}}
-    </div>
+      <div class="row d-flex justify-content-around">
+        <img
+          class="col-5"
+          src="../images/inicio.png"
+          alt="niños jugando con números"
+        />
+
+        <div class="col-6 d-flex flex-column justify-content-center">
+          <h1>Acceso</h1>
+          <div id="formulario">
+            <form class="p-3" @submit.prevent="acceder">
+              <div class="form-group row">
+                <label class="col-4 my-auto">Usuario: </label>
+                <input
+                  type="text"
+                  class="form-control col-7"
+                  v-model="jugador.usuario"
+                />
+              </div>
+
+              <div class="form-group row">
+                <label class="col-4 my-auto">Contraseña: </label>
+                <input
+                  type="text"
+                  class="form-control col-7"
+                  v-model="jugador.contrasenya"
+                />
+              </div>
+              <div>
+                <input type="submit" class="boton" value="Acceder" />
+              </div>
+            </form>
+            <div class="row d-flex justify-content-center">
+              <router-link :to="{ name: 'Registro' }" class="item"
+                >Crear cuenta</router-link
+              >
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -14,24 +51,44 @@
 <script>
 export default {
   name: "Home",
-   data() {
+  data() {
     return {
-      people: [],
+      jugador: {},
     };
   },
-  created() {
-    this.consultarPeoples();
-  },
   methods: {
-    consultarPeoples() {
-      fetch('http://localhost/API_proyecto/jugadores', 
-      {mode: 'cors'})
-        .then((respuesta) => respuesta.json())
-        .then((datosRespuesta) => {
-          console.log(datosRespuesta);
-          // this.people=datosRespuesta;
-        })
-        .catch(console.log);
+    async acceder() {
+      let datosAcceso = {
+        usuario: this.jugador.usuario,
+        contrasenya: this.jugador.contrasenya,
+      };
+
+      try {
+        const respuesta = await fetch(
+          "http://localhost/API_proyecto/jugadores",
+          {
+            method: "POST",
+            body: JSON.stringify(datosAcceso),
+          }
+        );
+
+        if (!respuesta.ok) {
+          throw new Error("Respuesta de red ok. Respuesta HTTP errónea.");
+        }
+        console.log(respuesta);
+        //const respuestaJson = await respuesta.json();
+
+      } catch (e) {
+        console.log(e);
+      }
+    },
+    getDataJSONFormat() {
+      const data = {
+        usuario: this.jugador.usuario,
+        contrasenya: this.jugador.contrasenya,
+      };
+
+      return data;
     },
   },
 };
