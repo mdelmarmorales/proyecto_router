@@ -1,9 +1,9 @@
 <template>
-  <div class="modal" tabindex="-1" role="dialog">
+  <div id="registro" class="modal" tabindex="-1" role="dialog">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title">Registro finalizado/h5>
+          <h5 class="modal-title">Registro finalizado</h5>
         </div>
         <div class="modal-body">
           <p>
@@ -30,10 +30,8 @@ export default {
     };
   },
   mounted() {
-    console.log(registroRealizado);
     this.emitter.on("registroRealizado", (registroRealizado) => {
-      console.log("registro", registroRealizado);
-      $(".modal").modal("show");
+      $("#registro").modal("show");
     });
   },
 };
@@ -58,8 +56,8 @@ export default {
   border-radius: 5px;
 }
 
-.btnRecargar a{
-  color:#071488;
+.btnRecargar a {
+  color: #071488;
   text-decoration: none;
 }
 .btnJuegos a {

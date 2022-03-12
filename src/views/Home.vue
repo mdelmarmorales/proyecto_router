@@ -20,7 +20,7 @@
                 <input
                   type="text"
                   class="form-control col-7"
-                  v-model="jugador.usuario"
+                  v-model="datosForm.usuario"
                 />
               </div>
 
@@ -29,7 +29,7 @@
                 <input
                   type="text"
                   class="form-control col-7"
-                  v-model="jugador.contrasenya"
+                  v-model="datosForm.contrasenya"
                 />
               </div>
               <div>
@@ -41,6 +41,7 @@
                 >Crear cuenta</router-link
               >
             </div>
+            <b-alert show v-if="noexiste">dede</b-alert>
           </div>
         </div>
       </div>
@@ -49,46 +50,38 @@
 </template>
 
 <script>
+import VueSimpleAlert from "vue-simple-alert"
+
 export default {
   name: "Home",
   data() {
     return {
+      datosForm: {},
       jugador: {},
-    };
+          };
   },
   methods: {
     async acceder() {
       let datosAcceso = {
-        usuario: this.jugador.usuario,
-        contrasenya: this.jugador.contrasenya,
+        usuario: this.datosForm.usuario,
+        contrasenya: this.datosForm.contrasenya,
       };
+      console.log(JSON.stringify(datosAcceso));
+      fetch("http://localhost/API_proyecto/consultar", {
+        method: "POST",
+        body: JSON.stringify(datosAcceso),
+      })
+        .then((respuesta) => respuesta.json())
+        .then((datosRespuesta) => {
+          console.log(datosRespuesta);
+          if (datosRespuesta.success=='0') {
+            console.log("no");
+             this.emitter.emit("finTiempo", true);
+          } else {
+            this.jugador = datosRespuesta[0];          
 
-      try {
-        const respuesta = await fetch(
-          "http://localhost/API_proyecto/jugadores",
-          {
-            method: "POST",
-            body: JSON.stringify(datosAcceso),
-          }
-        );
-
-        if (!respuesta.ok) {
-          throw new Error("Respuesta de red ok. Respuesta HTTP errónea.");
-        }
-        console.log(respuesta);
-        //const respuestaJson = await respuesta.json();
-
-      } catch (e) {
-        console.log(e);
-      }
-    },
-    getDataJSONFormat() {
-      const data = {
-        usuario: this.jugador.usuario,
-        contrasenya: this.jugador.contrasenya,
-      };
-
-      return data;
+           }
+        });
     },
   },
 };

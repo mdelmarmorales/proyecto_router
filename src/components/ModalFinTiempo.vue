@@ -1,5 +1,5 @@
 <template>
-  <div class="modal" tabindex="-1" role="dialog">
+  <div id="tiempo" class="modal" tabindex="-1" role="dialog">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
@@ -38,7 +38,7 @@ export default {
   },
   mounted() {
     this.emitter.on("finTiempo", (finTiempo) => {
-      $(".modal").modal("show");
+      $("#tiempo").modal("show");
     });
   },
 };

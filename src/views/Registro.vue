@@ -84,12 +84,6 @@ export default {
         edadNinyo: this.jugador.edadNinyo,
       };
 
-      // fetch("http://localhost/API_proyecto/jugadores", {
-      //   mode: "cors",
-      //   method: "POST",
-      //   body: JSON.stringify(datosRegistro),
-      // }).then((respuesta) => respuesta.json());
-
       try {
         const respuesta = await fetch(
           "http://localhost/API_proyecto/jugadores",
@@ -107,7 +101,7 @@ export default {
       } catch (e) {
         console.log(e);
       }
-      window.location.href='/';
+      window.location.href = "/";
     },
   },
 };
