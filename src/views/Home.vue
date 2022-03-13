@@ -50,7 +50,7 @@
 </template>
 
 <script>
-import VueSimpleAlert from "vue-simple-alert"
+import VueSimpleAlert from "vue-simple-alert";
 
 export default {
   name: "Home",
@@ -58,7 +58,7 @@ export default {
     return {
       datosForm: {},
       jugador: {},
-          };
+    };
   },
   methods: {
     async acceder() {
@@ -66,21 +66,21 @@ export default {
         usuario: this.datosForm.usuario,
         contrasenya: this.datosForm.contrasenya,
       };
-      console.log(JSON.stringify(datosAcceso));
+
       fetch("http://localhost/API_proyecto/consultar", {
         method: "POST",
         body: JSON.stringify(datosAcceso),
       })
         .then((respuesta) => respuesta.json())
         .then((datosRespuesta) => {
-          console.log(datosRespuesta);
-          if (datosRespuesta.success=='0') {
-            console.log("no");
-             this.emitter.emit("finTiempo", true);
+          if (datosRespuesta.success == "0") {
+            console.log(this.fecha);
+            this.emitter.emit("accesoInvalido", true);
           } else {
-            this.jugador = datosRespuesta[0];          
-
-           }
+            this.edad = datosRespuesta[0].edadNinyo;
+            this.id = datosRespuesta[0].idJugador;
+            window.location.href = "/juegos";
+          }
         });
     },
   },

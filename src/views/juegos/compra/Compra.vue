@@ -11,10 +11,10 @@
           al pagar.
         </p>
       </div>
+      <Alimentos :productos="productos" class="row justify-content-center" />
       <div class="row d-flex flex-row justify-content-around">
         <ListaCompra :productos="productos" />
       </div>
-      <Alimentos :productos="productos" />
     </div>
   </div>
 </template>

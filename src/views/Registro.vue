@@ -65,8 +65,6 @@
 </template>
 
 <script>
-import axios from "axios";
-
 export default {
   name: "Registro",
   data() {
@@ -101,7 +99,9 @@ export default {
       } catch (e) {
         console.log(e);
       }
-      window.location.href = "/";
+      if (respuestaJson.success=='1') {
+         this.emitter.emit("registroRealizado", true);
+      }
     },
   },
 };

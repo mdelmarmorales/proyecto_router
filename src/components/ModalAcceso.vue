@@ -1,19 +1,19 @@
 <template>
-  <div id="registro" class="modal" tabindex="-1" role="dialog">
+  <div id="acceso" class="modal" tabindex="-1" role="dialog">
     <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title">Registro finalizado</h5>
+          <h5 class="modal-title">Acceso no válido</h5>
         </div>
         <div class="modal-body">
           <p>
-            Registro realizado con éxito. <br />
-            ¡Ya puedes comnezar a jugar!
+            Los datos introducidos no son válidos. <br />
+            Inténtalo de nuevo.
           </p>
         </div>
         <div class="modal-footer">
           <button type="button" class="btnJuegos" data-dismiss="modal">
-            <router-link :to="{ name: 'Juegos' }">Comenzar</router-link>
+            Cerrar
           </button>
         </div>
       </div>
@@ -23,15 +23,15 @@
 
 <script>
 export default {
-  name: "ModalRegistro",
+  name: "ModalAcceso",
   data() {
     return {
-      registroRealizado: null,
+      accesoInvalido: null,
     };
   },
   mounted() {
-    this.emitter.on("registroRealizado", (registroRealizado) => {
-      $("#registro").modal("show");
+    this.emitter.on("accesoInvalido", (accesoInvalido) => {
+      $("#acceso").modal("show");
     });
   },
 };

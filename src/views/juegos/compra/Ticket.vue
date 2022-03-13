@@ -125,6 +125,8 @@ export default {
         parseInt(this.vueltaPropuesta)
       ) {
         this.correctaVuelta = true;
+        this.puntuaciones[1] ++;
+        this.emitter.emit("puntoConseguido", true);
       }
     },
   },

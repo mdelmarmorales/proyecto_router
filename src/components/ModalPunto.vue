@@ -1,19 +1,27 @@
 <template>
-  <div id="registro" class="modal" tabindex="-1" role="dialog">
+  <div id="punto" class="modal" tabindex="-1" role="dialog">
     <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title">Registro finalizado</h5>
+          <h5 class="modal-title">Punto conseguido</h5>
         </div>
         <div class="modal-body">
           <p>
-            Registro realizado con éxito. <br />
-            ¡Ya puedes comnezar a jugar!
+            ¡Muy bien! Has ganado un punto. Sigue así. <br />
+            ¿Qué quieres hacer ahora?
           </p>
+          <img src="../images/puntos.jpg" alt="puntuacion" class="col-10" />
         </div>
         <div class="modal-footer">
+           <button
+            type="button"
+            onclick="javascript:window.location.reload()"
+            class="btnRecargar"
+          >
+            <router-link :to="{ name: self }">Jugar de nuevo</router-link>
+          </button>
           <button type="button" class="btnJuegos" data-dismiss="modal">
-            <router-link :to="{ name: 'Juegos' }">Comenzar</router-link>
+            <router-link :to="{ name: 'Juegos' }">Otro juego</router-link>
           </button>
         </div>
       </div>
@@ -23,15 +31,15 @@
 
 <script>
 export default {
-  name: "ModalRegistro",
+  name: "ModalPunto",
   data() {
     return {
-      registroRealizado: null,
+      puntoConseguido: null,
     };
   },
   mounted() {
-    this.emitter.on("registroRealizado", (registroRealizado) => {
-      $("#registro").modal("show");
+    this.emitter.on("puntoConseguido", (puntoConseguido) => {
+      $("#punto").modal("show");
     });
   },
 };
