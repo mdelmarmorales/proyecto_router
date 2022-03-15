@@ -12,19 +12,27 @@ export default {
     };
   },
   beforeMount() {
-    this.actualizaContador();
+    this.actualizaTemporizador();
+  },
+   mounted() {
+    this.emitter.on("pararTiempo", (pararTiempo) => {
+      this.eliminarTemporizador();
+    });
   },
   methods: {
-    actualizaContador() {
+    actualizaTemporizador() {
       this.interval = setInterval(() => {
         if (this.timer == 0) {
-          clearInterval(this.interval);
+          this.eliminarTemporizador();
           this.emitter.emit("finTiempo", true);
         } else {
           this.timer--;
         }
       }, 1000);
     },
+    eliminarTemporizador(){
+      clearInterval(this.interval);
+    }
   },
 };
 </script>

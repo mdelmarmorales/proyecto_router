@@ -125,7 +125,9 @@ export default {
         parseInt(this.vueltaPropuesta)
       ) {
         this.correctaVuelta = true;
+        //Sumamos un punto, paramos el temporizador y mostramos mensaje
         this.puntuaciones[1] ++;
+        this.emitter.emit("pararTiempo", true);
         this.emitter.emit("puntoConseguido", true);
       }
     },

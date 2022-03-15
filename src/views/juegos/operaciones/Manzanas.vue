@@ -9,8 +9,8 @@
         <div class="col-4 d-flex justify-content-around">
           <img
             class="manzana"
-            src="@/images/100manzanas.png"
-            alt="100 manzanas"
+            src="@/images/manzana.png"
+            alt="1 manzana"
             @click="sumarManzanas"
           />
           <img
@@ -21,8 +21,8 @@
           />
           <img
             class="manzana"
-            src="@/images/manzana.png"
-            alt="1 manzana"
+            src="@/images/100manzanas.png"
+            alt="100 manzanas"
             @click="sumarManzanas"
           />
         </div>
@@ -90,6 +90,9 @@ export default {
 
       if (this.resultado == this.contador) {
         this.correctoManzana = true;
+        this.puntuaciones[0]++;
+        this.emitter.emit("pararTiempo", true);
+        this.emitter.emit("puntoConseguido", true);
       }
     },
     corregirManzana() {
@@ -147,15 +150,15 @@ export default {
   border: 2px solid #071488;
   border-radius: 5px;
   width: 100px;
-  height:40px;
+  height: 40px;
 }
 
 .btn-vaciar {
   background-color: #ffa934;
   border: 2px solid #fd6400;
-   border-radius: 5px;
+  border-radius: 5px;
   width: 100px;
-  height:40px;
+  height: 40px;
 }
 
 .manzana {

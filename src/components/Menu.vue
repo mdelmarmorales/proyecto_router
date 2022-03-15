@@ -16,7 +16,7 @@
           <router-link :to="{ name: 'Juegos' }">Juegos</router-link>
         </div>
         <div class="dropdown-item">
-          <router-link :to="{ name: 'Registro' }">Registro</router-link>
+          <p @click="salir">Salir</p>
         </div>
       </div>
     </div>
@@ -24,6 +24,22 @@
 </template>
 
 <script>
+export default {
+  name: "Menu",
+  data() {
+    return {
+      esInicio: null,
+    };
+  },
+  methods: {
+    // esInicio(){
+    //   this.esInicio= this.$router.history.current["path"] !== "/";
+    // }
+    salir(){
+      this.emitter.emit("salir", true);
+    }
+  },
+};
 </script>
 
 <style scoped>
@@ -40,7 +56,7 @@
   font-weight: bold;
 }
 
-.dropdown a.router-link-exact-active {
+.dropdown a.router-link-exact-active, p {
   color: #071488;
 }
 </style>

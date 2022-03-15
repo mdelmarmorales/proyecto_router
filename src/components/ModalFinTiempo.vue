@@ -8,13 +8,13 @@
         <div class="modal-body">
           <p>
             El tiempo ha finalizado. <br />
-            ¿Quieres jugar de nuevo o elegir otro juego?
+            ¿Qué quieres hacer ahora?
           </p>
         </div>
         <div class="modal-footer">
           <button
             type="button"
-            onclick="javascript:window.location.reload()"
+            
             class="btnRecargar"
           >
             <router-link :to="{ name: self }">Jugar de nuevo</router-link>

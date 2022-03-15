@@ -6,9 +6,13 @@
     >
       <div class="row justify-content-center">
         <p>Escucha y escribe con números y con letras</p>
-        </div>
-         <div class="row justify-content-center">
-        <button class="mr-5" type="button" @click="habla(this.numeroVoz.numero)">
+      </div>
+      <div class="row justify-content-center">
+        <button
+          class="mr-5"
+          type="button"
+          @click="habla(this.numeroVoz.numero)"
+        >
           <img class="altavoz" src="@/images/altavoz.png" />
         </button>
         <p class="my-auto">Número:</p>
@@ -48,7 +52,6 @@ export default {
   },
   mounted() {
     this.emitter.on("correcto2", (correcto) => {
-      
       this.acierto2 = correcto;
     });
   },
@@ -60,6 +63,12 @@ export default {
       this.correcto =
         arguments[0].numero == arguments[1] &&
         arguments[0].nombre == arguments[2].toLowerCase();
+
+      if (this.correcto) {
+        this.puntuaciones[4]++;
+        this.emitter.emit("pararTiempo", true);
+        this.emitter.emit("puntoConseguido", true);
+      }
     },
   },
 };
@@ -75,9 +84,9 @@ export default {
 .btn-comprobar {
   background-color: #3fcfba;
   border: 2px solid #071488;
-   border-radius: 5px;
+  border-radius: 5px;
   width: 100px;
-  height:40px;
+  height: 40px;
 }
 .correcto,
 .altavoz {

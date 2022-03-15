@@ -50,7 +50,6 @@
 </template>
 
 <script>
-import VueSimpleAlert from "vue-simple-alert";
 
 export default {
   name: "Home",
@@ -74,11 +73,12 @@ export default {
         .then((respuesta) => respuesta.json())
         .then((datosRespuesta) => {
           if (datosRespuesta.success == "0") {
-            console.log(this.fecha);
+            console.log(this.location);
             this.emitter.emit("accesoInvalido", true);
           } else {
             this.edad = datosRespuesta[0].edadNinyo;
             this.id = datosRespuesta[0].idJugador;
+            console.log(this.id);
             window.location.href = "/juegos";
           }
         });

@@ -1,75 +1,86 @@
 <template>
   <div class="row juego mx-3 my-4">
-  <form class="col-11 mx-auto my-4 justify-content-around" @submit.prevent="comprobar">
-    <p>
-      ¿Qué reloj marca las {{ this.horaSeleccionada.hora.nombre }}
-      {{ this.horaSeleccionada.minuto.nombre }}?
-    </p>
-    <b-form-radio-group>
-      <label class="form-check-label mr-5" >
-        <input
-          type="radio"
-          class="form-check-input"
-          v-model="horaPropuesta"
-          name="hora"
-          value="0"
-        />
-        <span class="hora ml-2 mr-6 px-5 py-2" v-if="this.horaSeleccionada.minuto.numero < 35">
-          {{ this.hora[0].hora.numero }}:{{ this.hora[0].minuto.numero }}
-        </span>
-        <span class="hora ml-2 mr-6 px-5 py-2"  v-else>
-          {{ this.hora[0].hora.numero - 1 }}:{{ this.hora[0].minuto.numero }}
-        </span>
-      </label>
+    <form
+      class="col-11 mx-auto my-4 justify-content-around"
+      @submit.prevent="comprobar"
+    >
+      <p>
+        ¿Qué reloj marca las {{ this.horaSeleccionada.hora.nombre }}
+        {{ this.horaSeleccionada.minuto.nombre }}?
+      </p>
+      <b-form-radio-group>
+        <label class="form-check-label mr-5">
+          <input
+            type="radio"
+            class="form-check-input"
+            v-model="horaPropuesta"
+            name="hora"
+            value="0"
+          />
+          <span
+            class="hora ml-2 mr-6 px-5 py-2"
+            v-if="this.horaSeleccionada.minuto.numero < 35"
+          >
+            {{ this.hora[0].hora.numero }}:{{ this.hora[0].minuto.numero }}
+          </span>
+          <span class="hora ml-2 mr-6 px-5 py-2" v-else>
+            {{ this.hora[0].hora.numero - 1 }}:{{ this.hora[0].minuto.numero }}
+          </span>
+        </label>
 
-      <label class="form-check-label mr-5" >
-        <input
-          type="radio"
-          class="form-check-input"
-          v-model="horaPropuesta"
-          name="hora"
-          value="1"
-        />
-        <span class="hora mx-2 px-5 py-2"  v-if="this.horaSeleccionada.minuto.numero < 35">
-          {{ this.hora[1].hora.numero }}:{{ this.hora[1].minuto.numero }}
-        </span>
-        <span class="hora mx-2 px-5 py-2"  v-else>
-          {{ this.hora[1].hora.numero - 1 }}:{{ this.hora[1].minuto.numero }}
-        </span>
-      </label>
+        <label class="form-check-label mr-5">
+          <input
+            type="radio"
+            class="form-check-input"
+            v-model="horaPropuesta"
+            name="hora"
+            value="1"
+          />
+          <span
+            class="hora mx-2 px-5 py-2"
+            v-if="this.horaSeleccionada.minuto.numero < 35"
+          >
+            {{ this.hora[1].hora.numero }}:{{ this.hora[1].minuto.numero }}
+          </span>
+          <span class="hora mx-2 px-5 py-2" v-else>
+            {{ this.hora[1].hora.numero - 1 }}:{{ this.hora[1].minuto.numero }}
+          </span>
+        </label>
 
-      <label class="form-check-label mr-5" >
-        <input
-          type="radio"
-          class="form-check-input"
-          v-model="horaPropuesta"
-          name="hora"
-          value="2"
-        />
-        <span class="hora mx-2 px-5 py-2"  v-if="this.horaSeleccionada.minuto.numero < 35">
-          {{ this.hora[2].hora.numero }}:{{ this.hora[2].minuto.numero }}
-        </span>
-        <span class="hora mx-2 px-5 py-2" v-else>
-          {{ this.hora[2].hora.numero - 1 }}:{{ this.hora[2].minuto.numero }}
-       </span>
-      </label>
-    </b-form-radio-group>
+        <label class="form-check-label mr-5">
+          <input
+            type="radio"
+            class="form-check-input"
+            v-model="horaPropuesta"
+            name="hora"
+            value="2"
+          />
+          <span
+            class="hora mx-2 px-5 py-2"
+            v-if="this.horaSeleccionada.minuto.numero < 35"
+          >
+            {{ this.hora[2].hora.numero }}:{{ this.hora[2].minuto.numero }}
+          </span>
+          <span class="hora mx-2 px-5 py-2" v-else>
+            {{ this.hora[2].hora.numero - 1 }}:{{ this.hora[2].minuto.numero }}
+          </span>
+        </label>
+      </b-form-radio-group>
 
-
-    <button class="btn-comprobar mx-2" type="submit">Comprobar</button>
-    <img
-      class="correcto"
-      src="@/images/correcto.png"
-      alt="correcto"
-      v-if="this.correcto === true"
-    />
-    <img
-      class="correcto"
-      src="@/images/incorrecto.png"
-      alt="correcto"
-      v-if="this.correcto === false"
-    />
-  </form>
+      <button class="btn-comprobar mx-2" type="submit">Comprobar</button>
+      <img
+        class="correcto"
+        src="@/images/correcto.png"
+        alt="correcto"
+        v-if="this.correcto === true"
+      />
+      <img
+        class="correcto"
+        src="@/images/incorrecto.png"
+        alt="correcto"
+        v-if="this.correcto === false"
+      />
+    </form>
   </div>
 </template>
 
@@ -85,6 +96,7 @@ export default {
     hora: Array,
     indiceHora: Number,
     horaSeleccionada: Object,
+    ultimo: Boolean,
   },
   methods: {
     comprobar() {
@@ -92,6 +104,13 @@ export default {
 
       if (parseInt(this.horaPropuesta) == this.indiceHora) {
         this.correcto = true;
+        // Si es el último ejercicio, llamamos al modal de punto conseguido
+        if (this.ultimo) {
+          this.puntuaciones[5]++;
+          console.log(this.puntuaciones);
+          this.emitter.emit("pararTiempo", true);
+          this.emitter.emit("puntoConseguido", true);
+        }
       }
     },
   },
@@ -108,12 +127,12 @@ export default {
 .btn-comprobar {
   background-color: #3fcfba;
   border: 2px solid #071488;
-   border-radius: 5px;
+  border-radius: 5px;
   width: 100px;
-  height:40px;
+  height: 40px;
 }
 
-.hora{
+.hora {
   background-color: #e0f7f2;
   border: 2px solid #071488;
   border-radius: 5px;

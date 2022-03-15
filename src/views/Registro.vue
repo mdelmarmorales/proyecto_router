@@ -82,26 +82,37 @@ export default {
         edadNinyo: this.jugador.edadNinyo,
       };
 
-      try {
-        const respuesta = await fetch(
-          "http://localhost/API_proyecto/jugadores",
-          {
-            // mode: "cors",
-            method: "POST",
-            body: JSON.stringify(datosRegistro),
-          }
-        );
-        if (!respuesta.ok) {
-          throw new Error("Respuesta de red ok. Respuesta HTTP errónea.");
-        }
+       fetch("http://localhost/API_proyecto/insertar", {
+        method: "POST",
+        body: JSON.stringify(datosRegistro),
+      })
+        .then((respuesta) => respuesta.json())
+        .then((datosRespuesta) => {
+          if (datosRespuesta.success == "1") {
+            this.emitter.emit("registroRealizado", true);
+            window.location.href = "/juegos";
+          } 
+        });
 
-        const respuestaJson = await respuesta.json();
-      } catch (e) {
-        console.log(e);
-      }
-      if (respuestaJson.success=='1') {
-         this.emitter.emit("registroRealizado", true);
-      }
+      // try {
+      //   const respuesta = await fetch(
+      //     "http://localhost/API_proyecto/insertar",
+      //     {
+      //       method: "POST",
+      //       body: JSON.stringify(datosRegistro),
+      //     }
+      //   );
+      //   if (!respuesta.ok) {
+      //     throw new Error("Respuesta de red ok. Respuesta HTTP errónea.");
+      //   }
+
+      // const respuestaJson = await respuesta.json();
+      // } catch (e) {
+      //   console.log(e);
+      // }
+      // if (respuestaJson.success=='1') {
+      //    this.emitter.emit("registroRealizado", true);
+      // }
     },
   },
 };

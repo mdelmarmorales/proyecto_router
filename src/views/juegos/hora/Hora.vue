@@ -19,6 +19,7 @@
           :hora="hora3"
           :indiceHora="indiceHora3"
           :horaSeleccionada="horaSeleccionada3"
+          :ultimo="true"
         />
       </div>
     </div>

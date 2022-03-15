@@ -3,9 +3,10 @@
   <ModalRegistro />
   <ModalAcceso />
   <ModalPunto />
+  <ModalSalir />
   <div class="container-fluid">
     <Header />
-    <Menu v-if="this.home"/>
+    <Menu/>
     <router-view />
     <Footer />
   </div>
@@ -19,10 +20,11 @@ import ModalFinTiempo from "@/components/ModalFinTiempo.vue";
 import ModalRegistro from "@/components/ModalRegistro.vue";
 import ModalAcceso from "@/components/ModalAcceso.vue";
 import ModalPunto from "@/components/ModalPunto.vue";
+import ModalSalir from "@/components/ModalSalir.vue";
 
 export default {
   name: "Juegos",
-  components: { Header, Menu, Footer, ModalFinTiempo, ModalRegistro, ModalAcceso, ModalPunto },
+  components: { Header, Menu, Footer, ModalFinTiempo, ModalRegistro, ModalAcceso, ModalPunto, ModalSalir },
   data() {
     return {
       home: document.getElementById("home"),

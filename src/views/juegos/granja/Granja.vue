@@ -203,8 +203,6 @@ export default {
       this.imagenAMostrar = this.listaAnimales[indice];
 
       this.imagenAMostrar.contador = this.imagenAMostrar.contador + 1;
-
-      console.log (this.imagenAMostrar);
  
       //Calculamos su posición
       this.posicionImagen();
@@ -235,6 +233,9 @@ export default {
 
       if (parseInt(this.numAnimales) === this.animalABuscar.contador) {
         this.correcto = true;
+        this.puntuaciones[2] ++;
+        this.emitter.emit("pararTiempo", true);
+        this.emitter.emit("puntoConseguido", true);
       }
     },
   },

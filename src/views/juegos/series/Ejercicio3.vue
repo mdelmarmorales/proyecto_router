@@ -1,7 +1,9 @@
 <template>
-  <div v-if="this.correcto" class="row juego mx-3 my-4 d-flex justify-content-around align-items-center">
-    <form
-      class="col-9 mx-auto p-3" @submit.prevent="comprobarSeleccion">
+  <div
+    v-if="this.correcto"
+    class="row juego mx-3 my-4 d-flex justify-content-around align-items-center"
+  >
+    <form class="col-9 mx-auto p-3" @submit.prevent="comprobarSeleccion">
       <div
         class="row d-flex flex-row justify-content-around align-items-center"
       >
@@ -76,7 +78,11 @@ export default {
           parseInt(this.selecPropuesta) ==
           this.seleccionSerie[this.seleccionSerie.length - 1]
         ) {
+          console.log ("serie3");
           this.correctoSelec = true;
+          this.puntuaciones[3]++;
+          this.emitter.emit("pararTiempo", true);
+          this.emitter.emit("puntoConseguido", true);
         }
       }
       return this.correctoSelec;
