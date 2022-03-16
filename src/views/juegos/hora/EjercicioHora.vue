@@ -101,13 +101,14 @@ export default {
   methods: {
     comprobar() {
       this.correcto = false;
+      let puntos = JSON.parse(localStorage.getItem("puntuaciones"));
 
       if (parseInt(this.horaPropuesta) == this.indiceHora) {
         this.correcto = true;
         // Si es el último ejercicio, llamamos al modal de punto conseguido
         if (this.ultimo) {
-          this.puntuaciones[5]++;
-          console.log(this.puntuaciones);
+          puntos[5]++;
+          localStorage.setItem("puntuaciones", JSON.stringify(puntos));
           this.emitter.emit("pararTiempo", true);
           this.emitter.emit("puntoConseguido", true);
         }

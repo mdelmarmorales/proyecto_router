@@ -60,12 +60,15 @@ export default {
       this.emitter.emit("numeroVoz", this.numeroVoz.numero);
     },
     comprobar() {
+      let puntos = JSON.parse(localStorage.getItem("puntuaciones"));
+
       this.correcto =
         arguments[0].numero == arguments[1] &&
         arguments[0].nombre == arguments[2].toLowerCase();
 
       if (this.correcto) {
-        this.puntuaciones[4]++;
+        puntos[4]++;
+        localStorage.setItem("puntuaciones", JSON.stringify(puntos));
         this.emitter.emit("pararTiempo", true);
         this.emitter.emit("puntoConseguido", true);
       }

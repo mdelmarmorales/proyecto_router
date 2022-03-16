@@ -50,9 +50,10 @@
 </template>
 
 <script>
-
+// import router from '@/router'
 export default {
   name: "Home",
+  inject: ["id"],
   data() {
     return {
       datosForm: {},
@@ -73,13 +74,20 @@ export default {
         .then((respuesta) => respuesta.json())
         .then((datosRespuesta) => {
           if (datosRespuesta.success == "0") {
-            console.log(this.location);
             this.emitter.emit("accesoInvalido", true);
           } else {
-            this.edad = datosRespuesta[0].edadNinyo;
-            this.id = datosRespuesta[0].idJugador;
-            console.log(this.id);
-            window.location.href = "/juegos";
+            /*Array de puntuaciones. Posiciones:
+            0- operaciones,
+            1- compra
+            2- contar
+            3- series
+            4- voz
+            5- horas */
+            localStorage.setItem("idJugador", datosRespuesta[0].idJugador);
+            localStorage.setItem("edadNinyo", datosRespuesta[0].edadNinyo);
+            localStorage.setItem("puntuaciones", JSON.stringify(new Array(6).fill(0)));
+            console.log(localStorage.getItem("puntuaciones"));
+            this.$router.push("/juegos");
           }
         });
     },

@@ -11,14 +11,15 @@ import VueSimpleAlert from "vue-simple-alert"
 const emitter = mitt();
 
 const app=createApp(App).use(router, axios, vueAxios, VueSimpleAlert)
-
+app.provide('$router', router);
+// app.provide('id');
 
 // Variables globales
 app.config.globalProperties.emitter = emitter;
-app.config.globalProperties.edad =0;
-app.config.globalProperties.id;
-app.config.globalProperties.fecha = new Date().toLocaleString();
-app.config.globalProperties.location = window.location.href;   
+// app.config.globalProperties.edad;
+// app.config.globalProperties.id;
+// app.config.globalProperties.fecha = new Date().toLocaleString();
+// app.config.globalProperties.location = window.location.href;   
 
 /*Array de puntuaciones. Posiciones:
 0- operaciones,
@@ -28,7 +29,6 @@ app.config.globalProperties.location = window.location.href;
 4- voz
 5- horas */
 app.config.globalProperties.puntuaciones = new Array(6).fill(0);    
-
 
 app.mount('#app')
 

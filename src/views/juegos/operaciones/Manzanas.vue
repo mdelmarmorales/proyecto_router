@@ -69,6 +69,7 @@
 <script>
 export default {
   name: "Calculadora",
+  inject:['id'],
   data() {
     return {
       correctoOperacion: null,
@@ -86,11 +87,13 @@ export default {
   },
   methods: {
     comprobarManzanas() {
+      let puntos= JSON.parse(localStorage.getItem("puntuaciones"));
       this.correctoManzana = false;
 
       if (this.resultado == this.contador) {
         this.correctoManzana = true;
-        this.puntuaciones[0]++;
+        puntos[0]++;
+        localStorage.setItem("puntuaciones",JSON.stringify(puntos));
         this.emitter.emit("pararTiempo", true);
         this.emitter.emit("puntoConseguido", true);
       }

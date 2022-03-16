@@ -1,82 +1,81 @@
 <template>
-    <div class="col-5">
-      <!-- Formulario para comprobar que se ha sumado correctamente el precio de los productos -->
-      <h3 class="tituloTicket">¿Cuánto cuesta?</h3>
-   
-        <table class="table table-striped">
-          <thead class="thead">
-            <tr>
-              <th class="col-2">Producto</th>
-              <th class="col-2">Precio</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr v-for="item in cesta" v-bind:key="item">
-              <td>
-                <img
-                  :src="item.imagen"
-                  :alt="item.nombre"
-                  class="alimentosImagen"
-                />
-              </td>
-              <td class="precioUnit mb-1">{{ item.precio }}</td>
-            </tr>
-          </tbody>
-        </table>
-    
-      <form @submit.prevent="comprobarPrecio">
-        <input v-model="precioPropuesto" />
-        <button class="btn-comprobar m-2" type="submit">Comprobar</button>
-        <img
-          class="correcto"
-          src="@/images/correcto.png"
-          alt="correcto"
-          v-if="this.correcto === true"
-        />
-        <img
-          class="correcto"
-          src="@/images/incorrecto.png"
-          alt="correcto"
-          v-if="this.correcto === false"
-        />
-      </form>
-    </div>
-    <div class="col-5">
-      <!-- Formulario para comprobar que se ha calculado correctamente cuánto dinero sobra -->
-      <form v-if="this.correcto" @submit.prevent="comprobarVuelta">
-        <h3 class="tituloTicket">¿Cuánto sobra?</h3>
-                 <table class="table">
-            <tbody>
-              <tr>
-                <th>Disponible</th>
-                <td></td>
-                <td class="text-left">{{ this.dineroDisponible }}</td>
-              </tr>
-              <tr>
-                <th>Gastado</th>
-                <td class="text-right">-</td>
-                <td class="text-left">{{ this.precioPropuesto }}</td>
-              </tr>
-            </tbody>
-          </table>
-        
-        <input v-model="vueltaPropuesta" />
-        <button class="btn-comprobar m-2" type="submit">Comprobar</button>
-        <img
-          class="correcto"
-          src="@/images/correcto.png"
-          alt="correcto"
-          v-if="this.correctaVuelta === true"
-        />
-        <img
-          class="correcto"
-          src="@/images/incorrecto.png"
-          alt="correcto"
-          v-if="this.correctaVuelta === false"
-        />
-      </form>
-    </div>
+  <div class="col-5">
+    <!-- Formulario para comprobar que se ha sumado correctamente el precio de los productos -->
+    <h3 class="tituloTicket">¿Cuánto cuesta?</h3>
 
+    <table class="table table-striped">
+      <thead class="thead">
+        <tr>
+          <th class="col-2">Producto</th>
+          <th class="col-2">Precio</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr v-for="item in cesta" v-bind:key="item">
+          <td>
+            <img
+              :src="item.imagen"
+              :alt="item.nombre"
+              class="alimentosImagen"
+            />
+          </td>
+          <td class="precioUnit mb-1">{{ item.precio }}</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <form @submit.prevent="comprobarPrecio">
+      <input v-model="precioPropuesto" />
+      <button class="btn-comprobar m-2" type="submit">Comprobar</button>
+      <img
+        class="correcto"
+        src="@/images/correcto.png"
+        alt="correcto"
+        v-if="this.correcto === true"
+      />
+      <img
+        class="correcto"
+        src="@/images/incorrecto.png"
+        alt="correcto"
+        v-if="this.correcto === false"
+      />
+    </form>
+  </div>
+  <div class="col-5">
+    <!-- Formulario para comprobar que se ha calculado correctamente cuánto dinero sobra -->
+    <form v-if="this.correcto" @submit.prevent="comprobarVuelta">
+      <h3 class="tituloTicket">¿Cuánto sobra?</h3>
+      <table class="table">
+        <tbody>
+          <tr>
+            <th>Disponible</th>
+            <td></td>
+            <td class="text-left">{{ this.dineroDisponible }}</td>
+          </tr>
+          <tr>
+            <th>Gastado</th>
+            <td class="text-right">-</td>
+            <td class="text-left">{{ this.precioPropuesto }}</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <input v-model="vueltaPropuesta" />
+      <button class="btn-comprobar m-2" type="submit">Comprobar</button>
+      <img
+        class="correcto"
+        src="@/images/correcto.png"
+        alt="correcto"
+        v-if="this.correctaVuelta === true"
+      />
+      <img
+        class="correcto"
+        src="@/images/incorrecto.png"
+        alt="correcto"
+        v-if="this.correctaVuelta === false"
+      />
+    </form>
+  </div>
 </template>
 
 <script>
@@ -119,6 +118,7 @@ export default {
     },
     comprobarVuelta() {
       this.correctaVuelta = false;
+      let puntos = JSON.parse(localStorage.getItem("puntuaciones"));
 
       if (
         this.dineroDisponible - parseInt(this.precioPropuesto) ==
@@ -126,7 +126,8 @@ export default {
       ) {
         this.correctaVuelta = true;
         //Sumamos un punto, paramos el temporizador y mostramos mensaje
-        this.puntuaciones[1] ++;
+        puntos[1]++;
+        localStorage.setItem("puntuaciones", JSON.stringify(puntos));
         this.emitter.emit("pararTiempo", true);
         this.emitter.emit("puntoConseguido", true);
       }
@@ -141,16 +142,16 @@ export default {
   height: 30px;
 }
 
-.alimentosImagen{
-  filter: drop-shadow(0 6px 3px rgba(0,0,0,0.7));
+.alimentosImagen {
+  filter: drop-shadow(0 6px 3px rgba(0, 0, 0, 0.7));
 }
 
 .btn-comprobar {
   background-color: #3fcfba;
   border: 2px solid #071488;
-   border-radius: 5px;
+  border-radius: 5px;
   width: 100px;
-  height:40px;
+  height: 40px;
 }
 .table {
   background-color: #e0f7f2;

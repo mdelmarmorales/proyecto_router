@@ -42,8 +42,8 @@ export default {
   methods: {
     async salir() {
       let datosPuntuacion = {
-        idJugador: this.id,
-        puntuaciones: this.puntuaciones,
+        idJugador: localStorage.getItem("idJugador"),
+        puntuaciones: JSON.parse(localStorage.getItem("puntuaciones")),
       };
       console.log("modalsalir", datosPuntuacion);
 

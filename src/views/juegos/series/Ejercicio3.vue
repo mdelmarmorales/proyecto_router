@@ -67,6 +67,7 @@ export default {
       return Math.floor(Math.random() * (max - min + 1) + min);
     },
     comprobarSeleccion() {
+      let puntos= JSON.parse(localStorage.getItem("puntuaciones"));
       this.correctoSelec = false;
 
       if (this.menorMayorSelec == "menor") {
@@ -78,9 +79,9 @@ export default {
           parseInt(this.selecPropuesta) ==
           this.seleccionSerie[this.seleccionSerie.length - 1]
         ) {
-          console.log ("serie3");
           this.correctoSelec = true;
-          this.puntuaciones[3]++;
+          puntos[3]++;
+          localStorage.setItem("puntuaciones", JSON.stringify(puntos));
           this.emitter.emit("pararTiempo", true);
           this.emitter.emit("puntoConseguido", true);
         }

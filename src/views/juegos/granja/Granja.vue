@@ -3,14 +3,16 @@
     <form
       @submit.prevent="comprobarAnimales"
       id="pregunta"
-      class="col-10 mx-auto "
+      class="col-10 mx-auto"
     >
       <p class="mt-2">
         ¿Cuántas veces ha aparecido este animal?
         <span>{{ this.animalABuscar.nombre }}</span>
       </p>
       <input v-model="numAnimales" />
-      <button class="btn-comprobar mt-1 mb-2 mx-2" type="submit">Comprobar</button>
+      <button class="btn-comprobar mt-1 mb-2 mx-2" type="submit">
+        Comprobar
+      </button>
       <img
         class="correcto"
         src="@/images/correcto.png"
@@ -42,7 +44,6 @@
 
 <script>
 import Temporizador from "@/components/Temporizador.vue";
-
 
 export default {
   name: "Granja",
@@ -146,13 +147,12 @@ export default {
     };
   },
   beforeMount() {
-    setTimeout(this.carga(),3000);
+    setTimeout(this.carga(), 3000);
   },
   mounted() {
     /* Cuando el tiempo finaliza, detenemos el temporizador */
     this.emitter.on("finTiempo", (finTiempo) => {
-        clearInterval(this.intervalID);
-      
+      clearInterval(this.intervalID);
     });
   },
   methods: {
@@ -190,7 +190,7 @@ export default {
     },
     carga() {
       this.eligeAnimal();
-      this.intervalID=setInterval(this.cambiaOpacidad, 100);
+      this.intervalID = setInterval(this.cambiaOpacidad, 100);
     },
     numeroAleatorio(min, max) {
       return Math.floor(Math.random() * (max - min + 1) + min);
@@ -203,7 +203,7 @@ export default {
       this.imagenAMostrar = this.listaAnimales[indice];
 
       this.imagenAMostrar.contador = this.imagenAMostrar.contador + 1;
- 
+
       //Calculamos su posición
       this.posicionImagen();
     },
@@ -230,10 +230,12 @@ export default {
     },
     comprobarAnimales() {
       this.correcto = false;
+      let puntos= JSON.parse(localStorage.getItem("puntuaciones"));
 
       if (parseInt(this.numAnimales) === this.animalABuscar.contador) {
         this.correcto = true;
-        this.puntuaciones[2] ++;
+        puntos[2]++;
+        localStorage.setItem("puntuaciones", JSON.stringify(puntos));
         this.emitter.emit("pararTiempo", true);
         this.emitter.emit("puntoConseguido", true);
       }
@@ -265,20 +267,19 @@ img {
 
 #pregunta {
   background-color: #e0f7f2;
-   border: 2px solid #071488;
+  border: 2px solid #071488;
   border-radius: 10px;
 }
 
 .btn-comprobar {
   background-color: #3fcfba;
   border: 2px solid #071488;
-   border-radius: 5px;
+  border-radius: 5px;
   width: 100px;
-  height:40px; 
+  height: 40px;
 }
 
-span{
+span {
   font-weight: bold;
-
 }
 </style>
