@@ -8,7 +8,7 @@ import Operaciones from '../views/juegos/operaciones/Operaciones.vue'
 import Voz from '../views/juegos/voz/Voz.vue'
 import Hora from '../views/juegos/hora/Hora.vue'
 import Registro from '../views/Registro.vue'
-import Salida from '../views/Salida.vue'
+import Logros from '../views/Logros.vue'
 
 const routes = [
   {
@@ -27,9 +27,9 @@ const routes = [
     component: Registro
   },
   {
-    path: '/salida',
-    name: 'Salida',
-    component: Salida
+    path: '/logros',
+    name: 'Logros',
+    component: Logros
   },
   {
     path: '/juegos/series',

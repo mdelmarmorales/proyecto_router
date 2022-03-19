@@ -31,14 +31,15 @@ export default {
   computed: {
     max() {
       let maximo;
+      let edad=localStorage.getItem("edadNinyo");
 
-      if (this.edad <= 6) {
+      if (edad <= 6) {
         maximo = 3;
       } else {
-        if (this.edad <= 8) {
+        if (edad <= 8) {
           maximo = 6;
         } else {
-          if (this.edad <= 10) {
+          if (edad <= 10) {
             maximo = 10;
           } else {
             maximo = 15;

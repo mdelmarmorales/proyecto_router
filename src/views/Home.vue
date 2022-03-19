@@ -85,10 +85,40 @@ export default {
             5- horas */
             localStorage.setItem("idJugador", datosRespuesta[0].idJugador);
             localStorage.setItem("edadNinyo", datosRespuesta[0].edadNinyo);
-            localStorage.setItem("puntuaciones", JSON.stringify(new Array(6).fill(0)));
-            console.log(localStorage.getItem("puntuaciones"));
-            this.$router.push("/juegos");
+            //localStorage.setItem("puntuaciones", JSON.stringify(new Array(6).fill(0)));
+
+            this.consultarPuntos(datosRespuesta[0].idJugador);
+            // this.$router.push("/juegos");
           }
+        });
+    },
+    /* Se crea un array de ceros. Se conulta si ya existen puntuaciones para el día de hoy
+    porque el niño ya haya jugado anteriormente. Estas puntuaciones se almacenan en el vector de ceros.
+    Así se pueden actualizar con los puntos que consiga ahora */
+    consultarPuntos(idJugador) {
+      let puntuaciones = new Array(6).fill(0);
+
+      fetch("http://localhost/API_proyecto/consultarPuntos", {
+        method: "POST",
+        body: JSON.stringify(idJugador),
+      })
+        .then((respuesta) => respuesta.json())
+        .then((datosRespuesta) => {
+          if (datosRespuesta.success != "0") {
+            datosRespuesta.forEach((dato) => {
+              puntuaciones[dato.idJuego - 1] += parseInt(dato.puntuacion);
+            });
+          }
+          /* Array que se actualiza con los puntos que vaya consiguiendo */
+          localStorage.setItem("puntuaciones", JSON.stringify(puntuaciones));
+          /* Array que nos sirve para saber de qué juegos no había todavía registros en la BD
+          (posiciones = 0). Al salir se compararán los dos arrays de puntuaciones. Si no había registros,
+          haremos un insert, si había haremos un update */
+          localStorage.setItem(
+            "puntuacionesInicio",
+            JSON.stringify(puntuaciones)
+          );
+          this.$router.push("/juegos");
         });
     },
   },

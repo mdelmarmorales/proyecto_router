@@ -41,40 +41,25 @@ export default {
   },
   methods: {
     async salir() {
-      let datosPuntuacion = {
+      let datosSalir = {
         idJugador: localStorage.getItem("idJugador"),
         puntuaciones: JSON.parse(localStorage.getItem("puntuaciones")),
+        puntuacionesInicio: JSON.parse(localStorage.getItem("puntuacionesInicio"))
       };
-      console.log("modalsalir", datosPuntuacion);
 
-      fetch("http://localhost/API_proyecto/insertarPuntos", {
+
+      fetch("http://localhost/API_proyecto/actualizarPuntos", {
         method: "POST",
-        body: JSON.stringify(datosPuntuacion),
+        body: JSON.stringify(datosSalir),
       })
         .then((respuesta) => respuesta.json())
         .then((datosRespuesta) => {
           if (datosRespuesta.success == "1") {
-            console.log("ole");
+            console.log("salir", datosSalir);
             //window.location.href = "/juegos";
           }
         });
 
-      // try {
-      //   const respuesta = await fetch(
-      //     "http://localhost/API_proyecto/insertarPuntos",
-      //     {
-      //       method: "POST",
-      //       body: JSON.stringify(datosPuntuacion),
-      //     }
-      //   );
-      //   if (!respuesta.ok) {
-      //     throw new Error("Respuesta de red ok. Respuesta HTTP errónea.");
-      //   }
-
-      //   const respuestaJson = await respuesta.json();
-      // } catch (e) {
-      //   console.log(e);
-      // }
     },
   },
 };

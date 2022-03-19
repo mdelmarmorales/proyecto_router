@@ -4,35 +4,39 @@
       id="cuadro_blanco"
       class="col-10 mx-auto mt-5 d-flex align-items-center"
     >
-    <div v-for="people in this.people" :key="people.id">
-      {{people.usuario}}
+     <h2>¡¡¡Muy bien!!!</h2>
+     <!-- <table class="table table-striped">
+           <tbody>
+        <tr>
+          <td>
+            <img
+              :src="item.imagen"
+              :alt="item.nombre"
+              class="alimentosImagen"
+            />
+          </td>
+          <td class="precioUnit mb-1">{{ item.precio }}</td>
+        </tr>
+      </tbody>
+    </table> -->
+
+
+      </div>
     </div>
-    </div>
-  </div>
+
 </template>
 
 <script>
+
 export default {
-  name: "Home",
-   data() {
+  name: "Logros",
+  data() {
     return {
-      people: [],
+      
     };
   },
-  created() {
-    this.consultarPeoples();
-  },
   methods: {
-    consultarPeoples() {
-      fetch('http://localhost/API_proyecto/jugadores', 
-      {mode: 'cors'})
-        .then((respuesta) => respuesta.json())
-        .then((datosRespuesta) => {
-          console.log(datosRespuesta);
-          // this.people=datosRespuesta;
-        })
-        .catch(console.log);
-    },
+    
   },
 };
 </script>

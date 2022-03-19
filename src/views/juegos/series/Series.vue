@@ -28,6 +28,7 @@ export default {
       tiposSerie: ["suma", "resta", "multiplicacion"],
       finTiempo: null,
       correctoSelec: null,
+      edad: localStorage.getItem("edadNinyo")
     };
   },
   computed: {

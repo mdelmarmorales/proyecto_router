@@ -16,6 +16,9 @@
           <router-link :to="{ name: 'Juegos' }">Juegos</router-link>
         </div>
         <div class="dropdown-item">
+          <router-link :to="{ name: 'Logros' }">Logros</router-link>
+        </div>
+        <div class="dropdown-item">
           <p @click="salir">Salir</p>
         </div>
       </div>
