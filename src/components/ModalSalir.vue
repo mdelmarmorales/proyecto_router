@@ -56,7 +56,8 @@ export default {
         .then((datosRespuesta) => {
           if (datosRespuesta.success == "1") {
             console.log("salir", datosSalir);
-            //window.location.href = "/juegos";
+            // Eliminamos los datos almacenados
+            localStorage.clear();
           }
         });
 

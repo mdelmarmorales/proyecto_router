@@ -15,10 +15,11 @@
         <div class="modal-footer">
            <button
             type="button"
-            onclick="javascript:window.location.reload()"
             class="btnRecargar"
+            @click=volver()
+            data-dismiss="modal"
           >
-            <router-link :to="{ name: self }">Jugar de nuevo</router-link>
+           Jugar de nuevo
           </button>
           <button type="button" class="btnJuegos" data-dismiss="modal">
             <router-link :to="{ name: 'Juegos' }">Otro juego</router-link>
@@ -42,6 +43,11 @@ export default {
       $("#punto").modal("show");
     });
   },
+  methods: {
+    volver(){
+      this.$router.go(0);
+    }
+  }
 };
 </script>
 

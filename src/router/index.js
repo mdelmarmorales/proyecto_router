@@ -9,6 +9,7 @@ import Voz from '../views/juegos/voz/Voz.vue'
 import Hora from '../views/juegos/hora/Hora.vue'
 import Registro from '../views/Registro.vue'
 import Logros from '../views/Logros.vue'
+import Graficos from '../views/Graficos.vue'
 
 const routes = [
   {
@@ -61,6 +62,11 @@ const routes = [
     path: '/juegos/hora',
     name: 'Hora',
     component: Hora,
+  },
+  {
+    path: '/graficos/:idJuego',
+    name: 'Graficos',
+    component: Graficos,
   },
 ]
 
