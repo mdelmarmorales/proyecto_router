@@ -31,8 +31,13 @@ export default {
   name: "Menu",
   data() {
     return {
-      esInicio: null,
+      //esInicio: null,
     };
+  },
+  computed:{
+    esInicio (){
+      return this.$route.name;
+    }
   },
   methods: {
     // esInicio(){

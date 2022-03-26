@@ -15,12 +15,15 @@
           <button
             type="button"
             
-            class="btnRecargar"
+            class="btnSeguir"
           >
             <router-link :to="{ name: self }">Jugar de nuevo</router-link>
           </button>
-          <button type="button" class="btnJuegos" data-dismiss="modal">
+          <button type="button" class="btnSeguir" data-dismiss="modal">
             <router-link :to="{ name: 'Juegos' }">Otro juego</router-link>
+          </button>
+          <button type="button" class="btnSalir" data-dismiss="modal" @click="salir">
+           Salir
           </button>
         </div>
       </div>
@@ -41,6 +44,11 @@ export default {
       $("#tiempo").modal("show");
     });
   },
+  methods: {
+     salir(){
+      this.emitter.emit("salir", true);
+    }
+   }, 
 };
 </script>
 
@@ -51,23 +59,23 @@ export default {
   font-weight: bold;
 }
 
-.btnRecargar {
+.btnSeguir {
   background-color: #3fcfba;
   border: 2px solid #071488;
   border-radius: 5px;
 }
 
-.btnJuegos {
+.btnSalir {
   background-color: #ffa934;
   border: 2px solid #fd6400;
   border-radius: 5px;
 }
 
-.btnRecargar a{
+.btnSeguir a{
   color:#071488;
   text-decoration: none;
 }
-.btnJuegos a {
+.btnSalir a {
   color: #3f332b;
   text-decoration: none;
 }

@@ -90,7 +90,6 @@ export default {
         .then((datosRespuesta) => {
           if (datosRespuesta.success == "1") {
             this.emitter.emit("registroRealizado", true);
-            window.location.href = "/juegos";
           } 
         });
 
@@ -126,7 +125,11 @@ export default {
   border: 2px solid #071488;
   border-radius: 10px;
 }
-
+#formulario {
+  background-color: #e0f7f2;
+  border: 2px solid #071488;
+  border-radius: 15px;
+}
 .boton {
   background-color: #3fcfba;
   border: 2px solid #071488;

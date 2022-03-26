@@ -3,22 +3,22 @@
     <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title">Abandonar</h5>
+          <h5 class="modal-title">Salir del juego</h5>
         </div>
         <div class="modal-body">
           <p>¿Seguro que quieres salir?</p>
         </div>
         <div class="modal-footer">
+          <button type="button" class="btnSeguir" data-dismiss="modal">
+            Cancelar
+          </button>
           <button
             type="button"
             data-dismiss="modal"
-            class="btnRecargar"
+            class="btnSalir"
             @click="salir"
           >
             <router-link :to="{ name: 'Home' }">Salir</router-link>
-          </button>
-          <button type="button" class="btnJuegos" data-dismiss="modal">
-            Cancelar
           </button>
         </div>
       </div>
@@ -44,9 +44,10 @@ export default {
       let datosSalir = {
         idJugador: localStorage.getItem("idJugador"),
         puntuaciones: JSON.parse(localStorage.getItem("puntuaciones")),
-        puntuacionesInicio: JSON.parse(localStorage.getItem("puntuacionesInicio"))
+        puntuacionesInicio: JSON.parse(
+          localStorage.getItem("puntuacionesInicio")
+        ),
       };
-
 
       fetch("http://localhost/API_proyecto/actualizarPuntos", {
         method: "POST",
@@ -55,12 +56,10 @@ export default {
         .then((respuesta) => respuesta.json())
         .then((datosRespuesta) => {
           if (datosRespuesta.success == "1") {
-            console.log("salir", datosSalir);
             // Eliminamos los datos almacenados
             localStorage.clear();
           }
         });
-
     },
   },
 };
@@ -73,23 +72,23 @@ export default {
   font-weight: bold;
 }
 
-.btnRecargar {
+.btnSeguir {
   background-color: #3fcfba;
   border: 2px solid #071488;
   border-radius: 5px;
 }
 
-.btnJuegos {
+.btnSalir {
   background-color: #ffa934;
   border: 2px solid #fd6400;
   border-radius: 5px;
 }
 
-.btnRecargar a {
+.btnSeguir a {
   color: #071488;
   text-decoration: none;
 }
-.btnJuegos a {
+.btnSalir a {
   color: #3f332b;
   text-decoration: none;
 }

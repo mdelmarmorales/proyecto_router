@@ -13,7 +13,7 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btnJuegos" data-dismiss="modal">
-            <router-link :to="{ name: 'Juegos' }">Comenzar</router-link>
+            <router-link :to="{ name: 'Home' }">Acceder</router-link>
           </button>
         </div>
       </div>

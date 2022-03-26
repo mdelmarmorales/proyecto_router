@@ -6,7 +6,7 @@
   <ModalSalir />
   <div class="container-fluid">
     <Header />
-    <Menu/>
+    <Menu v-if="esInicio !='Home'"/>
     <router-view />
     <Footer />
   </div>
@@ -27,8 +27,13 @@ export default {
   components: { Header, Menu, Footer, ModalFinTiempo, ModalRegistro, ModalAcceso, ModalPunto, ModalSalir },
   data() {
     return {
-      home: document.getElementById("home"),
+      //home: document.getElementById("home"),
     };
+  },
+  computed:{
+    esInicio (){
+      return this.$route.name;
+    }
   },
 };
 </script>

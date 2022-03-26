@@ -41,7 +41,10 @@
                 >Crear cuenta</router-link
               >
             </div>
-            <b-alert show v-if="noexiste">dede</b-alert>
+            <div class="alert alert-danger" role="alert" v-if="this.accesoInvalido">
+              Los datos introducidos no son correctos.<br>
+              Inténtalo de nuevo.
+            </div>
           </div>
         </div>
       </div>
@@ -58,6 +61,7 @@ export default {
     return {
       datosForm: {},
       jugador: {},
+      accesoInvalido: null,
     };
   },
   methods: {
@@ -74,8 +78,10 @@ export default {
         .then((respuesta) => respuesta.json())
         .then((datosRespuesta) => {
           if (datosRespuesta.success == "0") {
-            this.emitter.emit("accesoInvalido", true);
+            this.accesoInvalido=true;
+            //this.emitter.emit("accesoInvalido", true);
           } else {
+            this.accesoInvalido=false;
             /*Array de puntuaciones. Posiciones:
             0- operaciones,
             1- compra

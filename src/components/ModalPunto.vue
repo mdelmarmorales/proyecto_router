@@ -15,14 +15,17 @@
         <div class="modal-footer">
            <button
             type="button"
-            class="btnRecargar"
-            @click=volver()
+            class="btnSeguir"
             data-dismiss="modal"
+           
           >
-           Jugar de nuevo
+           <router-link :to="{name: this.nombrePagina}">Jugar de nuevo</router-link> 
           </button>
-          <button type="button" class="btnJuegos" data-dismiss="modal">
+          <button type="button" class="btnSeguir" data-dismiss="modal">
             <router-link :to="{ name: 'Juegos' }">Otro juego</router-link>
+          </button>
+          <button type="button" class="btnSalir" data-dismiss="modal" @click="salir">
+           Salir
           </button>
         </div>
       </div>
@@ -44,10 +47,18 @@ export default {
     });
   },
   methods: {
-    volver(){
-      this.$router.go(0);
+  //   volver(){
+  //     console.log(this.nombrePagina);
+  //     this.$router.push(this.nombrePagina);
+  //   }
+     salir(){
+      this.emitter.emit("salir", true);
     }
-  }
+   }, 
+  computed:{
+    nombrePagina (){
+      return this.$route.name;
+    }}
 };
 </script>
 
@@ -58,23 +69,23 @@ export default {
   font-weight: bold;
 }
 
-.btnRecargar {
+.btnSeguir {
   background-color: #3fcfba;
   border: 2px solid #071488;
   border-radius: 5px;
 }
 
-.btnJuegos {
+.btnSalir {
   background-color: #ffa934;
   border: 2px solid #fd6400;
   border-radius: 5px;
 }
 
-.btnRecargar a {
+.btnSeguir a {
   color: #071488;
   text-decoration: none;
 }
-.btnJuegos a {
+.btnSalir a {
   color: #3f332b;
   text-decoration: none;
 }

@@ -1,12 +1,13 @@
 <template>
   <div id="cuadro_blanco" class="col-10 mx-auto mt-5 d-flex align-items-center">
-    <div class="row d-flex flex-row justify-content-around">
-      <table class="table table-striped col-10">
+    <div class="row d-flex flex-row w-100 justify-content-around align-items-center">
+      <table class="table table-striped table-bordered col-9">
         <thead class="thead">
           <tr>
             <th>Juego</th>
             <th>Puntos</th>
             <th>Medallas</th>
+            <th>Detalles</th>
           </tr>
         </thead>
         <tbody>
@@ -27,7 +28,7 @@
               />
             </td>
             <td>
-              <router-link :to="{ name: 'Graficos', params: {idJuego: item.idJuego} }">Detalles </router-link>
+              <router-link :to="{ name: 'Graficos', params: {idJuego: item.idJuego} }">Ver </router-link>
             </td>
           </tr>
           <tr>
@@ -42,10 +43,11 @@
                 class="logros"
               />
             </td>
+             <td> </td>
           </tr>
         </tbody>
       </table>
-      <img src="../images/logros.jpg" alt="logros" class="img_logros"/>
+      <img src="../images/logros.jpg" alt="logros" class="col-2"/>
     </div>
     </div>
 </template>
@@ -103,20 +105,6 @@ export default {
         }
         console.log(this.puntos[i].medallas);
       }
-
-      // for (let i = 0; i < this.puntos.length; i++) {
-      //   numMedallas = Math.floor(this.puntos[i].puntuacion / 15);
-      //   this.imgMedallas[i] = [];
-      //   //console.log("medalla", numMedallas);
-
-      //   for (let j = 0; j < numMedallas; j++) {
-      //     this.imgMedallas[i][j] = require("../images/medalla.png");
-      //   }
-      //   console.log(this.imgMedallas[i]);
-      // }
-
-      //console.log(this.imgMedallas);
-
       for (let i = 0; i < numTrofeos; i++) {
         this.imgTrofeos[i] = require("../images/trofeo.png");
       }
@@ -163,6 +151,6 @@ h1 {
 }
 
 .img_logros{
-   height: 150px;
+   height: 250px;
 }
 </style>

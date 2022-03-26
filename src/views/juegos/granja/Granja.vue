@@ -64,21 +64,6 @@ export default {
           contador: 0,
         },
         {
-          imagen: require("@/images/caballo.png"),
-          nombre: "Caballo",
-          contador: 0,
-        },
-        {
-          imagen: require("@/images/cabra.png"),
-          nombre: "Cabra",
-          contador: 0,
-        },
-        {
-          imagen: require("@/images/carnero.png"),
-          nombre: "Carnero",
-          contador: 0,
-        },
-        {
           imagen: require("@/images/cerdo.png"),
           nombre: "Cerdo",
           contador: 0,
@@ -91,11 +76,6 @@ export default {
         {
           imagen: require("@/images/gallina.png"),
           nombre: "Gallina",
-          contador: 0,
-        },
-        {
-          imagen: require("@/images/gallo.png"),
-          nombre: "Gallo",
           contador: 0,
         },
         {
@@ -114,28 +94,13 @@ export default {
           contador: 0,
         },
         {
-          imagen: require("@/images/pavo.png"),
-          nombre: "Pavo",
-          contador: 0,
-        },
-        {
           imagen: require("@/images/perro.png"),
           nombre: "Perro",
           contador: 0,
         },
         {
-          imagen: require("@/images/pollito.png"),
-          nombre: "Pollito",
-          contador: 0,
-        },
-        {
           imagen: require("@/images/raton.png"),
           nombre: "Raton",
-          contador: 0,
-        },
-        {
-          imagen: require("@/images/toro.png"),
-          nombre: "Toro",
           contador: 0,
         },
         {
@@ -176,7 +141,7 @@ export default {
       que debe empezar a aumentar */
       if (this.aumentarOpacidad) {
         this.opacidad = this.opacidad + 0.05;
-        if (this.opacidad >= 1) {
+        if (this.opacidad >= 1.3) {
           this.aumentarOpacidad = false;
         }
       } else {
