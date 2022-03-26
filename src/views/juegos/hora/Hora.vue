@@ -1,25 +1,36 @@
 <template>
   <div class="row">
     <div id="cuadro_blanco" class="col-10 mx-auto mt-5">
-      <div class="row d-flex my-2">
-        <Temporizador class="col-1 ml-auto" />
+       <div class="row d-flex my-2">
+        <button
+          v-if="!this.comienzo"
+          class="btn-comprobar ml-auto mr-2"
+          type="button"
+          @click="comenzar"
+        >
+          Comenzar
+        </button>
+        <Temporizador v-else class="col-1 ml-auto" />
       </div>
       <div>
         <EjercicioHora
           :hora="hora1"
           :indiceHora="indiceHora1"
           :horaSeleccionada="horaSeleccionada1"
+          :comienzo="comienzo"
         />
         <EjercicioHora
           :hora="hora2"
           :indiceHora="indiceHora2"
           :horaSeleccionada="horaSeleccionada2"
+          :comienzo="comienzo"
         />
         <EjercicioHora
           :hora="hora3"
           :indiceHora="indiceHora3"
           :horaSeleccionada="horaSeleccionada3"
           :ultimo="true"
+          :comienzo="comienzo"
         />
       </div>
     </div>
@@ -37,6 +48,7 @@ export default {
   components: { EjercicioHora, Temporizador },
   data() {
     return {
+      comienzo:false,
       horas: horasJson,
       minutos: minutosJson,
     };
@@ -72,6 +84,9 @@ export default {
     },
   },
   methods: {
+    comenzar() {
+      this.comienzo = true;
+    },
     numeroAleatorio(min, max) {
       return Math.floor(Math.random() * (max - min + 1) + min);
     },

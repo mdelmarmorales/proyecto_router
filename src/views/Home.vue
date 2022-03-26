@@ -27,7 +27,7 @@
               <div class="form-group row">
                 <label class="col-4 my-auto">Contraseña: </label>
                 <input
-                  type="text"
+                  type="password"
                   class="form-control col-7"
                   v-model="datosForm.contrasenya"
                 />

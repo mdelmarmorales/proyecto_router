@@ -166,8 +166,7 @@ export default {
 </script>
 
 <style scoped>
-.correcto,
-.manzana {
+.correcto{
   height: 50px;
 }
 

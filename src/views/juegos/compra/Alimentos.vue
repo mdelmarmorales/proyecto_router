@@ -20,10 +20,13 @@ export default {
   name: "Alimentos",
   props: {
     productos: Array,
+    comienzo: Boolean
   },
   methods: {
     llenarCesta(event) {
-      this.emitter.emit("productoSelec", event.target.alt);
+      if (this.comienzo){
+        this.emitter.emit("productoSelec", event.target.alt);
+      }
     },
   },
 };

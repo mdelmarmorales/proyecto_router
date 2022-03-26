@@ -67,7 +67,7 @@
         </label>
       </b-form-radio-group>
 
-      <button class="btn-comprobar mx-2" type="submit">Comprobar</button>
+      <button v-if="this.comienzo" class="btn-comprobar mx-2" type="submit">Comprobar</button>
       <img
         class="correcto"
         src="@/images/correcto.png"
@@ -97,6 +97,7 @@ export default {
     indiceHora: Number,
     horaSeleccionada: Object,
     ultimo: Boolean,
+    comienzo: Boolean
   },
   methods: {
     comprobar() {

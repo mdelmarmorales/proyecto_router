@@ -12,9 +12,10 @@ export default {
     };
   },
   beforeMount() {
-    this.actualizaTemporizador();
+    // this.actualizaTemporizador();
   },
    mounted() {
+     this.actualizaTemporizador();
     this.emitter.on("pararTiempo", (pararTiempo) => {
       this.eliminarTemporizador();
     });

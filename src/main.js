@@ -6,20 +6,14 @@ import axios from 'axios'
 import vueAxios from 'vue-axios'
 import VueSimpleAlert from "vue-simple-alert"
 
-// axios.defaults.baseURL = 'http://localhost/API_proyecto'
 
 const emitter = mitt();
 
 const app=createApp(App).use(router, axios, vueAxios, VueSimpleAlert)
 app.provide('$router', router);
-// app.provide('id');
 
 // Variables globales
 app.config.globalProperties.emitter = emitter;
-// app.config.globalProperties.edad;
-// app.config.globalProperties.id;
-// app.config.globalProperties.fecha = new Date().toLocaleString();
-// app.config.globalProperties.location = window.location.href;   
 
 /*Array de puntuaciones. Posiciones:
 0- operaciones,

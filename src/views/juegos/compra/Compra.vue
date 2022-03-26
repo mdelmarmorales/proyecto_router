@@ -2,7 +2,15 @@
   <div class="row">
     <div id="cuadro_blanco" class="col-10 mx-auto mt-5">
       <div class="row d-flex my-2">
-        <Temporizador class="col-1 ml-auto" />
+        <button
+          v-if="!this.comienzo"
+          class="btn-comprobar ml-auto mr-2"
+          type="button"
+          @click="comenzar"
+        >
+          Comenzar
+        </button>
+        <Temporizador v-else class="col-1 ml-auto" />
       </div>
       <div class="row d-flex m-2 text-left">
         <p class="enunciado">
@@ -11,7 +19,7 @@
           al pagar.
         </p>
       </div>
-      <Alimentos :productos="productos" class="row justify-content-center" />
+      <Alimentos :productos="productos" :comienzo="comienzo" class="row justify-content-center" />
       <div class="row d-flex flex-row justify-content-around">
         <ListaCompra :productos="productos" />
       </div>
@@ -33,6 +41,7 @@ export default {
   },
   data() {
     return {
+      comienzo:false,
       productos: [
         {
           nombre: "manzana",
@@ -72,6 +81,11 @@ export default {
       ],
     };
   },
+  methods: {
+    comenzar() {
+      this.comienzo = true;
+    },
+  },
 };
 </script>
 
@@ -84,7 +98,7 @@ export default {
   border-radius: 10px;
 }
 
-.enunciado{
+.enunciado {
   font-weight: bold;
 }
 </style>

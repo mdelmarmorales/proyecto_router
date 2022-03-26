@@ -1,5 +1,5 @@
 <template>
-  <router-link style="text-decoration:none" :to="{ name: 'Home' }">
+   <router-link style="text-decoration:none" :to="{ name: 'Juegos' }">  
     <div id="cabecera" class="row d-flex align-items-center">
       <div class="col-2">
         <img
@@ -7,16 +7,25 @@
           id="logo"
           class="img-fluid rounded-circle my-auto"
         />
+
       </div>
       <div class="titulo col-8 mx-auto">
         <h1 class="my-auto">JUEGA CON LOS NÚMEROS</h1>
       </div>
+     
     </div>
-  </router-link>
+</router-link>
 </template>
 
 <script>
-export default {};
+export default {
+  name: "Header",
+  computed:{
+    esInicio (){
+      return this.$route.name;
+    }
+  },
+};
 </script>
 
 <style scoped>

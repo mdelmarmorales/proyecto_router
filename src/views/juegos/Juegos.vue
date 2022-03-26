@@ -1,48 +1,71 @@
 <template>
-<div class="row">
-  <div id="cuadro_blanco" class="col-10 mx-auto mt-5">
-    <div class="row justify-content-around">
-      <div v-for="juego in juegosPrimeraFila" :key="juego.id" class="col-sm-3 mt-2">
-        <div class="card m-2 p-2">
-          <router-link :to="{ name: juego.url }">
-            <img
-              :src="juego.imagen"
-              :alt="juego.nombre"
-              class="card-img py-2"
-            />
-            <div class="card-body">
-              <p class="card-title nombreJuego mx-auto">{{ juego.nombre }}</p>
-            </div>
-          </router-link>
+  <div v-if="this.idJugador" class="row">
+    <div id="cuadro_blanco" class="col-10 mx-auto mt-5">
+      <div class="row justify-content-around">
+        <div
+          v-for="juego in juegosPrimeraFila"
+          :key="juego.id"
+          class="col-sm-3 mt-2"
+        >
+          <div class="card m-2 p-2">
+            <router-link :to="{ name: juego.url }">
+              <img
+                :src="juego.imagen"
+                :alt="juego.nombre"
+                class="card-img py-2"
+              />
+              <div class="card-body">
+                <p class="card-title nombreJuego mx-auto">{{ juego.nombre }}</p>
+              </div>
+            </router-link>
+          </div>
         </div>
       </div>
-    </div>
-       <div class="row justify-content-around">
-      <div v-for="juego in juegosSegundaFila" :key="juego.id" class="col-sm-3 mb-2">
-        <div class="card m-2 p-2">
-          <router-link :to="{ name: juego.url }">
-            <img
-              :src="juego.imagen"
-              :alt="juego.nombre"
-              class="card-img py-2"
-            />
-            <div class="card-body">
-              <p class="card-title nombreJuego mx-auto">{{ juego.nombre }}</p>
-            </div>
-          </router-link>
+      <div class="row justify-content-around">
+        <div
+          v-for="juego in juegosSegundaFila"
+          :key="juego.id"
+          class="col-sm-3 mb-2"
+        >
+          <div class="card m-2 p-2">
+            <router-link :to="{ name: juego.url }">
+              <img
+                :src="juego.imagen"
+                :alt="juego.nombre"
+                class="card-img py-2"
+              />
+              <div class="card-body">
+                <p class="card-title nombreJuego mx-auto">{{ juego.nombre }}</p>
+              </div>
+            </router-link>
+          </div>
         </div>
       </div>
     </div>
   </div>
-   </div>
+  <div v-else>
+    <div id="cuadro_blanco" class="col-10 mx-auto mt-5">
+      <div class="row d-flex flex-column align-items-center justify-content-around">
+      <div class="aviso col-6">
+      <p class="textoAviso">
+        Tienes que estar introducir tus datos de usuario o crear una cuenta para
+        poder jugar
+      </p>
+      <button type="button" class="btnSeguir">
+        <router-link :to="{ name: 'Home' }">Acceder</router-link>
+      </button>
+      </div>
+    </div>
+    </div>
+  </div>
 </template>
 
 <script>
-
 export default {
   name: "Juegos",
   data() {
     return {
+      idJugador: localStorage.getItem("idJugador"),
       juegosPrimeraFila: [
         {
           id: 0,
@@ -96,11 +119,11 @@ export default {
 }
 
 /* Enlace del router link es transformado a un "a", por eso se formatea así */
-.card a{
-  text-decoration:none;
+.card a {
+  text-decoration: none;
 }
 
-.card img{
+.card img {
   height: 200px;
 }
 
@@ -114,5 +137,22 @@ export default {
   background-color: #ffffff;
   border: 2px solid blue;
   border-radius: 10px;
+}
+
+.btnSeguir {
+  background-color: #3fcfba;
+  border: 2px solid #071488;
+  border-radius: 5px;
+}
+
+.btnSeguir a{
+  color:#071488;
+  text-decoration: none;
+}
+
+.aviso {
+  background-color: #e0f7f2;
+  border: 2px solid #071488;
+  border-radius: 15px;
 }
 </style>

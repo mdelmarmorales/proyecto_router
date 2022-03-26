@@ -92,26 +92,6 @@ export default {
             this.emitter.emit("registroRealizado", true);
           } 
         });
-
-      // try {
-      //   const respuesta = await fetch(
-      //     "http://localhost/API_proyecto/insertar",
-      //     {
-      //       method: "POST",
-      //       body: JSON.stringify(datosRegistro),
-      //     }
-      //   );
-      //   if (!respuesta.ok) {
-      //     throw new Error("Respuesta de red ok. Respuesta HTTP errónea.");
-      //   }
-
-      // const respuestaJson = await respuesta.json();
-      // } catch (e) {
-      //   console.log(e);
-      // }
-      // if (respuestaJson.success=='1') {
-      //    this.emitter.emit("registroRealizado", true);
-      // }
     },
   },
 };

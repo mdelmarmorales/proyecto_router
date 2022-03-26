@@ -19,7 +19,7 @@
           <router-link :to="{ name: 'Logros' }">Logros</router-link>
         </div>
         <div class="dropdown-item">
-          <p @click="salir">Salir</p>
+          <p id="salir" @click="salir">Salir</p>
         </div>
       </div>
     </div>
@@ -31,7 +31,7 @@ export default {
   name: "Menu",
   data() {
     return {
-      //esInicio: null,
+     
     };
   },
   computed:{
@@ -40,10 +40,7 @@ export default {
     }
   },
   methods: {
-    // esInicio(){
-    //   this.esInicio= this.$router.history.current["path"] !== "/";
-    // }
-    salir(){
+     salir(){
       this.emitter.emit("salir", true);
     }
   },
@@ -64,7 +61,15 @@ export default {
   font-weight: bold;
 }
 
-.dropdown a.router-link-exact-active, p {
-  color: #071488;
+.dropdown a.router-link, p{
+  color: #0599e8;
 }
+
+p {
+  font-weight: bold;
+}
+
+/* .dropdown a.router-link-exact-active, p:hover {
+  color: #071488;
+}  */
 </style>

@@ -30,7 +30,15 @@
   <div class="row">
     <div id="cuadro_granja" class="col-10 mx-auto my-3">
       <div class="row d-flex my-2">
-        <Temporizador class="col-1 ml-auto" />
+        <button
+          v-if="!this.comienzo"
+          class="btn-comprobar ml-auto mr-2"
+          type="button"
+          @click="comenzar"
+        >
+          Comenzar
+        </button>
+        <Temporizador v-else class="col-1 ml-auto" />
       </div>
       <img
         id="animal"
@@ -50,6 +58,7 @@ export default {
   components: { Temporizador },
   data() {
     return {
+      comienzo: false,
       intervalID: null,
       animalABuscar: [],
       numAnimales: "",
@@ -112,7 +121,7 @@ export default {
     };
   },
   beforeMount() {
-    setTimeout(this.carga(), 3000);
+    this.eligeAnimal();
   },
   mounted() {
     /* Cuando el tiempo finaliza, detenemos el temporizador */
@@ -121,6 +130,10 @@ export default {
     });
   },
   methods: {
+    comenzar() {
+      this.comienzo=true;
+      this.cambiaOpacidad();
+    },
     eligeAnimal() {
       let indice;
 
@@ -135,8 +148,10 @@ export default {
         this.muestraImagen();
       }
 
-      /*La opacidad irá aumentando hasta que llegue a 1. Entonces pondremos el flag
-      a false para indicar que debe empezar a disminuir. 
+      /*La opacidad irá aumentando hasta que llegue a 1,3. Entonces pondremos el flag
+      a false para indicar que debe empezar a disminuir. Se lleva hasta 1,3 para que 
+      el dibujo permanezca un poco más en la pantalla y el niño tenga tiempo suficiente
+      para verlo.
       Cuando llegue a 0 haremos lo contrario, pondremos el flag a true para indicar
       que debe empezar a aumentar */
       if (this.aumentarOpacidad) {
@@ -153,10 +168,9 @@ export default {
       // Aplicamos la nueva opacidad a la imagen
       img.style.opacity = this.opacidad;
     },
-    carga() {
-      this.eligeAnimal();
-      this.intervalID = setInterval(this.cambiaOpacidad, 100);
-    },
+    // carga() {
+    //         this.eligeAnimal();
+    // },
     numeroAleatorio(min, max) {
       return Math.floor(Math.random() * (max - min + 1) + min);
     },
@@ -195,7 +209,7 @@ export default {
     },
     comprobarAnimales() {
       this.correcto = false;
-      let puntos= JSON.parse(localStorage.getItem("puntuaciones"));
+      let puntos = JSON.parse(localStorage.getItem("puntuaciones"));
 
       if (parseInt(this.numAnimales) === this.animalABuscar.contador) {
         this.correcto = true;

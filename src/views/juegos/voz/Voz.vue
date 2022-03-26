@@ -1,13 +1,20 @@
 <template>
   <div class="row">
     <div id="cuadro_blanco" class="col-10 mx-auto mt-5">
-       <div class="row d-flex my-2">
-      <Temporizador class="col-1 ml-auto" />
+      <div class="row d-flex my-2">
+        <button
+          v-if="!this.comienzo"
+          class="btn-comprobar ml-auto mr-2"
+          type="button"
+          @click="comenzar"
+        >
+          Comenzar
+        </button>
+        <Temporizador v-else class="col-1 ml-auto" />
       </div>
-      <Ejercicio1 :numeroVoz="numeroVoz" />
+      <Ejercicio1 v-if="this.comienzo" :numeroVoz="numeroVoz" />
       <Ejercicio2 :numeroVoz="numeroVoz2" />
-      <Ejercicio3 :numeroVoz="numeroVoz3" />     
-      
+      <Ejercicio3 :numeroVoz="numeroVoz3" />
     </div>
   </div>
 </template>
@@ -24,6 +31,7 @@ export default {
   components: { Temporizador, Ejercicio1, Ejercicio2, Ejercicio3 },
   data() {
     return {
+      comienzo: false,
       synth: window.speechSynthesis,
       voices: [],
       speakText: null,
@@ -38,7 +46,7 @@ export default {
   computed: {
     max() {
       let maximo;
-      let edad=localStorage.getItem("edadNinyo");
+      let edad = localStorage.getItem("edadNinyo");
 
       if (edad <= 6) {
         maximo = 10;
@@ -81,13 +89,15 @@ export default {
       speechSynthesis.onvoiceschanged = this.populateVoiceList;
     }
   },
-    mounted() {
+  mounted() {
     this.emitter.on("numeroVoz", (numeroVoz) => {
-  
       this.speak(numeroVoz);
     });
   },
   methods: {
+    comenzar() {
+      this.comienzo = true;
+    },
     numeroAleatorio(min, max) {
       return Math.floor(Math.random() * (max - min + 1) + min);
     },
@@ -97,7 +107,6 @@ export default {
       return this.numeros[indice];
     },
     comprobar() {
-  
       let acierto = false;
       if (arguments.length == 2) {
         acierto = arguments[0] == arguments[1];
@@ -117,7 +126,7 @@ export default {
         console.error("Already speaking...");
         return;
       }
-  
+
       if (this.numeroVoz !== "") {
         this.speakText = new SpeechSynthesisUtterance(lectura);
 
