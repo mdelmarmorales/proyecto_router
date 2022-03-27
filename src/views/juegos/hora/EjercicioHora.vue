@@ -90,24 +90,30 @@ export default {
   data() {
     return {
       correcto: null,
+      contador:0,
     };
   },
   props: {
     hora: Array,
     indiceHora: Number,
     horaSeleccionada: Object,
-    ultimo: Boolean,
-    comienzo: Boolean
+    comienzo: Boolean,
+    contadorJuegos: Number
   },
   methods: {
     comprobar() {
       this.correcto = false;
       let puntos = JSON.parse(localStorage.getItem("puntuaciones"));
+      this.contador=this.contadorJuegos; //Copiamos. Las props son de sólo lectura
+
 
       if (parseInt(this.horaPropuesta) == this.indiceHora) {
         this.correcto = true;
+        this.contador++;
+        console.log(this.contador);
+        this.emitter.emit("contadorJuegos", this.contador);
         // Si es el último ejercicio, llamamos al modal de punto conseguido
-        if (this.ultimo) {
+        if (this.contador==3) {
           puntos[5]++;
           localStorage.setItem("puntuaciones", JSON.stringify(puntos));
           this.emitter.emit("pararTiempo", true);

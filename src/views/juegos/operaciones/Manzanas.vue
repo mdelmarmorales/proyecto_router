@@ -45,10 +45,10 @@
               alt="correcto"
               v-if="this.correctoManzana === false"
             />
-            <p v-if="this.correctoManzana === false">
+            <!-- <p v-if="this.correctoManzana === false">
               ¡Ups! Tenías que meter {{ this.resultado }} manzanas, pero hay
               {{ this.contador }}
-            </p>
+            </p> -->
           </form>
         </div>
       </div>
@@ -99,7 +99,8 @@ export default {
       }
     },
     corregirManzana() {
-      this.manzanas.pop();
+      this.manzanas=[];
+      this.contador=0;
     },
     sumarManzanas(event) {
       let imagen = event.target.getAttribute("src");

@@ -95,7 +95,10 @@ export default {
       this.comienzo = true;
     },
     onChange(event) {
-      this.emitter.emit("operacionSelec", event.target.value);
+      if(this.comienzo){
+        this.emitter.emit("operacionSelec", event.target.value);
+      }
+      
     },
   },
 };

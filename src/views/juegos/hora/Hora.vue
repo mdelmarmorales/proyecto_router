@@ -1,7 +1,7 @@
 <template>
   <div class="row">
     <div id="cuadro_blanco" class="col-10 mx-auto mt-5">
-       <div class="row d-flex my-2">
+      <div class="row d-flex my-2">
         <button
           v-if="!this.comienzo"
           class="btn-comprobar ml-auto mr-2"
@@ -18,19 +18,21 @@
           :indiceHora="indiceHora1"
           :horaSeleccionada="horaSeleccionada1"
           :comienzo="comienzo"
+          :contadorJuegos="contadorJuegos"
         />
         <EjercicioHora
           :hora="hora2"
           :indiceHora="indiceHora2"
           :horaSeleccionada="horaSeleccionada2"
           :comienzo="comienzo"
+          :contadorJuegos="contadorJuegos"
         />
         <EjercicioHora
           :hora="hora3"
           :indiceHora="indiceHora3"
           :horaSeleccionada="horaSeleccionada3"
-          :ultimo="true"
           :comienzo="comienzo"
+          :contadorJuegos="contadorJuegos"
         />
       </div>
     </div>
@@ -48,9 +50,10 @@ export default {
   components: { EjercicioHora, Temporizador },
   data() {
     return {
-      comienzo:false,
+      comienzo: false,
       horas: horasJson,
       minutos: minutosJson,
+      contadorJuegos: 0,
     };
   },
 
@@ -82,6 +85,11 @@ export default {
     horaSeleccionada3() {
       return this.hora3[this.indiceHora3];
     },
+  },
+  mounted() {
+    this.emitter.on("contadorJuegos", (contadorJuegos) => {
+      this.contadorJuegos = contadorJuegos;
+    });
   },
   methods: {
     comenzar() {

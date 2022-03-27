@@ -12,18 +12,19 @@
           </p>
         </div>
         <div class="modal-footer">
-          <button
-            type="button"
-            
-            class="btnSeguir"
-          >
+          <button type="button" class="btnSeguir">
             <router-link :to="{ name: self }">Jugar de nuevo</router-link>
           </button>
           <button type="button" class="btnSeguir" data-dismiss="modal">
             <router-link :to="{ name: 'Juegos' }">Otro juego</router-link>
           </button>
-          <button type="button" class="btnSalir" data-dismiss="modal" @click="salir">
-           Salir
+          <button
+            type="button"
+            class="btnSalir"
+            data-dismiss="modal"
+            @click="salir"
+          >
+            Salir
           </button>
         </div>
       </div>
@@ -39,9 +40,16 @@ export default {
       finTiempo: null,
     };
   },
+  computed:{
+    nombrePagina (){
+      return this.$route.name;
+    },
+  },
   mounted() {
     this.emitter.on("finTiempo", (finTiempo) => {
-      $("#tiempo").modal("show");
+      if(this.nombrePagina!='Granja'){
+        $("#tiempo").modal("show");
+      }   
     });
   },
   methods: {
@@ -71,8 +79,8 @@ export default {
   border-radius: 5px;
 }
 
-.btnSeguir a{
-  color:#071488;
+.btnSeguir a {
+  color: #071488;
   text-decoration: none;
 }
 .btnSalir a {

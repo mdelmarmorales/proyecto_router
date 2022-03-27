@@ -7,7 +7,7 @@ export default {
   name: "Temporizador",
   data() {
     return {
-      timer: 55,
+      timer: 50,
       interval: "",
     };
   },

@@ -1,7 +1,7 @@
 <template>
-  <div v-if="this.idJugador" class="row">
+  <div class="row">
     <div id="cuadro_blanco" class="col-10 mx-auto mt-5">
-      <div class="row justify-content-around">
+      <div v-if="this.idJugador" class="row justify-content-around">
         <div
           v-for="juego in juegosPrimeraFila"
           :key="juego.id"
@@ -21,7 +21,7 @@
           </div>
         </div>
       </div>
-      <div class="row justify-content-around">
+      <div v-if="this.idJugador" class="row justify-content-around">
         <div
           v-for="juego in juegosSegundaFila"
           :key="juego.id"
@@ -41,21 +41,17 @@
           </div>
         </div>
       </div>
-    </div>
-  </div>
-  <div v-else>
-    <div id="cuadro_blanco" class="col-10 mx-auto mt-5">
-      <div class="row d-flex flex-column align-items-center justify-content-around">
-      <div class="aviso col-6">
-      <p class="textoAviso">
-        Tienes que estar introducir tus datos de usuario o crear una cuenta para
-        poder jugar
-      </p>
-      <button type="button" class="btnSeguir">
-        <router-link :to="{ name: 'Home' }">Acceder</router-link>
-      </button>
+      <div id="avisoLogin" v-else class="row d-flex justify-content-around align-items-center">
+        <div class="aviso col-8 py-5">
+          <p class="textoAviso">
+            Tienes que introducir tus datos de usuario o crear una cuenta
+            para poder jugar.
+          </p>
+          <button type="button" class="btnSeguir">
+            <router-link :to="{ name: 'Home' }">Acceder</router-link>
+          </button>
+        </div>
       </div>
-    </div>
     </div>
   </div>
 </template>
@@ -145,9 +141,13 @@ export default {
   border-radius: 5px;
 }
 
-.btnSeguir a{
-  color:#071488;
+.btnSeguir a {
+  color: #071488;
   text-decoration: none;
+}
+
+#avisoLogin{
+  height: 100vh;
 }
 
 .aviso {

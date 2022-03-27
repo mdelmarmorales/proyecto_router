@@ -1,31 +1,15 @@
 <template>
   <div class="row mt-3">
-    <form
-      @submit.prevent="comprobarAnimales"
+    <div
       id="pregunta"
       class="col-10 mx-auto"
     >
-      <p class="mt-2">
-        ¿Cuántas veces ha aparecido este animal?
+      <p class="my-auto py-2">
+        En la granja hay muchos animales. Cuenta cuántas veces aparece éste:
         <span>{{ this.animalABuscar.nombre }}</span>
       </p>
-      <input v-model="numAnimales" />
-      <button class="btn-comprobar mt-1 mb-2 mx-2" type="submit">
-        Comprobar
-      </button>
-      <img
-        class="correcto"
-        src="@/images/correcto.png"
-        alt="correcto"
-        v-if="this.correcto === true"
-      />
-      <img
-        class="correcto"
-        src="@/images/incorrecto.png"
-        alt="correcto"
-        v-if="this.correcto === false"
-      />
-    </form>
+    
+    </div>
   </div>
   <div class="row">
     <div id="cuadro_granja" class="col-10 mx-auto my-3">
@@ -126,13 +110,15 @@ export default {
   mounted() {
     /* Cuando el tiempo finaliza, detenemos el temporizador */
     this.emitter.on("finTiempo", (finTiempo) => {
+      console.log("fin");
       clearInterval(this.intervalID);
+      this.emitter.emit("finGranja", this.animalABuscar);
     });
   },
   methods: {
     comenzar() {
       this.comienzo=true;
-      this.cambiaOpacidad();
+      this.intervalID=setInterval(this.cambiaOpacidad, 100);
     },
     eligeAnimal() {
       let indice;
@@ -141,8 +127,8 @@ export default {
       this.animalABuscar = this.listaAnimales[indice];
     },
     cambiaOpacidad() {
-      let img = document.getElementById("animal");
-
+       let img = document.getElementById("animal");
+       
       //Aprovechamos el momento en que la imagen no se ve para cargar una nueva
       if (this.opacidad <= 0) {
         this.muestraImagen();
@@ -156,7 +142,7 @@ export default {
       que debe empezar a aumentar */
       if (this.aumentarOpacidad) {
         this.opacidad = this.opacidad + 0.05;
-        if (this.opacidad >= 1.3) {
+          if (this.opacidad >= 1.3) {
           this.aumentarOpacidad = false;
         }
       } else {
@@ -168,9 +154,6 @@ export default {
       // Aplicamos la nueva opacidad a la imagen
       img.style.opacity = this.opacidad;
     },
-    // carga() {
-    //         this.eligeAnimal();
-    // },
     numeroAleatorio(min, max) {
       return Math.floor(Math.random() * (max - min + 1) + min);
     },
@@ -207,18 +190,18 @@ export default {
         }
       }
     },
-    comprobarAnimales() {
-      this.correcto = false;
-      let puntos = JSON.parse(localStorage.getItem("puntuaciones"));
+    // comprobarAnimales() {
+    //   this.correcto = false;
+    //   let puntos = JSON.parse(localStorage.getItem("puntuaciones"));
 
-      if (parseInt(this.numAnimales) === this.animalABuscar.contador) {
-        this.correcto = true;
-        puntos[2]++;
-        localStorage.setItem("puntuaciones", JSON.stringify(puntos));
-        this.emitter.emit("pararTiempo", true);
-        this.emitter.emit("puntoConseguido", true);
-      }
-    },
+    //   if (parseInt(this.numAnimales) === this.animalABuscar.contador) {
+    //     this.correcto = true;
+    //     puntos[2]++;
+    //     localStorage.setItem("puntuaciones", JSON.stringify(puntos));
+    //     this.emitter.emit("pararTiempo", true);
+    //     this.emitter.emit("puntoConseguido", true);
+    //   }
+    // },
   },
 };
 </script>

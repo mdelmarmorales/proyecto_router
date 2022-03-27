@@ -1,12 +1,14 @@
 <template>
   <ModalFinTiempo />
+   <ModalGranja />
   <ModalRegistro />
   <ModalAcceso />
   <ModalPunto />
   <ModalSalir />
   <div class="container-fluid">
     <Header />
-    <Menu v-if="esInicio !='Home'"/>
+    <!-- Si el usuario no se ha logueado, no mostramos el menú para que no pueda navegar a ninguna página -->
+    <Menu v-if="this.idJugador"/>
     <router-view />
     <Footer />
   </div>
@@ -21,13 +23,14 @@ import ModalRegistro from "@/components/ModalRegistro.vue";
 import ModalAcceso from "@/components/ModalAcceso.vue";
 import ModalPunto from "@/components/ModalPunto.vue";
 import ModalSalir from "@/components/ModalSalir.vue";
+import ModalGranja from "@/components/ModalGranja.vue";
 
 export default {
   name: "Juegos",
-  components: { Header, Menu, Footer, ModalFinTiempo, ModalRegistro, ModalAcceso, ModalPunto, ModalSalir },
+  components: { Header, Menu, Footer, ModalFinTiempo, ModalGranja, ModalRegistro, ModalAcceso, ModalPunto, ModalSalir },
   data() {
     return {
-      //home: document.getElementById("home"),
+     idJugador: localStorage.getItem("idJugador"),
     };
   },
   computed:{
