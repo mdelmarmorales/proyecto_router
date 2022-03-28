@@ -93,6 +93,8 @@ export default {
     };
   },
   computed: {
+    /* El dinero disponible se calcula sumando un nº aleatorio
+    al precio de los productos */
     dineroDisponible() {
       let dinero;
       let precioPropInt = parseInt(this.precioPropuesto, 10);
@@ -103,6 +105,7 @@ export default {
     },
   },
   methods: {
+    /* Método para calcular si el niño ha sumado correctamente el precio de los productos */
     comprobarPrecio() {
       let precio = 0;
       this.correcto = false;
@@ -113,9 +116,11 @@ export default {
         this.correcto = true;
       }
     },
+    /* Método para obtener un nº aleatorio */
     numeroAleatorio(min, max) {
       return Math.floor(Math.random() * (max - min + 1) + min);
     },
+    /* Método para comprobar si el niño ha calculado correctamente el dinero sobrante */
     comprobarVuelta() {
       this.correctaVuelta = false;
       let puntos = JSON.parse(localStorage.getItem("puntuaciones"));
@@ -125,7 +130,7 @@ export default {
         parseInt(this.vueltaPropuesta)
       ) {
         this.correctaVuelta = true;
-        //Sumamos un punto, paramos el temporizador y mostramos mensaje
+        //Si acierta, sumamos un punto, paramos el temporizador y mostramos mensaje
         puntos[1]++;
         localStorage.setItem("puntuaciones", JSON.stringify(puntos));
         this.emitter.emit("pararTiempo", true);

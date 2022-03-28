@@ -11,6 +11,7 @@
           alt="niños jugando con números"
         />
 
+<!-- Formulario de registro de un nuevo jugador -->
         <div class="col-6 d-flex flex-column justify-content-around">
           <h1>Registro</h1>
           <form id="formulario" class="p-3" @submit.prevent="registrar">
@@ -73,6 +74,7 @@ export default {
     };
   },
   methods: {
+    // Método para insertar un nuevo jugador en la BD
     async registrar() {
       let datosRegistro = {
         usuario: this.jugador.usuario,

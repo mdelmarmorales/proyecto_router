@@ -61,12 +61,15 @@ export default {
   mounted() {
     this.emitter.on("productoSelec", (productoSeleccionado) => {
       this.productoSeleccionado = productoSeleccionado; //Guardamos el valor leído desde otro componente a un dato de éste
+      //Mientras no hayamos validado la cesta, podemos seguir metiendo productos
       if(!this.correctoCesta){
         this.llenarCesta(productoSeleccionado);
       }      
     });
   },
   methods: {
+    /* Método para almacenar los productos en la cesta. Buscamos el nombre del producto
+    en el array de productos. */
     llenarCesta(productoSeleccionado) {
       const nuevoProducto = this.productos.find(
         (producto) => producto.nombre === productoSeleccionado
@@ -74,6 +77,7 @@ export default {
 
       this.cesta.push(nuevoProducto);
     },
+    /* Método para comprobar que los productos introducidos en la cesta son correctos */
     comprobarCesta() {
       let nombreProducto = "";
       this.correctoCesta = true;
@@ -92,7 +96,7 @@ export default {
       });
 
       /*Luego buscamos productos en la cesta que no estén en la lista.
-Si lo hay, lo marcamos como incorrecto */
+Si los hay, lo marcamos como incorrecto */
       this.cesta.some((element) => {
         nombreProducto = element.nombre;
         const hayProducto = this.listaCompra.filter(
@@ -104,6 +108,8 @@ Si lo hay, lo marcamos como incorrecto */
         }
       });
     },
+    /* Metódo para eliminar el último producto de la cesta 
+    cuando se pulsa "Corregir" */
     corregirCesta() {
       if(!this.correctoCesta){
       this.cesta.pop();

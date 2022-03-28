@@ -11,6 +11,7 @@
           alt="niños jugando con números"
         />
 
+        <!-- Formulario de acceso -->
         <div class="col-6 d-flex flex-column justify-content-center">
           <h1>Acceso</h1>
           <div id="formulario">
@@ -41,8 +42,14 @@
                 >Crear cuenta</router-link
               >
             </div>
-            <div class="alert alert-danger" role="alert" v-if="this.accesoInvalido">
-              Los datos introducidos no son correctos.<br>
+
+            <!-- Aviso si los datos introducidos no son correctos -->
+            <div
+              class="alert alert-danger"
+              role="alert"
+              v-if="this.accesoInvalido"
+            >
+              Los datos introducidos no son correctos.<br />
               Inténtalo de nuevo.
             </div>
           </div>
@@ -53,18 +60,18 @@
 </template>
 
 <script>
-// import router from '@/router'
 export default {
   name: "Home",
-  inject: ["id"],
   data() {
     return {
       datosForm: {},
-      jugador: {},
+      // jugador: {},
       accesoInvalido: null,
     };
   },
   methods: {
+    /* Método que consulta los datos de acceso a la BD y extrae los datos necesarios
+    para el funcionamiento de la aplicación */
     async acceder() {
       let datosAcceso = {
         usuario: this.datosForm.usuario,
@@ -77,30 +84,34 @@ export default {
       })
         .then((respuesta) => respuesta.json())
         .then((datosRespuesta) => {
+          // Si el jugador no existe en la BD
           if (datosRespuesta.success == "0") {
-            this.accesoInvalido=true;
-            //this.emitter.emit("accesoInvalido", true);
+            this.accesoInvalido = true;
           } else {
-            this.accesoInvalido=false;
-            /*Array de puntuaciones. Posiciones:
+            // Si existe, extramos los datos necesarios
+            this.accesoInvalido = false;
+
+            //Almacenamos los datos en el navegador
+            localStorage.setItem("idJugador", datosRespuesta[0].idJugador);
+            localStorage.setItem("edadNinyo", datosRespuesta[0].edadNinyo);
+
+            this.consultarPuntos(datosRespuesta[0].idJugador);
+          }
+        });
+    },
+
+    /* Método para consultar si ya existen puntuaciones para el día de hoy. Con esto
+    pretendemos actualizar los registros de puntos que existan en la BD para la fecha actual. 
+    Se crea un array de ceros. Se conulta si ya existen puntuaciones para el día de hoy
+    porque el niño ya haya jugado anteriormente. Estas puntuaciones se almacenan en el vector
+    de ceros. Así se pueden actualizar con los puntos que consiga ahora
+        Array de puntuaciones. Posiciones:
             0- operaciones,
             1- compra
             2- contar
             3- series
             4- voz
             5- horas */
-            localStorage.setItem("idJugador", datosRespuesta[0].idJugador);
-            localStorage.setItem("edadNinyo", datosRespuesta[0].edadNinyo);
-            //localStorage.setItem("puntuaciones", JSON.stringify(new Array(6).fill(0)));
-
-            this.consultarPuntos(datosRespuesta[0].idJugador);
-            // this.$router.push("/juegos");
-          }
-        });
-    },
-    /* Se crea un array de ceros. Se conulta si ya existen puntuaciones para el día de hoy
-    porque el niño ya haya jugado anteriormente. Estas puntuaciones se almacenan en el vector de ceros.
-    Así se pueden actualizar con los puntos que consiga ahora */
     consultarPuntos(idJugador) {
       let puntuaciones = new Array(6).fill(0);
 
@@ -117,13 +128,15 @@ export default {
           }
           /* Array que se actualiza con los puntos que vaya consiguiendo */
           localStorage.setItem("puntuaciones", JSON.stringify(puntuaciones));
+
           /* Array que nos sirve para saber de qué juegos no había todavía registros en la BD
-          (posiciones = 0). Al salir se compararán los dos arrays de puntuaciones. Si no había registros,
-          haremos un insert, si había haremos un update */
+          (posiciones == 0). Al salir se compararán los dos arrays de puntuaciones. Si no había registros,
+          haremos un insert; si había, haremos un update */
           localStorage.setItem(
             "puntuacionesInicio",
             JSON.stringify(puntuaciones)
           );
+          
           this.$router.push("/juegos");
         });
     },

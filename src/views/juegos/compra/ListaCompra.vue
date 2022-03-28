@@ -29,6 +29,7 @@ export default {
     };
   },
   computed: {
+    // Valor que cambia según la edad del niño. Se utiliza en cálculos posteriores
     max() {
       let maximo;
       let edad=localStorage.getItem("edadNinyo");
@@ -48,6 +49,7 @@ export default {
       }
       return maximo;
     },
+    /* Método para confeccionar la lista de la compra */
     listaCompra() {
       let lista = [];
       let producto, cantidad, indiceProducto;
@@ -58,6 +60,7 @@ export default {
       //Obtenemos de manera aleatoria el total de productos que vamos a comprar
       let totalProductos = this.numeroAleatorio(1, this.max);
 
+      /*Elegimos de manera aleatoria el producto y la cantidad */
       do {
         indiceProducto = this.numeroAleatorio(0, copiaProductos.length - 1);
         producto = copiaProductos[indiceProducto].nombre;
