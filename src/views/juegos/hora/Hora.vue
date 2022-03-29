@@ -40,6 +40,7 @@
 </template>
 
 <script>
+/* Importamos el JSON donde están los datos de las horas */
 import horasJson from "@/json/horas.json";
 import minutosJson from "@/json/minutos.json";
 import EjercicioHora from "./EjercicioHora.vue";
@@ -53,11 +54,12 @@ export default {
       comienzo: false,
       horas: horasJson,
       minutos: minutosJson,
-      contadorJuegos: 0,
+      contadorJuegos: 0, //Juegos finalizados hasta el momento
     };
   },
 
   computed: {
+    /* Calculamos las variables necesarias para los 3 juegos */
     hora1() {
       return this.arrayHoras();
     },
@@ -86,6 +88,7 @@ export default {
       return this.hora3[this.indiceHora3];
     },
   },
+  /* Esperamos el número de juegos terminados */
   mounted() {
     this.emitter.on("contadorJuegos", (contadorJuegos) => {
       this.contadorJuegos = contadorJuegos;
@@ -98,6 +101,7 @@ export default {
     numeroAleatorio(min, max) {
       return Math.floor(Math.random() * (max - min + 1) + min);
     },
+    /* Método para construir una hora */
     obtenerHora() {
       let indiceHora = this.numeroAleatorio(0, this.horas.length - 1);
       let indiceMinutos = this.numeroAleatorio(0, this.minutos.length - 1);
@@ -106,6 +110,7 @@ export default {
 
       return { hora, minuto };
     },
+    /* Método para formar un array de horas */
     arrayHoras() {
       let dato = [];
 

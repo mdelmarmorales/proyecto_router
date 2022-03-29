@@ -55,6 +55,7 @@ export default {
     };
   },
   computed: {
+    /* Varible que varía en función de la edad del niño */
     max() {
       let maximo;
       let edad=localStorage.getItem("edadNinyo");
@@ -74,6 +75,8 @@ export default {
       }
       return maximo;
     },
+    /* Método para calcular de forma aleatoria los operandos
+    según el tipo de operación */
     operandos() {
       const MIN = 0;
       let oper1, oper2, aux, simbolo;
@@ -110,14 +113,17 @@ export default {
     },
   },
   mounted() {
+    //Esperamos recibir la operación seleccionada
     this.emitter.on("operacionSelec", (operacion) => {
-      this.operacion = operacion; //Guardamos el valor leído desde otro componente a un dato de éste
+      this.operacion = operacion; 
     });
   },
   methods: {
+    /* Elegir un  nº aleatorio */
     numeroAleatorio(min, max) {
       return Math.floor(Math.random() * (max - min + 1) + min);
     },
+    /* Método para comprobar el resultado en función de la operación seleccionada */
     comprobarResultado() {
       this.correcto = false;
 

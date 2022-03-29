@@ -1,14 +1,10 @@
 <template>
   <div class="row mt-3">
-    <div
-      id="pregunta"
-      class="col-10 mx-auto"
-    >
+    <div id="pregunta" class="col-10 mx-auto">
       <p class="my-auto py-2">
         En la granja hay muchos animales. Cuenta cuántas veces aparece éste:
         <span>{{ this.animalABuscar.nombre }}</span>
       </p>
-    
     </div>
   </div>
   <div class="row">
@@ -110,39 +106,40 @@ export default {
   mounted() {
     /* Cuando el tiempo finaliza, detenemos el temporizador */
     this.emitter.on("finTiempo", (finTiempo) => {
-      console.log("fin");
       clearInterval(this.intervalID);
+      // Llamamos al modal para introducir el número
       this.emitter.emit("finGranja", this.animalABuscar);
     });
   },
   methods: {
     comenzar() {
-      this.comienzo=true;
-      this.intervalID=setInterval(this.cambiaOpacidad, 100);
+      this.comienzo = true;
+      /* CIntervalo para cambiar la opacidad de las imágenes */
+      this.intervalID = setInterval(this.cambiaOpacidad, 100);
     },
+    /* Método para seleccionar un animal aleatorio entre los disponibles */
     eligeAnimal() {
       let indice;
 
       indice = this.numeroAleatorio(0, this.listaAnimales.length - 1);
       this.animalABuscar = this.listaAnimales[indice];
     },
+    /* Método que modifica la opacidad de las imágenes */
     cambiaOpacidad() {
-       let img = document.getElementById("animal");
-       
+      let img = document.getElementById("animal");
+
       //Aprovechamos el momento en que la imagen no se ve para cargar una nueva
       if (this.opacidad <= 0) {
         this.muestraImagen();
       }
 
-      /*La opacidad irá aumentando hasta que llegue a 1,3. Entonces pondremos el flag
-      a false para indicar que debe empezar a disminuir. Se lleva hasta 1,3 para que 
+      /*La opacidad irá aumentando hasta que llegue a 1.3 y 
+      luego comenzará a disminuir. Se lleva hasta 1,3 para que 
       el dibujo permanezca un poco más en la pantalla y el niño tenga tiempo suficiente
-      para verlo.
-      Cuando llegue a 0 haremos lo contrario, pondremos el flag a true para indicar
-      que debe empezar a aumentar */
+      para verlo. */
       if (this.aumentarOpacidad) {
         this.opacidad = this.opacidad + 0.05;
-          if (this.opacidad >= 1.3) {
+        if (this.opacidad >= 1.3) {
           this.aumentarOpacidad = false;
         }
       } else {
@@ -154,9 +151,12 @@ export default {
       // Aplicamos la nueva opacidad a la imagen
       img.style.opacity = this.opacidad;
     },
+    /* Elegir un número aleatorio */
     numeroAleatorio(min, max) {
       return Math.floor(Math.random() * (max - min + 1) + min);
     },
+    /* Método para seleccionar una imagen y actualizar el contador
+    con las veces que ha aparecido */
     muestraImagen() {
       let indice;
 
@@ -169,6 +169,7 @@ export default {
       //Calculamos su posición
       this.posicionImagen();
     },
+    /*Calculamos una posición aleatoria para la imagen */
     posicionImagen() {
       let img = document.getElementById("animal");
 
@@ -180,6 +181,7 @@ export default {
       img.style.marginLeft = `${x}px`;
       img.style.marginTop = `${y}px`;
 
+      /* Escalamos para dar un poco de sensación de profundidad */
       if (-50 < y && y < 100) {
         img.style.transform = "scale(0.7)";
       } else {
@@ -190,18 +192,6 @@ export default {
         }
       }
     },
-    // comprobarAnimales() {
-    //   this.correcto = false;
-    //   let puntos = JSON.parse(localStorage.getItem("puntuaciones"));
-
-    //   if (parseInt(this.numAnimales) === this.animalABuscar.contador) {
-    //     this.correcto = true;
-    //     puntos[2]++;
-    //     localStorage.setItem("puntuaciones", JSON.stringify(puntos));
-    //     this.emitter.emit("pararTiempo", true);
-    //     this.emitter.emit("puntoConseguido", true);
-    //   }
-    // },
   },
 };
 </script>

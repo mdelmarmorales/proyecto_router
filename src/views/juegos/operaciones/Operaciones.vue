@@ -1,4 +1,3 @@
-<!-- Radio buttons para seleccionar la operación -->
 <template>
   <div class="row">
     <div id="cuadro_blanco" class="col-10 mx-auto mt-5">
@@ -15,6 +14,7 @@
       </div>
       <div class="row mx-auto my-4 py-2 d-flex justify-content-around">
         <p class="enunciado col-5">¿Qué operación quieres practicar?</p>
+        <!-- Radio buttons para seleccionar la operación -->
         <b-form-radio-group class="col-6">
           <label class="form-check-label mr-5">
             <input

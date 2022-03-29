@@ -55,14 +55,18 @@ export default {
     });
   },
   methods: {
+    /* Método para comprobar si el nº introducido corresponde
+    con el nº de veces que ha aparecido el animal en el juego de la granja */
     comprobarAnimales() {
       this.correcto = false;
       let puntos = JSON.parse(localStorage.getItem("puntuaciones"));
 
       if (parseInt(this.numAnimales) === this.animalABuscar.contador) {
         this.correcto = true;
+        //Si acierta, sumamos un punto, paramos el temporizador y mostramos mensaje
         puntos[2]++;
         localStorage.setItem("puntuaciones", JSON.stringify(puntos));
+        /* Cerramos este modal y emitimos el evento para abrir el de punto conseguido */
         $("#finGranja").modal("hide");
         this.emitter.emit("puntoConseguido", true);
       }

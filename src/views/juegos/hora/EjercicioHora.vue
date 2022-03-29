@@ -23,6 +23,7 @@
           >
             {{ this.hora[0].hora.numero }}:{{ this.hora[0].minuto.numero }}
           </span>
+           <!-- Si los minutos pasan de 35, restamos uno para sumar las horas "menos algo".  -->
           <span class="hora ml-2 mr-6 px-5 py-2" v-else>
             {{ this.hora[0].hora.numero - 1 }}:{{ this.hora[0].minuto.numero }}
           </span>
@@ -110,10 +111,11 @@ export default {
       if (parseInt(this.horaPropuesta) == this.indiceHora) {
         this.correcto = true;
         this.contador++;
-        console.log(this.contador);
+        // Pasamos al padre el nº de juegos completados hasta el momento
         this.emitter.emit("contadorJuegos", this.contador);
-        // Si es el último ejercicio, llamamos al modal de punto conseguido
+        // Si eya están terminados los 3 ejercicios, llamamos al modal de punto conseguido
         if (this.contador==3) {
+          //Si acierta, sumamos un punto, paramos el temporizador y mostramos mensaje
           puntos[5]++;
           localStorage.setItem("puntuaciones", JSON.stringify(puntos));
           this.emitter.emit("pararTiempo", true);

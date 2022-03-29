@@ -69,7 +69,7 @@
 <script>
 export default {
   name: "Calculadora",
-  inject:['id'],
+  inject: ["id"],
   data() {
     return {
       correctoOperacion: null,
@@ -80,28 +80,34 @@ export default {
     };
   },
   mounted() {
+    /* Esperamos recibir el nº resultante de la operación
+    y si éste es correcto o no */
     this.emitter.on("calculos", (calculos) => {
       this.resultado = calculos.resultado;
       this.correctoOperacion = calculos.correcto;
     });
   },
   methods: {
+    /* Comprobamos si el nº de manzanas es el correcto */
     comprobarManzanas() {
-      let puntos= JSON.parse(localStorage.getItem("puntuaciones"));
+      let puntos = JSON.parse(localStorage.getItem("puntuaciones"));
       this.correctoManzana = false;
 
+      //Si acierta, sumamos un punto, paramos el temporizador y mostramos mensaje
       if (this.resultado == this.contador) {
         this.correctoManzana = true;
         puntos[0]++;
-        localStorage.setItem("puntuaciones",JSON.stringify(puntos));
+        localStorage.setItem("puntuaciones", JSON.stringify(puntos));
         this.emitter.emit("pararTiempo", true);
         this.emitter.emit("puntoConseguido", true);
       }
     },
+    /* Mñetodo para borrar las manzanas y poner el contador a cero */
     corregirManzana() {
-      this.manzanas=[];
-      this.contador=0;
+      this.manzanas = [];
+      this.contador = 0;
     },
+    /* Método para contabilizar las manzanas en la cesta */
     sumarManzanas(event) {
       let imagen = event.target.getAttribute("src");
       let item;
