@@ -47,12 +47,14 @@ export default {
   props: {
     seleccionSerie: Array,
   },
+  //Esperamos el evento para mostrar este juego
   mounted() {
     this.emitter.on("correctoComp", (correctoComp) => {
       this.correcto = correctoComp;
     });
   },
   computed: {
+    //Seleccionamos si queremos buscar el menor o el mayor
     menorMayorSelec() {
       let comparacion, indice;
 
@@ -66,6 +68,7 @@ export default {
     numeroAleatorio(min, max) {
       return Math.floor(Math.random() * (max - min + 1) + min);
     },
+    /* Método para comprobar si la solución es correcta */
     comprobarSeleccion() {
       let puntos= JSON.parse(localStorage.getItem("puntuaciones"));
       this.correctoSelec = false;
@@ -80,6 +83,7 @@ export default {
           this.seleccionSerie[this.seleccionSerie.length - 1]
         ) {
           this.correctoSelec = true;
+          //Si acierta, sumamos un punto, paramos el temporizador y mostramos mensaje
           puntos[3]++;
           localStorage.setItem("puntuaciones", JSON.stringify(puntos));
           this.emitter.emit("pararTiempo", true);

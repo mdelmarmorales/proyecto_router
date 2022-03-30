@@ -44,15 +44,18 @@ export default {
     };
   },
   mounted() {
+    //Esperamos el evento que indique que ha acertado el primer juego
     this.emitter.on("correcto", (correcto) => {
       
       this.acierto1 = correcto;
     });
   },
   methods: {
+    // Método que pasa el nº al padre para que lo reproduzca */
     habla(lectura) {
       this.emitter.emit("numeroVoz", this.numeroVoz.numero);
     },
+    /* Método para comprobar la respuesta y emitir un evento para mostrar el tercer ejercicio */
     comprobar() {
       this.correcto = arguments[0] == arguments[1].toLowerCase();
       this.emitter.emit("correcto2", this.correcto);

@@ -2,7 +2,7 @@
   <div class="row juego mx-3 my-4 d-flex justify-content-around align-items-center">
     <form class="col-9 mx-auto p-3" @submit.prevent="comprobarSerie">
       <div class="row">
-        <!-- Recorremos el array. Si hay un número, lo escribirmos.
+        <!-- Recorremos el array. Si hay un número, lo escribimos.
             Si no, ponemos el input para el niño escriba el nº que falta -->
         <span
           class="
@@ -55,6 +55,7 @@ export default {
     serieSolucion: Array,
   },
   computed: {
+    /* Selecionamos si la serie se va a formar sumando, restando o multiplicando */
     tipoSerie() {
       let tipo, indice;
 
@@ -63,6 +64,7 @@ export default {
 
       return tipo;
     },
+    /* Valor del nº que vamos a ocultar */
     valorPosicionVacia() {
       let indice = this.numeroAleatorio(0, this.serieSolucion.length - 1);
       let valor = this.serieSolucion[indice];
@@ -74,6 +76,7 @@ export default {
     numeroAleatorio(min, max) {
       return Math.floor(Math.random() * (max - min + 1) + min);
     },
+    /* Método para comprobar que el valor introducido es correcto */
     comprobarSerie() {
       this.correcto = false;
 
@@ -81,6 +84,7 @@ export default {
         this.correcto = true;
       }
 
+      //Emitimos un evento si ha acertado
       this.emitter.emit("correctoSerie", this.correcto);
     },
   },

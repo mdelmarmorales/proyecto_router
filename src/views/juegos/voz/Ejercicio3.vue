@@ -51,14 +51,17 @@ export default {
     };
   },
   mounted() {
+    //Esperamos el evento que indique que ha acertado el segundo juego
     this.emitter.on("correcto2", (correcto) => {
       this.acierto2 = correcto;
     });
   },
   methods: {
+    // Método que pasa el nº al padre para que lo reproduzca */
     habla(lectura) {
       this.emitter.emit("numeroVoz", this.numeroVoz.numero);
     },
+    /* Método para comprobar la respuesta*/
     comprobar() {
       let puntos = JSON.parse(localStorage.getItem("puntuaciones"));
 
@@ -67,6 +70,7 @@ export default {
         arguments[0].nombre == arguments[2].toLowerCase();
 
       if (this.correcto) {
+        //Si acierta, sumamos un punto, paramos el temporizador y mostramos mensaje
         puntos[4]++;
         localStorage.setItem("puntuaciones", JSON.stringify(puntos));
         this.emitter.emit("pararTiempo", true);

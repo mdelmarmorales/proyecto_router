@@ -40,12 +40,13 @@ export default {
     serieSolucion: Array,
   },
   computed: {
-    seleccionSerie() {
-      let seleccion = [];
-      seleccion = this.construyeSeleccion();
+  //   seleccionSerie() {
+  //     let seleccion = [];
+  //     seleccion = this.construyeSeleccion();
 
-      return seleccion;
-    },
+  //     return seleccion;
+  //   },
+  /* Seleccionamos si vamos a preguntar cuál es el menor o el mayor */
     menorMayor() {
       let comparacion, indice;
 
@@ -55,6 +56,7 @@ export default {
       return comparacion;
     },
   },
+  // Esperamos el evento para mostrar el segundo juego
   mounted() {
     this.emitter.on("correctoSerie", (correctoSerie) => {
       
@@ -65,6 +67,8 @@ export default {
     numeroAleatorio(min, max) {
       return Math.floor(Math.random() * (max - min + 1) + min);
     },
+    /* Comprobamos si el nº introducido es correcto, dependiendo
+    de si estamos buscando el menor o el mayor */
     comprobarComparacion() {
       this.correctoComp = false;
 
@@ -82,6 +86,7 @@ export default {
           this.correctoComp = true;
         }
       }
+      //Si es correcto, emitimos un evento para mostrar el tercer juego.
       this.emitter.emit("correctoComp", this.correctoComp);
     },
   },

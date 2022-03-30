@@ -20,7 +20,7 @@
 </template>
 
 <script>
-import json from "@/json/listaNumeros.json";
+import json from "@/json/listaNumeros.json"; //Importamos el JSON con la lista de números
 import Temporizador from "@/components/Temporizador.vue";
 import Ejercicio1 from "./Ejercicio1.vue";
 import Ejercicio2 from "./Ejercicio2.vue";
@@ -44,6 +44,7 @@ export default {
     };
   },
   computed: {
+    // Variable que varía en función de la edad del niño
     max() {
       let maximo;
       let edad = localStorage.getItem("edadNinyo");
@@ -63,6 +64,17 @@ export default {
       }
       return maximo;
     },
+    //Seleccionamos un nº diferente para cada juego
+     numeroVoz() {
+      return this.obtenerNumero();
+    },
+    numeroVoz2() {
+      return this.obtenerNumero();
+    },
+    numeroVoz3() {
+      return this.obtenerNumero();
+    },
+    /* Extraemos los elementos necesarios para la Web Speech API */
     voiceSelect() {
       return document.querySelector("select");
     },
@@ -72,18 +84,10 @@ export default {
     inputTxt() {
       return document.querySelector(".txt");
     },
-    numeroVoz() {
-      return this.obtenerNumero();
-    },
-    numeroVoz2() {
-      return this.obtenerNumero();
-    },
-    numeroVoz3() {
-      return this.obtenerNumero();
-    },
+   
   },
   beforeMount() {
-    //Inicia la API speechSyntheu
+    //Inicia la Web Speech API
     this.populateVoiceList();
     if (speechSynthesis.onvoiceschanged !== undefined) {
       speechSynthesis.onvoiceschanged = this.populateVoiceList;
@@ -101,26 +105,29 @@ export default {
     numeroAleatorio(min, max) {
       return Math.floor(Math.random() * (max - min + 1) + min);
     },
+    /* Obtenemos un números aleatorio del listado */
     obtenerNumero() {
       let indice;
       indice = this.numeroAleatorio(0, this.numeros.length - 1);
       return this.numeros[indice];
     },
-    comprobar() {
-      let acierto = false;
-      if (arguments.length == 2) {
-        acierto = arguments[0] == arguments[1];
-      } else {
-        acierto =
-          arguments[0].numero == arguments[1] &&
-          arguments[0].nombre == arguments[2];
-      }
-      return acierto;
-    },
+    /* Comprobamos si la respuesta es correcta */
+    // comprobar() {
+    //   let acierto = false;
+    //   if (arguments.length == 2) {
+    //     acierto = arguments[0] == arguments[1];
+    //   } else {
+    //     acierto =
+    //       arguments[0].numero == arguments[1] &&
+    //       arguments[0].nombre == arguments[2];
+    //   }
+    //   return acierto;
+    // },
     //Recuperamos el listado de voces disponibles en la API
     populateVoiceList() {
       this.voices = this.synth.getVoices();
     },
+    /* Método que permite reproducir el texto */
     speak(lectura) {
       if (this.synth.speaking) {
         console.error("Already speaking...");
@@ -130,10 +137,11 @@ export default {
       if (this.numeroVoz !== "") {
         this.speakText = new SpeechSynthesisUtterance(lectura);
 
-        //La voz será la española
+        //Seleccionamos la voz española
         this.speakText.voice = this.voices.filter(
           (voice) => voice.name == "Google español de Estados Unidos"
         )[0];
+        /* Variables para definir la velocidad y el tono de la voz */
         this.speakText.rate = 1;
         this.speakText.pitch = 1;
 

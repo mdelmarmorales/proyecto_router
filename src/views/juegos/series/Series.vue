@@ -41,6 +41,7 @@ export default {
     };
   },
   computed: {
+    // Variable que varía en función de la edad del niño
     max() {
       let maximo;
 
@@ -77,6 +78,7 @@ export default {
 
       return tipo;
     },
+    // Solución de la serie
     serieSolucion() {
       let serie = [];
 
@@ -84,6 +86,7 @@ export default {
 
       return serie;
     },
+    // Seleccionamos varios números de la selección anterior
     seleccionSerie() {
       let seleccion = [];
       seleccion = this.construyeSeleccion();
@@ -98,6 +101,8 @@ export default {
     numeroAleatorio(min, max) {
       return Math.floor(Math.random() * (max - min + 1) + min);
     },
+    /* Método para construir la serie, ya sea sumando, restando
+    o multiplicando el número anterior */
     construyeSerie() {
       let inicial, paso;
       let serieSolucion = [];
@@ -148,42 +153,48 @@ export default {
       }
       return serieSolucion;
     },
+    /* Método para extraer algunos números de la serie */
     construyeSeleccion() {
       let indice,
-        tamanyo = 3;
+        tamanyo = 3; //Seleccionamos 3 números de la serie
 
       let seleccion = [];
 
       for (let i = 0; i < tamanyo; i++) {
         indice = this.numeroAleatorio(0, this.serieSolucion.length - 1);
 
+        /*Si un nº ya está en la selección, volvemos a calcular el índice
+        para sacar otro número de la serie */
         while (seleccion.includes(this.serieSolucion[indice])) {
           indice = this.numeroAleatorio(0, this.serieSolucion.length - 1);
         }
 
+        //Cuando encontremos un nº no repetido lo incluimos en la selección
         seleccion.push(this.serieSolucion[indice]);
       }
+
+      //Ordenamos la selección
       seleccion = seleccion.sort((a, b) => a - b);
 
       return seleccion;
     },
-    comprobarSeleccion() {
-      this.correctoSelec = false;
+    // comprobarSeleccion() {
+    //   this.correctoSelec = false;
 
-      if (this.menorMayorSelec == "menor") {
-        if (this.selecPropuesta == this.seleccionSerie[0]) {
-          this.correctoSelec = true;
-        }
-      } else {
-        if (
-          this.selecPropuesta ==
-          this.seleccionSerie[this.seleccionSerie.length - 1]
-        ) {
-          this.correctoSelec = true;
-        }
-      }
-      return this.correctoSelec;
-    },
+    //   if (this.menorMayorSelec == "menor") {
+    //     if (this.selecPropuesta == this.seleccionSerie[0]) {
+    //       this.correctoSelec = true;
+    //     }
+    //   } else {
+    //     if (
+    //       this.selecPropuesta ==
+    //       this.seleccionSerie[this.seleccionSerie.length - 1]
+    //     ) {
+    //       this.correctoSelec = true;
+    //     }
+    //   }
+    //   return this.correctoSelec;
+    // },
   },
 };
 </script>

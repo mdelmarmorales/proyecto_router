@@ -48,9 +48,11 @@ export default {
     };
   },
   methods: {
+    // Método que pasa el nº al padre para que lo reproduzca */
     habla(lectura) {
       this.emitter.emit("numeroVoz", this.numeroVoz.numero);
     },
+    /* Método para comprobar la respuesta y emitir un evento para mostrar el segundo ejercicio */
     comprobar() {
       this.correcto = arguments[0] == arguments[1];
 
