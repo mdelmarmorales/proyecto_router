@@ -1,23 +1,46 @@
 <template>
   <div class="row">
     <div id="cuadro_blanco" class="col-10 mx-auto mt-5">
-      <div v-if="this.idJugador" class="row d-flex justify-content-around align-items-center">
+      <div v-if="this.idJugador" class="row justify-content-around">
         <div
           v-for="juego in juegosPrimeraFila"
           :key="juego.id"
-          class="col-4 mt-2"
+          class="col-sm-3 mt-2"
         >
           <div class="card m-2 p-2">
             <router-link :to="{ name: juego.url }">
-              <div class="zoom">
-              <img :src="juego.imagen" :alt="juego.nombre" class="card-img" />
-               </div>
-              <p class="card-text nombreJuego mx-auto mt-3">{{ juego.nombre }}</p>
+              <img
+                :src="juego.imagen"
+                :alt="juego.nombre"
+                class="card-img py-2"
+              />
+              <div class="card-body">
+                <p class="card-title nombreJuego mx-auto">{{ juego.nombre }}</p>
+              </div>
             </router-link>
           </div>
         </div>
       </div>
-      <!-- Si el usuario no se ha logueado, mostramos mensaje para que lo haga -->
+      <div v-if="this.idJugador" class="row justify-content-around">
+        <div
+          v-for="juego in juegosSegundaFila"
+          :key="juego.id"
+          class="col-sm-3 mb-2"
+        >
+          <div class="card m-2 p-2">
+            <router-link :to="{ name: juego.url }">
+              <img
+                :src="juego.imagen"
+                :alt="juego.nombre"
+                class="card-img py-2"
+              />
+              <div class="card-body">
+                <p class="card-title nombreJuego mx-auto">{{ juego.nombre }}</p>
+              </div>
+            </router-link>
+          </div>
+        </div>
+      </div>
       <div id="avisoLogin" v-else class="row d-flex justify-content-around align-items-center">
         <div class="aviso col-8 py-5">
           <p class="textoAviso">
@@ -42,37 +65,40 @@ export default {
       juegosPrimeraFila: [
         {
           id: 0,
-          imagen: require("@/images/boton_operaciones.svg"),
+          imagen: require("@/images/boton_operaciones.png"),
           nombre: "Practica operaciones",
           url: "Operaciones",
         },
         {
           id: 1,
-          imagen: require("@/images/boton_compra.svg"),
+          imagen: require("@/images/boton_compra.png"),
           nombre: "Vamos a la compra",
           url: "Compra",
         },
         {
           id: 2,
-          imagen: require("@/images/boton_contar.svg"),
+          imagen: require("@/images/boton_contar.png"),
           nombre: "A contar",
           url: "Granja",
         },
+        
+      ],
+      juegosSegundaFila: [
         {
           id: 3,
-          imagen: require("@/images/boton_series.svg"),
+          imagen: require("@/images/boton_series.png"),
           nombre: "Series numéricas",
           url: "Series",
         },
         {
           id: 4,
-          imagen: require("@/images/boton_escribe.svg"),
+          imagen: require("@/images/boton_escribe.png"),
           nombre: "Escribe el número",
           url: "Voz",
         },
         {
           id: 5,
-          imagen: require("@/images/boton_hora.svg"),
+          imagen: require("@/images/boton_hora.png"),
           nombre: "¿Qué hora es?",
           url: "Hora",
         },
@@ -87,38 +113,20 @@ export default {
   background-color: #e0f7f2;
   border: 2px solid #071488;
   border-radius: 15px;
-  position: relative;
-  overflow: hidden;
 }
 
 /* Enlace del router link es transformado a un "a", por eso se formatea así */
 .card a {
   text-decoration: none;
-  transition: all 1.5s ease;
-}
-
-.card zoom {
-  overflow: hidden;
 }
 
 .card img {
-  width: 100%;
-  height: 30vh;
-  object-fit: contain;
-  transition: all 1s ease;
-}
-
-.card:hover img {
-  transform: scale(1.1);
+  height: 200px;
 }
 
 .nombreJuego {
   color: #071488;
 }
-
-
-
-
 
 #cuadro_blanco {
   min-height: 500px;
@@ -139,7 +147,7 @@ export default {
   text-decoration: none;
 }
 
-#avisoLogin {
+#avisoLogin{
   height: 100vh;
 }
 
