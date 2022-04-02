@@ -16,12 +16,12 @@
         <p class="enunciado">
           Lee la lista de la compra y pincha los alimentos para introducirlos en
           la cesta. Después calcula cuánto han costado y cuánto dinero te sobra
-          al pagar.
+          al pagar. Pulsa "Comenzar".
         </p>
       </div>
-      <Alimentos :productos="productos" :comienzo="comienzo" class="row justify-content-center" />
+      <Alimentos v-if="this.comienzo" :productos="productos" :comienzo="comienzo" class="row justify-content-center" />
       <div class="row d-flex flex-row justify-content-around">
-        <ListaCompra :productos="productos" />
+        <ListaCompra v-if="this.comienzo" :productos="productos" />
       </div>
     </div>
   </div>

@@ -13,16 +13,16 @@
           <img src="../images/puntos.jpg" alt="puntuacion" class="col-10" />
         </div>
         <div class="modal-footer">
-           <button
+           <!-- <button
             type="button"
             class="btnSeguir"
             data-dismiss="modal"
            
           >
            <router-link :to="{name: this.nombrePagina}">Jugar de nuevo</router-link> 
-          </button>
+          </button> -->
           <button type="button" class="btnSeguir" data-dismiss="modal">
-            <router-link :to="{ name: 'Juegos' }">Otro juego</router-link>
+            <router-link :to="{ name: 'Juegos' }">Elegir juego</router-link>
           </button>
           <button type="button" class="btnSalir" data-dismiss="modal" @click="salir">
            Salir

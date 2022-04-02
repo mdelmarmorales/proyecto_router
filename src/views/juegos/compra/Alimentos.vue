@@ -26,9 +26,9 @@ export default {
     /*Método que, si el juego ya ha comenzado, pasa por el bus de eventos
     la imagen que hemos pulsado para que entre en la cesta */
     llenarCesta(event) {
-      if (this.comienzo){
+      // if (this.comienzo){
         this.emitter.emit("productoSelec", event.target.alt);
-      }
+      // }
     },
   },
 };

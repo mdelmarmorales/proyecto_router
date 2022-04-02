@@ -20,6 +20,13 @@ export default {
       this.eliminarTemporizador();
     });
   },
+  /* Watcher que detecta un cambio en la url, y para el temporizador
+  si vamos a otro juego */
+  watch: {
+    $route (to, from) {
+      this.eliminarTemporizador();
+    }
+  },
   methods: {
     actualizaTemporizador() {
       this.interval = setInterval(() => {

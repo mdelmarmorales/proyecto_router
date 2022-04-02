@@ -8,7 +8,7 @@
   <div class="container-fluid">
     <Header />
     <!-- Si el usuario no se ha logueado, no mostramos el menú para que no pueda navegar a ninguna página -->
-    <Menu v-if="this.idJugador"/>
+    <Menu />
     <router-view />
     <Footer />
   </div>

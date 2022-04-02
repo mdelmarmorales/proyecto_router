@@ -131,40 +131,46 @@ export default {
         case "suma":
           if (this.operandos.oper1 + this.operandos.oper2 == parseInt(this.resultado))
             this.correcto = true;
-          this.emitter.emit("calculos", {
-            correcto: this.correcto,
-            resultado: parseInt(this.resultado),
-          });
+          // this.emitter.emit("calculos", {
+          //   correcto: this.correcto,
+          //   resultado: parseInt(this.resultado),
+          // });
           break;
         case "resta":
           if (this.operandos.oper1 - this.operandos.oper2 == parseInt(this.resultado))
             this.correcto = true;
-          this.emitter.emit("calculos", {
-            correcto: this.correcto,
-            resultado: parseInt(this.resultado),
-          });
+          // this.emitter.emit("calculos", {
+          //   correcto: this.correcto,
+          //   resultado: parseInt(this.resultado),
+          // });
 
           break;
         case "multiplicacion":
           if (this.operandos.oper1 * this.operandos.oper2 == parseInt(this.resultado))
             this.correcto = true;
-          this.emitter.emit("calculos", {
-            correcto: this.correcto,
-            resultado: parseInt(this.resultado),
-          });
+          // this.emitter.emit("calculos", {
+          //   correcto: this.correcto,
+          //   resultado: parseInt(this.resultado),
+          // });
 
           break;
         case "division":
           if (this.operandos.oper1 / this.operandos.oper2 == parseInt(this.resultado))
             this.correcto = true;
-          this.emitter.emit("calculos", {
-            correcto: this.correcto,
-            resultado: parseInt(this.resultado),
-          });
+          // this.emitter.emit("calculos", {
+          //   correcto: this.correcto,
+          //   resultado: parseInt(this.resultado),
+          // });
           break;
         default:
           console.log("Ha ocurrido un error. Operación no válida.")
           break;
+      }
+      if(this.correcto){
+         this.emitter.emit("calculos", {
+            correcto: this.correcto,
+            resultado: parseInt(this.resultado),
+          })
       }
     },
   },

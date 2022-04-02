@@ -26,13 +26,13 @@
       </div>
     </form>
     <img
-      class="correcto"
+      class="correcto mr-3"
       src="@/images/correcto.png"
       alt="correcto"
       v-if="this.correcto === true"
     />
     <img
-      class="correcto col-1"
+      class="correcto col-1 mr-3"
       src="@/images/incorrecto.png"
       alt="correcto"
       v-if="this.correcto === false"

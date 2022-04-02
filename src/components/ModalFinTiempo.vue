@@ -12,11 +12,8 @@
           </p>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btnSeguir">
-            <router-link :to="{ name: self }">Jugar de nuevo</router-link>
-          </button>
           <button type="button" class="btnSeguir" data-dismiss="modal">
-            <router-link :to="{ name: 'Juegos' }">Otro juego</router-link>
+            <router-link :to="{ name: 'Juegos' }">Elegir juego</router-link>
           </button>
           <button
             type="button"

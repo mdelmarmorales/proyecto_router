@@ -12,8 +12,13 @@
         </button>
         <Temporizador v-else class="col-1 ml-auto" />
       </div>
-      <div class="row mx-auto my-4 py-2 d-flex justify-content-around">
-        <p class="enunciado col-5">¿Qué operación quieres practicar?</p>
+      <div class="row d-flex mx-2 mt-3 mb-1 text-left">
+        <p class="enunciado col-12 p-2">
+         Elige la operación y luego sigue las instrucciones. Pulsa "Comenzar".
+        </p>
+      </div>
+      <div v-if="this.comienzo" class="row mx-auto my-4 py-2 d-flex justify-content-around">
+        <!-- <p class="pregunta col-5">¿Qué operación quieres practicar?</p> -->
         <!-- Radio buttons para seleccionar la operación -->
         <b-form-radio-group class="col-6">
           <label class="form-check-label mr-5">
@@ -121,5 +126,8 @@ export default {
 
 .enunciado {
   font-weight: bold;
+  background-color: #e0f7f2;
+  border: 2px solid #071488;
+  border-radius: 10px;
 }
 </style>

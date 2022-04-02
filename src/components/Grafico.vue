@@ -1,3 +1,5 @@
+<!-- Componente para mostrar el gráfico con los puntos conseguidos en cada fecha.
+Se utilizan rutas dinámicas en función de la id del juego -->
 <template>
   <div id="cuadro_blanco" class="col-10 mx-auto mt-5 d-flex align-items-center">
 
@@ -34,7 +36,7 @@ export default {
     consultarPuntos() {
       let datosGrafico = {
         idJugador: localStorage.getItem("idJugador"),
-        idJuego: this.$route.params.idJuego,
+        idJuego: this.$route.params.idJuego, //Parámetros para la rutas dinámicas
       };
 
       fetch("http://localhost/API_proyecto/consultarGrafico", {

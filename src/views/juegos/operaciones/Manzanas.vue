@@ -106,6 +106,7 @@ export default {
     corregirManzana() {
       this.manzanas = [];
       this.contador = 0;
+      this.correctoManzana=null;
     },
     /* Método para contabilizar las manzanas en la cesta */
     sumarManzanas(event) {

@@ -39,6 +39,7 @@ export default {
       return this.$route.name;
     }
   },
+  // Emite un evento para que aparezca el modal de salida.
   methods: {
      salir(){
       this.emitter.emit("salir", true);

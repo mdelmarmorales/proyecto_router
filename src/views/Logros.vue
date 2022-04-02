@@ -1,6 +1,6 @@
 <template>
-  <div id="cuadro_blanco" class="col-10 mx-auto mt-5 d-flex align-items-center">
-    <div class="row d-flex flex-row w-100 justify-content-around align-items-center">
+  <div id="cuadro_blanco" class="col-10 mx-auto mt-5">
+    <div v-if="this.idJugador" class="row d-flex flex-row w-100 justify-content-around align-items-center">
       <table class="table table-striped table-bordered col-9">
         <thead class="thead">
           <tr>
@@ -49,6 +49,17 @@
       </table>
       <img src="../images/logros.jpg" alt="logros" class="col-2"/>
     </div>
+       <div id="avisoLogin" v-else class="row d-flex justify-content-around align-items-center">
+        <div class="aviso col-8 py-5">
+          <p class="textoAviso">
+            Tienes que introducir tus datos de usuario o crear una cuenta
+            para poder jugar.
+          </p>
+          <button type="button" class="btnSeguir">
+            <router-link :to="{ name: 'Home' }">Acceder</router-link>
+          </button>
+        </div>
+      </div>
     </div>
 </template>
 
@@ -57,6 +68,7 @@ export default {
   name: "Logros",
   data() {
     return {
+      idJugador: localStorage.getItem("idJugador"),
       puntos: [],
       puntuacionTotal: 0,
       medallas: "",
@@ -152,5 +164,24 @@ h1 {
 
 .img_logros{
    height: 250px;
+}
+#avisoLogin{
+  height: 100vh;
+}
+
+.aviso {
+  background-color: #e0f7f2;
+  border: 2px solid #071488;
+  border-radius: 15px;
+}
+.btnSeguir {
+  background-color: #3fcfba;
+  border: 2px solid #071488;
+  border-radius: 5px;
+}
+
+.btnSeguir a {
+  color: #071488;
+  text-decoration: none;
 }
 </style>

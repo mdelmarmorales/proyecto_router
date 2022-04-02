@@ -12,6 +12,11 @@
         </button>
         <Temporizador v-else class="col-1 ml-auto" />
       </div>
+       <div class="row d-flex mx-2 mt-3 mb-1 text-left">
+        <p class="enunciado col-12 p-2">
+         Elige el reloj correcto en cada ejercicio. Pulsa "Comenzar".
+        </p>
+      </div>
       <div>
         <EjercicioHora
           :hora="hora1"
@@ -128,6 +133,12 @@ export default {
 #cuadro_blanco {
   min-height: 500px;
   background-color: #ffffff;
+  border: 2px solid #071488;
+  border-radius: 10px;
+}
+.enunciado {
+  font-weight: bold;
+  background-color: #e0f7f2;
   border: 2px solid #071488;
   border-radius: 10px;
 }

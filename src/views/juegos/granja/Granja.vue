@@ -3,7 +3,7 @@
     <div id="pregunta" class="col-10 mx-auto">
       <p class="my-auto py-2">
         En la granja hay muchos animales. Cuenta cuántas veces aparece éste:
-        <span>{{ this.animalABuscar.nombre }}</span>
+        <span>{{ this.animalABuscar.nombre }}</span>. Pulsa "Comenzar".
       </p>
     </div>
   </div>

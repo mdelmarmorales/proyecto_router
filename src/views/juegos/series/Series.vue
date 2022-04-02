@@ -12,8 +12,13 @@
         </button>
         <Temporizador v-else class="col-1 ml-auto" />
       </div>
+      <div class="row d-flex mx-2 mt-3 mb-1 text-left">
+        <p class="enunciado col-12 p-2">
+         Completa las series y luego elige el número correcto. Pulsa "Comenzar".
+        </p>
+      </div>
       <div class="mt-2 d-flex flex-column justify-content-around">
-        <Ejercicio1 :serieSolucion="serieSolucion" />
+        <Ejercicio1 v-if="this.comienzo" :serieSolucion="serieSolucion" />
         <Ejercicio2 :serieSolucion="serieSolucion" />
         <Ejercicio3 :seleccionSerie="seleccionSerie" />
       </div>
@@ -228,6 +233,12 @@ export default {
   width: 90%;
   background-color: #ffffff;
   border: 3px solid #071488;
+  border-radius: 10px;
+}
+.enunciado {
+  font-weight: bold;
+  background-color: #e0f7f2;
+  border: 2px solid #071488;
   border-radius: 10px;
 }
 </style>
