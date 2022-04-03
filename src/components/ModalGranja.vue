@@ -46,6 +46,7 @@ export default {
       finTiempo: null,
       animalABuscar: [],
       correcto: null,
+      numAnimales:null
     };
   },
   mounted() {

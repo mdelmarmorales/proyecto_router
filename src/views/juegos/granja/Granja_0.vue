@@ -9,7 +9,7 @@
   </div>
   <div class="row">
     <div id="cuadro_granja" class="col-10 mx-auto my-3">
-      <div id="fondo_granja" class="row d-flex my-2">
+      <div class="row d-flex my-2">
         <button
           v-if="!this.comienzo"
           class="btn-comprobar ml-auto mr-2"
@@ -114,7 +114,7 @@ export default {
   methods: {
     comenzar() {
       this.comienzo = true;
-      /* Intervalo para cambiar la opacidad de las imágenes */
+      /* CIntervalo para cambiar la opacidad de las imágenes */
       this.intervalID = setInterval(this.cambiaOpacidad, 100);
     },
     /* Método para seleccionar un animal aleatorio entre los disponibles */
@@ -171,39 +171,26 @@ export default {
     },
     /*Calculamos una posición aleatoria para la imagen */
     posicionImagen() {
-      //Obtenemos la posición del div padre
-      let fondo=document.getElementById("cuadro_granja");
-      let posicion =fondo.getBoundingClientRect();
-
-      //Obtenemos una referencia para la imagen del animal
       let img = document.getElementById("animal");
-      //  console.log(posicion.top, posicion.right, posicion.bottom, posicion.left);
-       console.log(posicion.right,posicion.left)
-        console.log(posicion.bottom,posicion.top);
-      
-      
 
       let x, y;
 
-      // x = this.numeroAleatorio(-(posicion.right+img.width-posicion.left),(posicion.right+img.width-posicion.left));
-      // y = this.numeroAleatorio(-(posicion.bottom+img.height-posicion.top), (posicion.bottom+img.height-posicion.top));
-      x = this.numeroAleatorio(-((posicion.right-posicion.left)/2), (posicion.right-posicion.left)/2-img.width);
-      y = this.numeroAleatorio(posicion.top-img.height,posicion.bottom-posicion.top-img.height);
-      //console.log(x,y);
+      x = this.numeroAleatorio(-700, 700);
+      y = this.numeroAleatorio(-50, 330);
 
-       img.style.marginLeft = `${x}px`;
+      img.style.marginLeft = `${x}px`;
       img.style.marginTop = `${y}px`;
 
       /* Escalamos para dar un poco de sensación de profundidad */
-      // if (-50 < y && y < 100) {
-      //   img.style.transform = "scale(0.7)";
-      // } else {
-      //   if (100 < y && y < 200) {
-      //     img.style.transform = "scale(0.9)";
-      //   } else {
-      //     img.style.transform = "scale(1.2)";
-      //   }
-      // }
+      if (-50 < y && y < 100) {
+        img.style.transform = "scale(0.7)";
+      } else {
+        if (100 < y && y < 200) {
+          img.style.transform = "scale(0.9)";
+        } else {
+          img.style.transform = "scale(1.2)";
+        }
+      }
     },
   },
 };
@@ -211,10 +198,8 @@ export default {
 
 <style scoped>
 img {
-  position: absolute;
-  height: 6.25rem;
-  margin-top:0;
-  margin-left:0;
+  position: relative;
+  height: 100px;
 }
 
 .correcto {
@@ -230,8 +215,6 @@ img {
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-position: center;
-  position:relative;
-   overflow:hidden;
 }
 
 #pregunta {

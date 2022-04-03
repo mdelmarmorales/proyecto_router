@@ -5,7 +5,7 @@
         class="row d-flex flex-row justify-content-around align-items-center"
       >
         <p class="my-auto">De los números anteriores, ¿cuál es el {{ this.menorMayor }}?</p>
-        <input class="form-control col-2" v-model="comparacionPropuesta" />
+        <input id="inputNum" class="form-control col-2" v-model="comparacionPropuesta" />
         <button class="btn-comprobar" type="submit">Comprobar</button>
       </div>
     </form>
@@ -93,5 +93,10 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
+#inputNum {
+  border: 1px solid black;
+  background-color: white;
+  width: 3rem;
+}
 </style>

@@ -14,18 +14,18 @@
           </span>
           ¿cuál es el {{ this.menorMayorSelec }}?
         </p>
-        <input class="form-control col-2" v-model="selecPropuesta" />
+        <input id="inputNum" class="form-control col-2" v-model="selecPropuesta" />
         <button class="btn-comprobar" type="submit">Comprobar</button>
       </div>
     </form>
     <img
-      class="correcto ml-2"
+      class="correcto mx-auto"
       src="@/images/correcto.png"
       alt="correcto"
       v-if="this.correctoSelec === true"
     />
     <img
-      class="correcto ml-2"
+      class="correcto mx-auto"
       src="@/images/incorrecto.png"
       alt="correcto"
       v-if="this.correctoSelec === false"
@@ -96,5 +96,10 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
+#inputNum {
+  border: 1px solid black;
+  background-color: white;
+  width: 3rem;
+}
 </style>
