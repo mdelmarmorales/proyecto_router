@@ -183,23 +183,6 @@ export default {
 
       return seleccion;
     },
-    // comprobarSeleccion() {
-    //   this.correctoSelec = false;
-
-    //   if (this.menorMayorSelec == "menor") {
-    //     if (this.selecPropuesta == this.seleccionSerie[0]) {
-    //       this.correctoSelec = true;
-    //     }
-    //   } else {
-    //     if (
-    //       this.selecPropuesta ==
-    //       this.seleccionSerie[this.seleccionSerie.length - 1]
-    //     ) {
-    //       this.correctoSelec = true;
-    //     }
-    //   }
-    //   return this.correctoSelec;
-    // },
   },
 };
 </script>

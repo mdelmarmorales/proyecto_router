@@ -1,6 +1,7 @@
 <template>
   <div id="cuadro_blanco" class="col-10 mx-auto mt-5">
-    <div v-if="this.idJugador" class="row d-flex flex-row w-100 justify-content-around align-items-center">
+    <!-- Si el jugador está logueado y no es la primera vez que juega -->
+    <div v-if="this.idJugador && !this.nuevoJugador" class="row d-flex flex-row w-100 justify-content-around align-items-center">
       <table class="table table-striped table-bordered col-9">
         <thead class="thead">
           <tr>
@@ -49,11 +50,24 @@
       </table>
       <img src="../images/logros.jpg" alt="logros" class="col-2"/>
     </div>
-       <div id="avisoLogin" v-else class="row d-flex justify-content-around align-items-center">
+    <!-- Si el jugador no está logueado, le pedimos que lo haga -->
+       <div id="avisoLogin" v-else-if="!this.idJugador " class="row d-flex justify-content-around align-items-center">
         <div class="aviso col-8 py-5">
           <p class="textoAviso">
             Tienes que introducir tus datos de usuario o crear una cuenta
             para poder jugar.
+          </p>
+          <button type="button" class="btnSeguir">
+            <router-link :to="{ name: 'Home' }">Acceder</router-link>
+          </button>
+        </div>
+      </div>
+      <!-- Si el usuario está recién registrado, se le indicará que puede consultar los puntos la próxima vez que acceda.
+      Hacemos esto porque los puntos se almacenarán en la BD cuando se desconecte y ahora mismo todavía no están almacenados -->
+       <div id="avisoLogin" v-else  class="row d-flex justify-content-around align-items-center">
+        <div class="aviso col-8 py-5">
+          <p class="textoAviso">
+            Podrás consultar tus logros la próxima vez que accedas
           </p>
           <button type="button" class="btnSeguir">
             <router-link :to="{ name: 'Home' }">Acceder</router-link>
@@ -75,6 +89,7 @@ export default {
       trofeos: "",
       imgMedallas: [],
       imgTrofeos: [],
+      nuevoJugador: localStorage.getItem("nuevoJugador")
     };
   },
   mounted() {
@@ -82,7 +97,9 @@ export default {
   },
   methods: {
     carga() {
-      this.consultarPuntos();
+      if(!this.nuevoJugador){
+        this.consultarPuntos();
+      }      
     },
     consultarPuntos() {
       let idJugador = localStorage.getItem("idJugador");

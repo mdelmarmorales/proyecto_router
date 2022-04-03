@@ -8,7 +8,7 @@
         <div class="modal-body">
           <p>
             Registro realizado con éxito. <br />
-            ¡Ya puedes comnezar a jugar!
+            ¡Ya puedes comenzar a jugar!
           </p>
         </div>
         <div class="modal-footer">

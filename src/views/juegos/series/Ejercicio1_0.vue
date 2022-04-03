@@ -1,10 +1,9 @@
 <template>
   <div class="row juego mx-3 my-4 d-flex justify-content-around align-items-center">
-    <form class="col-12 mx-auto p-3" @submit.prevent="comprobarSerie">
+    <form class="col-9 mx-auto p-3" @submit.prevent="comprobarSerie">
       <div class="row">
         <!-- Recorremos el array. Si hay un número, lo escribimos.
             Si no, ponemos el input para el niño escriba el nº que falta -->
-             <img v-if="index != serieSolucion.length-1" src="@/images/circulo.png" alt="circulo" class="circulo my-auto" />
         <span
           class="
             col-2
@@ -13,7 +12,7 @@
             justify-content-around
             align-items-center
           "
-          v-for="num in serieSolucion"
+          v-for="(num, index) in serieSolucion"
           v-bind:key="num"
         >
           <p v-if="num != valorPosicionVacia" class="numero my-auto p-1">
@@ -21,7 +20,7 @@
           </p>
 
           <input class="form-control" v-else v-model="numPropuesto" />
-          <img src="@/images/circulo.png" alt="circulo" class="circulo my-auto" />
+          <img v-if="index != serieSolucion.length-1" src="@/images/flecha.png" alt="flecha" class="flecha my-auto" />
         </span>
         <button class="btn-comprobar" type="submit">Comprobar</button>
       </div>
@@ -107,14 +106,13 @@ export default {
   height:40px;
 }
 
-.numero, input {
+.numero {
   border: 1px solid black;
   background-color: white;
-  width: 2.5rem;
 }
 
 .correcto,
-.circulo {
+.flecha {
   height: 30px;
 }
 </style>

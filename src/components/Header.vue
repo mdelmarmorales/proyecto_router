@@ -20,11 +20,6 @@
 <script>
 export default {
   name: "Header",
-  computed:{
-    esInicio (){
-      return this.$route.name;
-    }
-  },
 };
 </script>
 

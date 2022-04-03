@@ -20,7 +20,7 @@
               <input
                 type="text"
                 class="form-control col-7"
-                v-model="jugador.usuario"
+                v-model="jugador.usuario" required
               />
             </div>
             <div class="form-group row">
@@ -28,7 +28,7 @@
               <input
                 type="email"
                 class="form-control col-7"
-                v-model="jugador.correo"
+                v-model="jugador.correo" required
               />
             </div>
             <div class="form-group row">
@@ -36,7 +36,7 @@
               <input
                 type="text"
                 class="form-control col-7"
-                v-model="jugador.contrasenya"
+                v-model="jugador.contrasenya" required
               />
             </div>
             <div class="form-group row">
@@ -44,15 +44,15 @@
               <input
                 type="text"
                 class="form-control col-7"
-                v-model="jugador.nombreNinyo"
+                v-model="jugador.nombreNinyo" required
               />
             </div>
             <div class="form-group row">
               <label class="col-4 my-auto">Edad del niño: </label>
               <input
-                type="text"
+                type="number"
                 class="form-control col-7"
-                v-model="jugador.edadNinyo"
+                v-model="jugador.edadNinyo" required
               />
             </div>
             <div>
@@ -76,6 +76,8 @@ export default {
   methods: {
     // Método para insertar un nuevo jugador en la BD
     async registrar() {
+      localStorage.setItem("nuevoJugador", true);
+
       let datosRegistro = {
         usuario: this.jugador.usuario,
         correo: this.jugador.correo,

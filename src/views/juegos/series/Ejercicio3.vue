@@ -7,7 +7,7 @@
       <div
         class="row d-flex flex-row justify-content-around align-items-center"
       >
-        <p>
+        <p class="my-auto">
           Entre estos números:
           <span v-for="num in seleccionSerie" v-bind:key="num"
             >{{ num }},
@@ -19,13 +19,13 @@
       </div>
     </form>
     <img
-      class="correcto"
+      class="correcto ml-2"
       src="@/images/correcto.png"
       alt="correcto"
       v-if="this.correctoSelec === true"
     />
     <img
-      class="correcto"
+      class="correcto ml-2"
       src="@/images/incorrecto.png"
       alt="correcto"
       v-if="this.correctoSelec === false"

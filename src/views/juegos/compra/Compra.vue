@@ -12,8 +12,8 @@
         </button>
         <Temporizador v-else class="col-1 ml-auto" />
       </div>
-      <div class="row d-flex m-2 text-left">
-        <p class="enunciado">
+      <div class="row d-flex mx-2 mt-3 mb-1 text-left">
+        <p class="enunciado col-12 p-2">
           Lee la lista de la compra y pincha los alimentos para introducirlos en
           la cesta. Después calcula cuánto han costado y cuánto dinero te sobra
           al pagar. Pulsa "Comenzar".

@@ -10,9 +10,6 @@
       </button>
       <div class="dropdown-menu mt-0">
         <div class="dropdown-item">
-          <router-link :to="{ name: 'Home' }">Inicio</router-link>
-        </div>
-        <div class="dropdown-item">
           <router-link :to="{ name: 'Juegos' }">Juegos</router-link>
         </div>
         <div class="dropdown-item">
@@ -31,7 +28,7 @@ export default {
   name: "Menu",
   data() {
     return {
-     
+    
     };
   },
   computed:{

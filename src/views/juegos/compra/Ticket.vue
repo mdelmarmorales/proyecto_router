@@ -93,13 +93,34 @@ export default {
     };
   },
   computed: {
+    /* Varible que varía en función de la edad del niño y que se utiliza para 
+    calcular el dinero disponible */
+    auxDisponible() {
+      let maximo;
+      let edad=localStorage.getItem("edadNinyo");
+
+      if (edad <= 8) {
+        maximo = 5;
+      } else {
+        if (edad <= 10) {
+          maximo = 10;
+        } else {
+          if (edad <= 12) {
+            maximo = 30;
+          } else {
+            maximo = 50;
+          }
+        }
+      }
+      return maximo;
+    },
     /* El dinero disponible se calcula sumando un nº aleatorio
     al precio de los productos */
     dineroDisponible() {
       let dinero;
       let precioPropInt = parseInt(this.precioPropuesto, 10);
 
-      dinero = this.numeroAleatorio(precioPropInt, precioPropInt + 20);
+      dinero = this.numeroAleatorio(precioPropInt, precioPropInt + this.auxDisponible);
 
       return dinero;
     },

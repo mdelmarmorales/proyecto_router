@@ -7,15 +7,16 @@ export default {
   name: "Temporizador",
   data() {
     return {
-      timer: 50,
+      timer: 0,
       interval: "",
     };
   },
   beforeMount() {
     // this.actualizaTemporizador();
   },
-   mounted() {
-     this.actualizaTemporizador();
+  mounted() {
+    this.timer = this.calculaTiempo();
+    this.actualizaTemporizador();
     this.emitter.on("pararTiempo", (pararTiempo) => {
       this.eliminarTemporizador();
     });
@@ -23,12 +24,32 @@ export default {
   /* Watcher que detecta un cambio en la url, y para el temporizador
   si vamos a otro juego */
   watch: {
-    $route (to, from) {
+    $route(to, from) {
       this.eliminarTemporizador();
-    }
+    },
   },
   methods: {
+    calculaTiempo() {
+      let maximo;
+      let edad = localStorage.getItem("edadNinyo");
+
+      if (edad <= 8) {
+        maximo = 120;
+      } else {
+        if (edad <= 10) {
+          maximo = 90;
+        } else {
+          if (edad <= 12) {
+            maximo = 70;
+          } else {
+            maximo = 50;
+          }
+        }
+      }
+      return maximo;
+    },
     actualizaTemporizador() {
+      console.log("actualiza");
       this.interval = setInterval(() => {
         if (this.timer == 0) {
           this.eliminarTemporizador();
@@ -38,15 +59,15 @@ export default {
         }
       }, 1000);
     },
-    eliminarTemporizador(){
+    eliminarTemporizador() {
       clearInterval(this.interval);
-    }
+    },
   },
 };
 </script>
 
 <style scoped>
-.temporizador{
+.temporizador {
   background-color: #e0f7f2;
   border: 3px solid #071488;
   border-radius: 5px;

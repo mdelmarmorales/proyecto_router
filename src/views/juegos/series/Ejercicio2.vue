@@ -4,19 +4,19 @@
       <div
         class="row d-flex flex-row justify-content-around align-items-center"
       >
-        <p>De los números anteriores, ¿cuál es el {{ this.menorMayor }}?</p>
+        <p class="my-auto">De los números anteriores, ¿cuál es el {{ this.menorMayor }}?</p>
         <input class="form-control col-2" v-model="comparacionPropuesta" />
         <button class="btn-comprobar" type="submit">Comprobar</button>
       </div>
     </form>
     <img
-      class="correcto"
+      class="correcto mx-auto"
       src="@/images/correcto.png"
       alt="correcto"
       v-if="this.correctoComp === true"
     />
     <img
-      class="correcto"
+      class="correcto mx-auto"
       src="@/images/incorrecto.png"
       alt="correcto"
       v-if="this.correctoComp === false"
