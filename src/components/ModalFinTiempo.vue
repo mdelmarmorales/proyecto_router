@@ -1,3 +1,5 @@
+<!-- Modal que aparece si finaliza el tiempo del juego. 
+Preguntamos si queremos jugar a otro juego o salir de la aplicación -->
 <template>
   <div id="tiempo" class="modal" tabindex="-1" role="dialog">
     <div class="modal-dialog modal-dialog-centered" role="document">
@@ -43,6 +45,8 @@ export default {
     },
   },
   mounted() {
+    // Si estamos jugando al juego "A contar" no mostramos el modal
+    // porque antes debe aparecer otro. Lo mostramos para los demás-
     this.emitter.on("finTiempo", (finTiempo) => {
       if(this.nombrePagina!='Granja'){
         $("#tiempo").modal("show");
@@ -50,6 +54,7 @@ export default {
     });
   },
   methods: {
+    //Emitimos el evento para mostrar el modal de Salida
      salir(){
       this.emitter.emit("salir", true);
     }

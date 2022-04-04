@@ -1,3 +1,4 @@
+<!-- Menú de navegación -->
 <template>
   <div class="row">
     <div class="dropdown dropleft d-flex col-12">
@@ -31,11 +32,6 @@ export default {
     
     };
   },
-  computed:{
-    esInicio (){
-      return this.$route.name;
-    }
-  },
   // Emite un evento para que aparezca el modal de salida.
   methods: {
      salir(){
@@ -66,8 +62,4 @@ export default {
 p {
   font-weight: bold;
 }
-
-/* .dropdown a.router-link-exact-active, p:hover {
-  color: #071488;
-}  */
 </style>

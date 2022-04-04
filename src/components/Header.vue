@@ -1,3 +1,4 @@
+<!--  Cabecera de la página -->
 <template>
    <router-link style="text-decoration:none" :to="{ name: 'Juegos' }">  
     <div id="cabecera" class="row d-flex align-items-center">

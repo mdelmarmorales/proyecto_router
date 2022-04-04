@@ -1,3 +1,4 @@
+
 <template>
   <Grafico />
 </template>

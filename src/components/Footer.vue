@@ -1,3 +1,4 @@
+<!-- Footer de la página -->
 <template>
   <div
     class="footer row d-flex justify-content-end align-items-center mt-5 py-3"

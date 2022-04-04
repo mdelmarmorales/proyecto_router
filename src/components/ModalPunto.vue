@@ -1,3 +1,4 @@
+<!-- Modal que aparece cuando se consigue un punto -->
 <template>
   <div id="punto" class="modal" tabindex="-1" role="dialog">
     <div class="modal-dialog modal-dialog-centered" role="document">
@@ -13,14 +14,6 @@
           <img src="../images/puntos.jpg" alt="puntuacion" class="col-10" />
         </div>
         <div class="modal-footer">
-           <!-- <button
-            type="button"
-            class="btnSeguir"
-            data-dismiss="modal"
-           
-          >
-           <router-link :to="{name: this.nombrePagina}">Jugar de nuevo</router-link> 
-          </button> -->
           <button type="button" class="btnSeguir" data-dismiss="modal">
             <router-link :to="{ name: 'Juegos' }">Elegir juego</router-link>
           </button>
@@ -42,23 +35,17 @@ export default {
     };
   },
   mounted() {
+    //Espera el evento para mostrarse
     this.emitter.on("puntoConseguido", (puntoConseguido) => {
       $("#punto").modal("show");
     });
   },
   methods: {
-  //   volver(){
-  //     console.log(this.nombrePagina);
-  //     this.$router.push(this.nombrePagina);
-  //   }
+    //Emite el evento para salir
      salir(){
       this.emitter.emit("salir", true);
     }
    }, 
-  computed:{
-    nombrePagina (){
-      return this.$route.name;
-    }}
 };
 </script>
 

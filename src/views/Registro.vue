@@ -93,6 +93,7 @@ export default {
         .then((respuesta) => respuesta.json())
         .then((datosRespuesta) => {
           if (datosRespuesta.success == "1") {
+            //Si todo va OK, emitimos un evento para que aparezca el modal
             this.emitter.emit("registroRealizado", true);
           } 
         });

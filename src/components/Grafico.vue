@@ -5,6 +5,7 @@ Se utilizan rutas dinámicas en función de la id del juego -->
 
     <div class="row w-100 d-flex flex-column justify-content-around align-items-center">
       <h1 class="my-3">Ésta es tu evolución</h1>
+      <!-- Insertamos un canvas donde se dibujará el gráfico -->
        <canvas
       id="grafico"
       class="mx-3 mb-3"
@@ -20,25 +21,23 @@ export default {
   name: "Grafico",
   data() {
     return {
-      //   idJuego: this.$route.params.idJuego,
       datosGrafico: [],
       fechas: [],
       puntos: [],
     };
   },
   mounted() {
-    this.carga();
+    this.consultarPuntos();
   },
   methods: {
-    carga() {
-      this.consultarPuntos();
-    },
+    /*Método para consultar los puntos conseguidos por el jugador en función de la fecha */
     consultarPuntos() {
       let datosGrafico = {
-        idJugador: localStorage.getItem("idJugador"),
+        idJugador: localStorage.getItem("idJugador"), //Leemos la id del jugador
         idJuego: this.$route.params.idJuego, //Parámetros para la rutas dinámicas
       };
 
+    /* Hacemos la consulta a la BD */
       fetch("http://localhost/API_proyecto/consultarGrafico", {
         method: "POST",
         body: JSON.stringify(datosGrafico),
@@ -52,16 +51,18 @@ export default {
     },
     prepararDatos() {
       /*Nos quedamos sólo con las últimas 7 posiciones del array,
-      para mostrar los resultados de la última semana y facilitar la 
+      para mostrar los resultados más recientes y facilitar la 
       lectura de la gráfica */
       let datos = [];
+
       if (this.datosGrafico.length > 7) {
         datos = this.datosGrafico.slice(this.datosGrafico.length - 7);
       } else {
         datos = this.datosGrafico;
       }
 
-      console.log(datos);
+      /* Creamos los arrays que vamos a utilizar luego para realizar el gráfico,
+      uno con los puntos y el otro con las fechas */
       datos.forEach((dato) => {
         this.puntos.push(parseInt(dato.puntuacion));
         this.fechas.push(dato.fecha);
@@ -69,7 +70,10 @@ export default {
 
       this.dibujarGrafico();
     },
+    /* Método para realizar el gráfico usando Chart JS
+    https://www.w3schools.com/ai/ai_chartjs.asp  -*/
     dibujarGrafico() {
+      /* Obtenemos el contexto del canvas */
       let ctx = document.getElementById("grafico").getContext("2d");
 
       let myChar = new Chart(ctx, {

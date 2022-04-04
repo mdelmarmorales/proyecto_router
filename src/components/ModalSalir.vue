@@ -1,3 +1,4 @@
+<!-- Modal para confirmar la salida -->
 <template>
   <div id="salir" class="modal" tabindex="-1" role="dialog">
     <div class="modal-dialog modal-dialog-centered" role="document">
@@ -35,11 +36,13 @@ export default {
     };
   },
   mounted() {
+    //Espera el evento para mostarse
     this.emitter.on("salir", (salir) => {
       $("#salir").modal("show");
     });
   },
   methods: {
+    /* Cuando confirmamos la salida, almacenamos los datos en la BD */
     async salir() {
       let datosSalir = {
         idJugador: localStorage.getItem("idJugador"),
@@ -56,7 +59,7 @@ export default {
         .then((respuesta) => respuesta.json())
         .then((datosRespuesta) => {
           if (datosRespuesta.success == "1") {
-            // Eliminamos los datos almacenados
+            // Eliminamos los datos almacenados en el navegador
             localStorage.clear();
           }
         });

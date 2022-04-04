@@ -1,7 +1,18 @@
+<!-- Mostramos los puntos y medallas conseguidos por el jugador -->
 <template>
   <div id="cuadro_blanco" class="col-10 mx-auto mt-5">
     <!-- Si el jugador está logueado y no es la primera vez que juega -->
-    <div v-if="this.idJugador && !this.nuevoJugador" class="row d-flex flex-row w-100 justify-content-around align-items-center">
+    <div
+      v-if="this.idJugador && !this.nuevoJugador"
+      class="
+        row
+        d-flex
+        flex-row
+        w-100
+        justify-content-around
+        align-items-center
+      "
+    >
       <table class="table table-striped table-bordered col-9">
         <thead class="thead">
           <tr>
@@ -29,7 +40,10 @@
               />
             </td>
             <td>
-              <router-link :to="{ name: 'Graficos', params: {idJuego: item.idJuego} }">Ver </router-link>
+              <router-link
+                :to="{ name: 'Graficos', params: { idJuego: item.idJuego } }"
+                >Ver
+              </router-link>
             </td>
           </tr>
           <tr>
@@ -44,37 +58,45 @@
                 class="logros"
               />
             </td>
-             <td> </td>
+            <td></td>
           </tr>
         </tbody>
       </table>
-      <img src="../images/logros.jpg" alt="logros" class="col-2"/>
+      <img src="../images/logros.jpg" alt="logros" class="col-2" />
     </div>
     <!-- Si el jugador no está logueado, le pedimos que lo haga -->
-       <div id="avisoLogin" v-else-if="!this.idJugador " class="row d-flex justify-content-around align-items-center">
-        <div class="aviso col-8 py-5">
-          <p class="textoAviso">
-            Tienes que introducir tus datos de usuario o crear una cuenta
-            para poder jugar.
-          </p>
-          <button type="button" class="btnSeguir">
-            <router-link :to="{ name: 'Home' }">Acceder</router-link>
-          </button>
-        </div>
-      </div>
-      <!-- Si el usuario está recién registrado, se le indicará que puede consultar los puntos la próxima vez que acceda.
-      Hacemos esto porque los puntos se almacenarán en la BD cuando se desconecte y ahora mismo todavía no están almacenados -->
-       <div id="avisoLogin" v-else  class="row d-flex justify-content-around align-items-center">
-        <div class="aviso col-8 py-5">
-          <p class="textoAviso">
-            Podrás consultar tus logros la próxima vez que accedas
-          </p>
-          <button type="button" class="btnSeguir">
-            <router-link :to="{ name: 'Home' }">Acceder</router-link>
-          </button>
-        </div>
+    <div
+      id="avisoLogin"
+      v-else-if="!this.idJugador"
+      class="row d-flex justify-content-around align-items-center"
+    >
+      <div class="aviso col-8 py-5">
+        <p class="textoAviso">
+          Tienes que introducir tus datos de usuario o crear una cuenta para
+          poder jugar.
+        </p>
+        <button type="button" class="btnSeguir">
+          <router-link :to="{ name: 'Home' }">Acceder</router-link>
+        </button>
       </div>
     </div>
+    <!-- Si el usuario está recién registrado, se le indicará que puede consultar los puntos la próxima vez que acceda.
+      Hacemos esto porque los puntos se almacenarán en la BD cuando se desconecte y ahora mismo todavía no están almacenados -->
+    <div
+      id="avisoLogin"
+      v-else
+      class="row d-flex justify-content-around align-items-center"
+    >
+      <div class="aviso col-8 py-5">
+        <p class="textoAviso">
+          Podrás consultar tus logros la próxima vez que accedas
+        </p>
+        <button type="button" class="btnSeguir">
+          <router-link :to="{ name: 'Home' }">Acceder</router-link>
+        </button>
+      </div>
+    </div>
+  </div>
 </template>
 
 <script>
@@ -89,7 +111,7 @@ export default {
       trofeos: "",
       imgMedallas: [],
       imgTrofeos: [],
-      nuevoJugador: localStorage.getItem("nuevoJugador")
+      nuevoJugador: localStorage.getItem("nuevoJugador"),
     };
   },
   mounted() {
@@ -97,10 +119,11 @@ export default {
   },
   methods: {
     carga() {
-      if(!this.nuevoJugador){
+      if (!this.nuevoJugador) {
         this.consultarPuntos();
-      }      
+      }
     },
+    /* Método para consultar los puntos conseguidos en cada juego */
     consultarPuntos() {
       let idJugador = localStorage.getItem("idJugador");
 
@@ -114,26 +137,31 @@ export default {
           this.calcularPuntosTotales();
         });
     },
+    // Sumamos los puntos conseguidos en cada juego para conseguir los puntos totales
     calcularPuntosTotales() {
       this.puntos.forEach((punto) => {
         this.puntuacionTotal += parseInt(punto.puntuacion);
       });
       this.calcularLogros();
     },
+    /* Método que calcula las medallas y los trofeos */
     calcularLogros() {
+      /* Por cada 50 puntos, se concede un trofeo */
       let numTrofeos = Math.floor(this.puntuacionTotal / 50);
       let numMedallas;
 
+      /* En cada juego se consigue una medalla cada 15 puntos */
       for (let i = 0; i < this.puntos.length; i++) {
         numMedallas = Math.floor(this.puntos[i].puntuacion / 15);
         this.puntos[i].medallas = [];
-        //console.log("medalla", numMedallas);
 
+        /* Creamos un vector con las imágenes de las medallas conseguidas */
         for (let j = 0; j < numMedallas; j++) {
           this.puntos[i].medallas.push(require("../images/medalla.png"));
         }
-        console.log(this.puntos[i].medallas);
       }
+
+      /* Creamos un vector con las imágenes de los trofeos conseguidos */
       for (let i = 0; i < numTrofeos; i++) {
         this.imgTrofeos[i] = require("../images/trofeo.png");
       }
@@ -179,10 +207,10 @@ h1 {
   height: 30px;
 }
 
-.img_logros{
-   height: 250px;
+.img_logros {
+  height: 250px;
 }
-#avisoLogin{
+#avisoLogin {
   height: 100vh;
 }
 

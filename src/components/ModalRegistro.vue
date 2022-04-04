@@ -1,3 +1,5 @@
+<!-- Modal que aparece cuando el usuario se ha registrado. 
+Le pedimos que acceda con sus nuevos datos -->
 <template>
   <div id="registro" class="modal" tabindex="-1" role="dialog">
     <div class="modal-dialog modal-dialog-centered" role="document">
@@ -30,6 +32,7 @@ export default {
     };
   },
   mounted() {
+    //Espera el evento para mostrarse
     this.emitter.on("registroRealizado", (registroRealizado) => {
       $("#registro").modal("show");
     });

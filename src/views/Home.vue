@@ -1,3 +1,4 @@
+<!-- Página de inicio -->
 <template>
   <div id="home" class="row">
     <div
@@ -65,7 +66,6 @@ export default {
   data() {
     return {
       datosForm: {},
-      // jugador: {},
       accesoInvalido: null,
     };
   },
@@ -88,7 +88,7 @@ export default {
           if (datosRespuesta.success == "0") {
             this.accesoInvalido = true;
           } else {
-            // Si existe, extramos los datos necesarios
+            // Si existe, extraemos los datos necesarios
             this.accesoInvalido = false;
 
             //Almacenamos los datos en el navegador

@@ -1,3 +1,4 @@
+<!-- Modal que aparece al final del juego "A contar" para que introduzcamos la respuesta -->
 <template>
   <div id="finGranja" class="modal" tabindex="-1" role="dialog">
     <div class="modal-dialog modal-dialog-centered" role="document">
@@ -50,6 +51,7 @@ export default {
     };
   },
   mounted() {
+    //Espera el evento para abrirse
     this.emitter.on("finGranja", (animalABuscar) => {
       this.animalABuscar=animalABuscar;
       $("#finGranja").modal("show");
