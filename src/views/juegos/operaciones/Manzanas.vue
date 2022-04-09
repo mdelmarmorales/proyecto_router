@@ -148,7 +148,7 @@ export default {
 }
 .correcto,
 .manzana {
-  height: 50px;
+  height: 3.125em;
 }
 
 .enunciado {
@@ -160,16 +160,16 @@ export default {
   background-color: #3fcfba;
   border: 2px solid #071488;
   border-radius: 5px;
-  width: 100px;
-  height: 40px;
+  width: 6.25em;
+  height: 2.5em;
 }
 
 .btn-vaciar {
   background-color: #ffa934;
   border: 2px solid #fd6400;
   border-radius: 5px;
-  width: 100px;
-  height: 40px;
+  width: 6.25em;
+  height: 2.5em;
 }
 
 .manzana {

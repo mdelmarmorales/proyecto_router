@@ -171,7 +171,7 @@ export default {
 </script>
 
 <style scoped>
-#app {
+/* #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -185,7 +185,7 @@ export default {
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-position: center;
-}
+} */
 
 #formulario {
   background-color: #e0f7f2;
@@ -204,11 +204,11 @@ h1 {
 }
 
 .logros {
-  height: 30px;
+  height: 1.875em;
 }
 
 .img_logros {
-  height: 250px;
+  height: 15.625em;
 }
 #avisoLogin {
   height: 100vh;

@@ -36,6 +36,6 @@ p {
 }
 
 img {
-  height: 40px;
+  height: 2.5em;
 }
 </style>

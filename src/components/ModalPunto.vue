@@ -14,10 +14,10 @@
           <img src="../images/puntos.jpg" alt="puntuacion" class="col-10" />
         </div>
         <div class="modal-footer">
-          <button type="button" class="btnSeguir" data-dismiss="modal">
+          <button type="button" class="btnSeguir p-1" data-dismiss="modal">
             <router-link :to="{ name: 'Juegos' }">Elegir juego</router-link>
           </button>
-          <button type="button" class="btnSalir" data-dismiss="modal" @click="salir">
+          <button type="button" class="btnSalir p-1" data-dismiss="modal" @click="salir">
            Salir
           </button>
         </div>
@@ -37,6 +37,7 @@ export default {
   mounted() {
     //Espera el evento para mostrarse
     this.emitter.on("puntoConseguido", (puntoConseguido) => {
+      console.log("punto");
       $("#punto").modal("show");
     });
   },

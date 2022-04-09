@@ -218,10 +218,10 @@ img {
 }
 
 .correcto {
-  height: 50px;
+  height: 3.125em;
 }
 #cuadro_granja {
-  height: 500px;
+  height: 31.25em;
   background-color: #ffffff;
   border: 2px solid #071488;
   border-radius: 10px;
@@ -244,8 +244,8 @@ img {
   background-color: #3fcfba;
   border: 2px solid #071488;
   border-radius: 5px;
-  width: 100px;
-  height: 40px;
+  width: 6.25em;
+  height: 2.5em;
 }
 
 span {

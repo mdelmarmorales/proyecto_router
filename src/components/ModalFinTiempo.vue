@@ -14,12 +14,12 @@ Preguntamos si queremos jugar a otro juego o salir de la aplicación -->
           </p>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btnSeguir" data-dismiss="modal">
+          <button type="button" class="btnSeguir p-1" data-dismiss="modal">
             <router-link :to="{ name: 'Juegos' }">Elegir juego</router-link>
           </button>
           <button
             type="button"
-            class="btnSalir"
+            class="btnSalir p-1"
             data-dismiss="modal"
             @click="salir"
           >

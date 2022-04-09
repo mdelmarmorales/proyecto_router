@@ -2,7 +2,7 @@
   <ModalFinTiempo />
    <ModalGranja />
   <ModalRegistro />
-  <ModalAcceso />
+  <!-- <ModalAcceso /> -->
   <ModalPunto />
   <ModalSalir />
   <div class="container-fluid">
@@ -20,14 +20,14 @@ import Menu from "@/components/Menu.vue";
 import Footer from "@/components/Footer.vue";
 import ModalFinTiempo from "@/components/ModalFinTiempo.vue";
 import ModalRegistro from "@/components/ModalRegistro.vue";
-import ModalAcceso from "@/components/ModalAcceso.vue";
+// import ModalAcceso from "@/components/ModalAcceso.vue";
 import ModalPunto from "@/components/ModalPunto.vue";
 import ModalSalir from "@/components/ModalSalir.vue";
 import ModalGranja from "@/components/ModalGranja.vue";
 
 export default {
   name: "Juegos",
-  components: { Header, Menu, Footer, ModalFinTiempo, ModalGranja, ModalRegistro, ModalAcceso, ModalPunto, ModalSalir },
+  components: { Header, Menu, Footer, ModalFinTiempo, ModalGranja, ModalRegistro, ModalPunto, ModalSalir },
   data() {
     return {
      idJugador: localStorage.getItem("idJugador"),
@@ -65,5 +65,12 @@ export default {
 a {
   font-weight: bold;
   color: black;
+}
+#cuadro_blanco {
+  min-height: 500px;
+  width: 90%;
+  background-color: #ffffff;
+  border: 2px solid #071488;
+  border-radius: 10px;
 }
 </style>

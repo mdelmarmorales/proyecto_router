@@ -43,7 +43,7 @@ export default {
 
 <style scoped>
 .dropdown {
-  padding: 3px;
+  padding: 0.188em;
   background: #fdcc4b;
   border: solid 2px #071488;
   width: 100%;

@@ -35,7 +35,7 @@
                 />
               </div>
               <div>
-                <input type="submit" class="boton" value="Acceder" />
+                <input type="submit" class="boton p-1" value="Acceder" />
               </div>
             </form>
             <div class="row d-flex justify-content-center">
@@ -78,7 +78,7 @@ export default {
         contrasenya: this.datosForm.contrasenya,
       };
 
-      fetch("http://localhost/API_proyecto/consultar", {
+      await fetch("http://localhost/API_proyecto/consultar", {
         method: "POST",
         body: JSON.stringify(datosAcceso),
       })
@@ -112,10 +112,10 @@ export default {
             3- series
             4- voz
             5- horas */
-    consultarPuntos(idJugador) {
+    async consultarPuntos(idJugador) {
       let puntuaciones = new Array(6).fill(0);
 
-      fetch("http://localhost/API_proyecto/consultarPuntos", {
+      await fetch("http://localhost/API_proyecto/consultarPuntos", {
         method: "POST",
         body: JSON.stringify(idJugador),
       })
@@ -136,7 +136,7 @@ export default {
             "puntuacionesInicio",
             JSON.stringify(puntuaciones)
           );
-          
+
           this.$router.push("/juegos");
         });
     },

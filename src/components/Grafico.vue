@@ -2,16 +2,19 @@
 Se utilizan rutas dinámicas en función de la id del juego -->
 <template>
   <div id="cuadro_blanco" class="col-10 mx-auto mt-5 d-flex align-items-center">
-
-    <div class="row w-100 d-flex flex-column justify-content-around align-items-center">
+    <div
+      class="
+        row
+        w-100
+        d-flex
+        flex-column
+        justify-content-around
+        align-items-center
+      "
+    >
       <h1 class="my-3">Ésta es tu evolución</h1>
       <!-- Insertamos un canvas donde se dibujará el gráfico -->
-       <canvas
-      id="grafico"
-      class="mx-3 mb-3"
-
-      ></canvas
-    >
+      <canvas id="grafico" class="mx-3 mb-3"></canvas>
     </div>
   </div>
 </template>
@@ -31,14 +34,14 @@ export default {
   },
   methods: {
     /*Método para consultar los puntos conseguidos por el jugador en función de la fecha */
-    consultarPuntos() {
+    async consultarPuntos() {
       let datosGrafico = {
         idJugador: localStorage.getItem("idJugador"), //Leemos la id del jugador
         idJuego: this.$route.params.idJuego, //Parámetros para la rutas dinámicas
       };
 
-    /* Hacemos la consulta a la BD */
-      fetch("http://localhost/API_proyecto/consultarGrafico", {
+      /* Hacemos la consulta a la BD */
+     await fetch("http://localhost/API_proyecto/consultarGrafico", {
         method: "POST",
         body: JSON.stringify(datosGrafico),
       })
@@ -53,19 +56,10 @@ export default {
       /*Nos quedamos sólo con las últimas 7 posiciones del array,
       para mostrar los resultados más recientes y facilitar la 
       lectura de la gráfica */
-      let datos = [];
 
-      if (this.datosGrafico.length > 7) {
-        datos = this.datosGrafico.slice(this.datosGrafico.length - 7);
-      } else {
-        datos = this.datosGrafico;
-      }
-
-      /* Creamos los arrays que vamos a utilizar luego para realizar el gráfico,
-      uno con los puntos y el otro con las fechas */
-      datos.forEach((dato) => {
+      this.datosGrafico.forEach((dato) => {
         this.puntos.push(parseInt(dato.puntuacion));
-        this.fechas.push(dato.fecha);
+        this.fechas.push(dato.fecha_form);
       });
 
       this.dibujarGrafico();

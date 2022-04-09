@@ -42,7 +42,7 @@ export default {
 }
 
 .alimentosImagen {
-  height: 50px;
+  height: 3.125em;
   filter: drop-shadow(0 6px 3px rgba(0, 0, 0, 0.7));
 }
 </style>

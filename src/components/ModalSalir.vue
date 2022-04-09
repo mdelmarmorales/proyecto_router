@@ -10,13 +10,13 @@
           <p>¿Seguro que quieres salir?</p>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btnSeguir" data-dismiss="modal">
+          <button type="button" class="btnSeguir p-1" data-dismiss="modal">
             Cancelar
           </button>
           <button
             type="button"
             data-dismiss="modal"
-            class="btnSalir"
+            class="btnSalir p-1"
             @click="salir"
           >
             <router-link :to="{ name: 'Home' }">Salir</router-link>
@@ -52,7 +52,7 @@ export default {
         ),
       };
 
-      fetch("http://localhost/API_proyecto/actualizarPuntos", {
+      await fetch("http://localhost/API_proyecto/actualizarPuntos", {
         method: "POST",
         body: JSON.stringify(datosSalir),
       })

@@ -17,7 +17,7 @@
               <span>{{ this.animalABuscar.nombre }}</span>
             </p>
             <input v-model="numAnimales" />
-            <button class="btn-comprobar mt-1 mb-2 mx-2" type="submit">
+            <button class="btn-comprobar mt-1 mb-2 mx-2 p-1" type="submit">
               Comprobar
             </button>
              <img

@@ -14,7 +14,11 @@
           </span>
           ¿cuál es el {{ this.menorMayorSelec }}?
         </p>
-        <input id="inputNum" class="form-control col-2" v-model="selecPropuesta" />
+        <input
+          id="inputNum"
+          class="form-control col-2"
+          v-model="selecPropuesta"
+        />
         <button class="btn-comprobar" type="submit">Comprobar</button>
       </div>
     </form>
@@ -70,7 +74,7 @@ export default {
     },
     /* Método para comprobar si la solución es correcta */
     comprobarSeleccion() {
-      let puntos= JSON.parse(localStorage.getItem("puntuaciones"));
+      let puntos = JSON.parse(localStorage.getItem("puntuaciones"));
       this.correctoSelec = false;
 
       if (this.menorMayorSelec == "menor") {
@@ -83,12 +87,15 @@ export default {
           this.seleccionSerie[this.seleccionSerie.length - 1]
         ) {
           this.correctoSelec = true;
-          //Si acierta, sumamos un punto, paramos el temporizador y mostramos mensaje
-          puntos[3]++;
-          localStorage.setItem("puntuaciones", JSON.stringify(puntos));
-          this.emitter.emit("pararTiempo", true);
-          this.emitter.emit("puntoConseguido", true);
         }
+      }
+
+      //Si acierta, sumamos un punto, paramos el temporizador y mostramos mensaje
+      if (this.correctoSelec) {
+        puntos[3]++;
+        localStorage.setItem("puntuaciones", JSON.stringify(puntos));
+        this.emitter.emit("pararTiempo", true);
+        this.emitter.emit("puntoConseguido", true);
       }
       return this.correctoSelec;
     },

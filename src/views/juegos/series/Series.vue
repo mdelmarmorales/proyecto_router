@@ -198,8 +198,8 @@ export default {
   background-color: #3fcfba;
   border: 2px solid #071488;
    border-radius: 5px;
-  width: 100px;
-  height:40px;
+  width: 6.25em;
+  height:2.5em;
 }
 
 .numero {
@@ -209,10 +209,10 @@ export default {
 
 .correcto,
 .flecha {
-  height: 30px;
+  height: 1.875em;
 }
 #cuadro_blanco {
-  min-height: 500px;
+  min-height: 31.25em;
   width: 90%;
   background-color: #ffffff;
   border: 3px solid #071488;

@@ -109,9 +109,9 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 #cuadro_blanco {
-  min-height: 500px;
+  min-height: 31.25em;
   width: 90%;
   background-color: #ffffff;
   border: 2px solid #071488;

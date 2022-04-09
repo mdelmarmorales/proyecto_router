@@ -1,6 +1,6 @@
 <template>
 <div v-if="this.acierto1" class="row juego mx-3 my-4">
-  <form class="col-9 mx-auto my-4"
+  <form class="col-9 mx-auto my-2"
     
     @submit.prevent="comprobar(this.numeroVoz.nombre, numPropuestoOido)"
   >
@@ -9,7 +9,7 @@
     </div>
     <div class="row justify-content-center">
     <button class="mr-5" type="button" @click="habla(this.numeroVoz.numero)">
-      <img class="altavoz" src="@/images/altavoz.png" />
+      <img class="altavoz p-1" src="@/images/altavoz.png" />
     </button>
     <input  col="col-4 mx-2 text-center" type="text" v-model="numPropuestoOido" />
     <button class="btn-comprobar mx-2"  type="submit">Comprobar</button>
@@ -75,12 +75,12 @@ export default {
   background-color: #3fcfba;
   border: 2px solid #071488;
    border-radius: 5px;
-  width: 100px;
-  height:40px;
+  width: 6.25em;
+  height:2.5em;
 }
 
 .correcto,
 .altavoz {
-  height: 30px;
+  height: 1.875em;
 }
 </style>

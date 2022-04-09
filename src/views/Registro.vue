@@ -56,7 +56,7 @@
               />
             </div>
             <div>
-              <input type="submit" class="boton" value="Registrar" />
+              <input type="submit" class="boton p-1" value="Registrar" />
             </div>
           </form>
         </div>
@@ -86,7 +86,7 @@ export default {
         edadNinyo: this.jugador.edadNinyo,
       };
 
-       fetch("http://localhost/API_proyecto/insertar", {
+       await fetch("http://localhost/API_proyecto/insertar", {
         method: "POST",
         body: JSON.stringify(datosRegistro),
       })
@@ -104,7 +104,7 @@ export default {
 
 <style scoped>
 #cuadro_blanco {
-  min-height: 500px;
+  min-height: 31.25em;
   width: 90%;
   background-color: #ffffff;
   border: 2px solid #071488;

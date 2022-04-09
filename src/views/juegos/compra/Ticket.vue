@@ -165,7 +165,7 @@ export default {
 <style scoped>
 .alimentosImagen,
 .correcto {
-  height: 30px;
+  height: 1.875em;
 }
 
 .alimentosImagen {
@@ -176,12 +176,12 @@ export default {
   background-color: #3fcfba;
   border: 2px solid #071488;
   border-radius: 5px;
-  width: 100px;
-  height: 40px;
+  width: 6.25em;
+  height: 2.5em;
 }
 .table {
   background-color: #e0f7f2;
-  border-radius: 10px;
+  border-radius: 0.625em;
 }
 
 .tituloTicket {
