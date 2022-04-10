@@ -166,19 +166,9 @@ export default {
 .alimentosImagen
  {
   height: 1.875em;
-}
-
-.alimentosImagen {
   filter: drop-shadow(0 6px 3px rgba(0, 0, 0, 0.7));
 }
 
-/* .btn-comprobar {
-  background-color: #3fcfba;
-  border: 2px solid #071488;
-  border-radius: 5px;
-  width: 6.25em;
-  height: 2.5em;
-} */
 .table {
   background-color: #e0f7f2;
   border-radius: 0.625em;

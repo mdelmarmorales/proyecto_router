@@ -45,10 +45,6 @@
               alt="correcto"
               v-if="this.correctoManzana === false"
             />
-            <!-- <p v-if="this.correctoManzana === false">
-              ¡Ups! Tenías que meter {{ this.resultado }} manzanas, pero hay
-              {{ this.contador }}
-            </p> -->
           </form>
         </div>
       </div>
@@ -157,14 +153,6 @@ export default {
   background-color: #3fcfba;
 }
 
-/* .btn-comprobar {
-  background-color: #3fcfba;
-  border: 2px solid #071488;
-  border-radius: 5px;
-  width: 6.25em;
-  height: 2.5em;
-} */
-
 .btn-vaciar {
   background-color: #ffa934;
   border: 2px solid #fd6400;
@@ -172,8 +160,4 @@ export default {
   width: 6.25em;
   height: 2.5em;
 }
-
-/* .manzana {
-  filter: drop-shadow(0 6px 3px rgba(0, 0, 0, 0.7));
-} */
 </style>

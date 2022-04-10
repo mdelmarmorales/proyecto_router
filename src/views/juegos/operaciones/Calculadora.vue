@@ -1,5 +1,4 @@
 <template>
-  <div>
     <form @submit.prevent="comprobarResultado">
       <div v-if="this.operacion" id="calculos" class="float-left col-12 my-4">
         <p id="tituloCalculos">Cálculo</p>
@@ -40,7 +39,6 @@
         </div>
       </div>
     </form>
-  </div>
 </template>
 
 <script>
@@ -132,36 +130,18 @@ export default {
         case "suma":
           if (this.operandos.oper1 + this.operandos.oper2 == parseInt(this.resultado))
             this.correcto = true;
-          // this.emitter.emit("calculos", {
-          //   correcto: this.correcto,
-          //   resultado: parseInt(this.resultado),
-          // });
           break;
         case "resta":
           if (this.operandos.oper1 - this.operandos.oper2 == parseInt(this.resultado))
             this.correcto = true;
-          // this.emitter.emit("calculos", {
-          //   correcto: this.correcto,
-          //   resultado: parseInt(this.resultado),
-          // });
-
           break;
         case "multiplicacion":
           if (this.operandos.oper1 * this.operandos.oper2 == parseInt(this.resultado))
             this.correcto = true;
-          // this.emitter.emit("calculos", {
-          //   correcto: this.correcto,
-          //   resultado: parseInt(this.resultado),
-          // });
-
           break;
         case "division":
           if (this.operandos.oper1 / this.operandos.oper2 == parseInt(this.resultado))
             this.correcto = true;
-          // this.emitter.emit("calculos", {
-          //   correcto: this.correcto,
-          //   resultado: parseInt(this.resultado),
-          // });
           break;
         default:
           console.log("Ha ocurrido un error. Operación no válida.")
@@ -179,10 +159,6 @@ export default {
 </script>
 
 <style scoped>
-/* .correcto{
-  height: 50px;
-} */
-
 #calculos {
   background-color: #fff4ad;
   border-radius: 10px;
@@ -192,12 +168,4 @@ export default {
   background-color: #fdcc4b;
   color: #071488;
 }
-
-/* .btn-comprobar {
-  background-color: #3fcfba;
-  border: 2px solid #071488;
-   border-radius: 5px;
-  width: 100px;
-  height:40px;
-} */
 </style>

@@ -23,7 +23,7 @@
           >
             {{ this.hora[0].hora.numero }}:{{ this.hora[0].minuto.numero }}
           </span>
-           <!-- Si los minutos pasan de 35, restamos uno para sumar las horas "menos algo".  -->
+           <!-- Si los minutos pasan de 35, restamos uno para mostrar las horas "menos algo".  -->
           <span class="hora ml-2 mr-6 px-5 py-2" v-else>
             {{ this.hora[0].hora.numero - 1 }}:{{ this.hora[0].minuto.numero }}
           </span>
@@ -128,27 +128,9 @@ export default {
 </script>
 
 <style scoped>
-.juego {
-  background-color: #faea7d;
-  border: 2px solid #071488;
-  border-radius: 15px;
-}
-
-.btn-comprobar {
-  background-color: #3fcfba;
-  border: 2px solid #071488;
-  border-radius: 5px;
-  width: 6.25em;
-  height: 2.5em;
-}
-
 .hora {
   background-color: #e0f7f2;
   border: 2px solid #071488;
   border-radius: 5px;
-}
-
-.correcto {
-  height: 1.875em;
 }
 </style>

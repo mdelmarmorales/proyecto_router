@@ -36,7 +36,7 @@ export default {
     };
   },
   mounted() {
-    //Espera el evento para mostarse
+    //Espera el evento para mostrarse
     this.emitter.on("salir", (salir) => {
       $("#salir").modal("show");
     });

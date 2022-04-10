@@ -96,20 +96,6 @@ export default {
 </script>
 
 <style scoped>
-/* .juego {
-  background-color: #faea7d;
-  border: 2px solid #071488;
-  border-radius: 15px;
-} */
-
-/* .btn-comprobar {
-  background-color: #3fcfba;
-  border: 2px solid #071488;
-  border-radius: 5px;
-  width: 6.25em;
-  height:2.5em;
-} */
-
 .numero, #inputNum {
   border: 1px solid black;
   background-color: white;

@@ -163,13 +163,9 @@ export default {
 
       //Obtenemos una referencia para la imagen del animal
       let img = document.getElementById("animal");
-      //  console.log(posicion.top, posicion.right, posicion.bottom, posicion.left);
-      // let altoVentana = posicion.bottom - posicion.top;
 
+      //Aplicamos unas posiciones aleatorias
       let x, y;
-
-      // x = this.numeroAleatorio(-(posicion.right+img.width-posicion.left),(posicion.right+img.width-posicion.left));
-      // y = this.numeroAleatorio(-(posicion.bottom+img.height-posicion.top), (posicion.bottom+img.height-posicion.top));
       x = this.numeroAleatorio(
         -((posicion.right - posicion.left) / 2),
         (posicion.right - posicion.left) / 2 - img.width
@@ -182,17 +178,6 @@ export default {
 
       img.style.marginLeft = `${x}px`;
       img.style.marginTop = `${y}px`;
-
-      /* Escalamos para dar un poco de sensación de profundidad */
-      // if (altoVentana*0.1 <= y && y < altoVentana*0.333) {
-      //   img.style.transform = "scale(0.7)";
-      // } else {
-      //   if (altoVentana*0.333 <= y && y < altoVentana*0.666) {
-      //     img.style.transform = "scale(0.9)";
-      //   } else {
-      //     img.style.transform = "scale(1.2)";
-      //   }
-      // }
     },
   },
 };
@@ -202,13 +187,8 @@ export default {
 img {
   position: absolute;
   height: 6.25rem;
-  margin-top: 0;
-  margin-left: 0;
 }
 
-/* .correcto {
-  height: 3.125em;
-} */
 #cuadro_granja {
   height: 31.25em;
   background-color: #ffffff;
@@ -222,20 +202,6 @@ img {
   position: relative;
   overflow: hidden;
 }
-
-/* #pregunta {
-  background-color: #e0f7f2;
-  border: 2px solid #071488;
-  border-radius: 10px;
-}
-
-.btn-comprobar {
-  background-color: #3fcfba;
-  border: 2px solid #071488;
-  border-radius: 5px;
-  width: 6.25em;
-  height: 2.5em;
-} */
 
 span {
   text-decoration: underline;

@@ -1,5 +1,6 @@
 <!-- Mostramos los puntos y medallas conseguidos por el jugador -->
 <template>
+<div class="row">
   <div id="cuadro_blanco" class="col-10 mx-auto mt-5 d-flex align-items-center">
     <!-- Si el jugador está logueado y no es la primera vez que juega -->
     <div
@@ -33,6 +34,7 @@
               />
             </td>
             <td>
+              <!-- Pasamos como parámetro el ID del juego para formar la ruta dinámica -->
               <router-link
                 :to="{ name: 'Graficos', params: { idJuego: item.idJuego } }"
                 >Ver
@@ -61,14 +63,14 @@
     <div
       id="avisoLogin"
       v-else-if="!this.idJugador"
-      class="row d-flex justify-content-around align-items-center"
+      class="row w-100 d-flex justify-content-around align-items-center"
     >
       <div class="aviso col-8 py-5">
         <p class="textoAviso">
           Tienes que introducir tus datos de usuario o crear una cuenta para
           poder jugar.
         </p>
-        <button type="button" class="btnSeguir">
+        <button type="button" class="btnSeguir p-1">
           <router-link :to="{ name: 'Home' }">Acceder</router-link>
         </button>
       </div>
@@ -78,17 +80,18 @@
     <div
       id="avisoLogin"
       v-else
-      class="row d-flex justify-content-around align-items-center"
+      class="row w-100 d-flex justify-content-around align-items-center"
     >
       <div class="aviso col-8 py-5">
         <p class="textoAviso">
-          Podrás consultar tus logros la próxima vez que accedas
+          Podrás consultar tus logros la próxima vez que accedas.
         </p>
-        <button type="button" class="btnSeguir">
-          <router-link :to="{ name: 'Home' }">Acceder</router-link>
+        <button type="button" class="btnSeguir p-1">
+          <router-link :to="{ name: 'Juegos' }">Elegir juego</router-link>
         </button>
       </div>
     </div>
+  </div>
   </div>
 </template>
 
@@ -164,22 +167,6 @@ export default {
 </script>
 
 <style scoped>
-/* #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
-
-#fondo {
-  background-image: url("../images/fondo.png");
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-position: center;
-} */
-
 #formulario {
   background-color: #e0f7f2;
   border: 2px solid #071488;

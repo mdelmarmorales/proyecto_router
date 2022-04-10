@@ -37,7 +37,7 @@ export default {
     async consultarPuntos() {
       let datosGrafico = {
         idJugador: localStorage.getItem("idJugador"), //Leemos la id del jugador
-        idJuego: this.$route.params.idJuego, //Parámetros para la rutas dinámicas
+        idJuego: this.$route.params.idJuego, //Parámetros para la ruta dinámica
       };
 
       /* Hacemos la consulta a la BD */
@@ -53,10 +53,6 @@ export default {
         });
     },
     prepararDatos() {
-      /*Nos quedamos sólo con las últimas 7 posiciones del array,
-      para mostrar los resultados más recientes y facilitar la 
-      lectura de la gráfica */
-
       this.datosGrafico.forEach((dato) => {
         this.puntos.push(parseInt(dato.puntuacion));
         this.fechas.push(dato.fecha_form);
@@ -84,6 +80,7 @@ export default {
                     {
                       ticks: {
                         stepSize: 1,
+                        beginAtZero: true
                       },
                     },
                   ],

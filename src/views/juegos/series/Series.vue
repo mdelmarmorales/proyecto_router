@@ -188,40 +188,9 @@ export default {
 </script>
 
 <style scoped>
-/* .juego {
-  background-color: #faea7d;
-  border: 2px solid #071488;
-  border-radius: 15px;
-} */
-
-/* .btn-comprobar {
-  background-color: #3fcfba;
-  border: 2px solid #071488;
-   border-radius: 5px;
-  width: 6.25em;
-  height:2.5em;
-} */
-
 .numero {
   border: 1px solid black;
   background-color: white;
 }
 
-/* .correcto,
-.flecha {
-  height: 1.875em;
-} */
-/* #cuadro_blanco {
-  min-height: 31.25em;
-  width: 90%;
-  background-color: #ffffff;
-  border: 3px solid #071488;
-  border-radius: 10px;
-} */
-/* .enunciado {
-  font-weight: bold;
-  background-color: #e0f7f2;
-  border: 2px solid #071488;
-  border-radius: 10px;
-} */
 </style>

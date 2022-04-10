@@ -128,13 +128,6 @@ Si los hay, lo marcamos como incorrecto */
 #tituloCesta {
   background-color: #fdcc4b;
 }
-/* .btn-comprobar {
-  background-color: #3fcfba;
-  border: 2px solid #071488;
-  border-radius: 5px;
-  width: 100px;
-  height:40px;
-} */
 
 .btn-vaciar {
   background-color: #ffa934;
@@ -148,7 +141,4 @@ Si los hay, lo marcamos como incorrecto */
   height: 50px;
   filter: drop-shadow(0 6px 3px rgba(0, 0, 0, 0.7));
 }
-/* .correcto {
-  height: 40px;
-} */
 </style>

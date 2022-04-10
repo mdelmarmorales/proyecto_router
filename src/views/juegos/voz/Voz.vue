@@ -111,18 +111,6 @@ export default {
       indice = this.numeroAleatorio(0, this.numeros.length - 1);
       return this.numeros[indice];
     },
-    /* Comprobamos si la respuesta es correcta */
-    // comprobar() {
-    //   let acierto = false;
-    //   if (arguments.length == 2) {
-    //     acierto = arguments[0] == arguments[1];
-    //   } else {
-    //     acierto =
-    //       arguments[0].numero == arguments[1] &&
-    //       arguments[0].nombre == arguments[2];
-    //   }
-    //   return acierto;
-    // },
     //Recuperamos el listado de voces disponibles en la API
     populateVoiceList() {
       this.voices = this.synth.getVoices();
@@ -154,16 +142,4 @@ export default {
 
 
 <style scoped>
-
-.altavoz {
-  height: 30px;
-}
-
-/* #cuadro_blanco {
-  min-height: 500px;
-  width: 90%;
-  background-color: #ffffff;
-  border: 2px solid #071488;
-  border-radius: 10px;
-} */
 </style>

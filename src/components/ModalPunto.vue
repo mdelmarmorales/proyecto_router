@@ -37,7 +37,6 @@ export default {
   mounted() {
     //Espera el evento para mostrarse
     this.emitter.on("puntoConseguido", (puntoConseguido) => {
-      console.log("punto");
       $("#punto").modal("show");
     });
   },

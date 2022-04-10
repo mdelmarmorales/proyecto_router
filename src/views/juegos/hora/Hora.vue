@@ -130,16 +130,5 @@ export default {
 </script>
 
 <style scoped>
-/* #cuadro_blanco {
-  min-height: 31.25em;
-  background-color: #ffffff;
-  border: 2px solid #071488;
-  border-radius: 10px;
-}
-.enunciado {
-  font-weight: bold;
-  background-color: #e0f7f2;
-  border: 2px solid #071488;
-  border-radius: 10px;
-} */
+
 </style>

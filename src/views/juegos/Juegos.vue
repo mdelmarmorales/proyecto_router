@@ -24,7 +24,7 @@
             Tienes que introducir tus datos de usuario o crear una cuenta
             para poder jugar.
           </p>
-          <button type="button" class="btnSeguir">
+          <button type="button" class="btnSeguir p-1">
             <router-link :to="{ name: 'Home' }">Acceder</router-link>
           </button>
         </div>
@@ -114,15 +114,6 @@ export default {
 
 .nombreJuego {
   color: #071488;
-}
-
-
-#cuadro_blanco {
-  min-height: 31.25em;
-  width: 90%;
-  background-color: #ffffff;
-  border: 2px solid blue;
-  border-radius: 10px;
 }
 
 .btnSeguir {

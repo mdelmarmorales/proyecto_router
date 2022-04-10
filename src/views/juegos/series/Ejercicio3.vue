@@ -3,7 +3,7 @@
     v-if="this.correcto"
     class="row juego mx-3 my-4 d-flex justify-content-around align-items-center"
   >
-    <form class="col-10 mx-auto p-3" @submit.prevent="comprobarSeleccion">
+    <form class="col-10 w-100 mx-auto p-3" @submit.prevent="comprobarSeleccion">
       <div
         class="row d-flex flex-row justify-content-around align-items-center"
       >

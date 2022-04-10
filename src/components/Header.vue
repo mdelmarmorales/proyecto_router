@@ -3,22 +3,15 @@
    <router-link style="text-decoration:none" :to="{ name: 'Juegos' }">  
     <div id="cabecera" class="row d-flex align-items-center">
       <div class="col-2">
-        <!-- <img
-          src="../images/abaco.png"
-          id="logo"
-          class="img-fluid rounded-circle my-auto"
-        /> -->
          <img
           src="../images/abaco.png"
           id="logo"
           class="img-fluid my-auto p-3"
         />
-
       </div>
       <div class="titulo col-8 mx-auto">
         <h1 class="my-auto">JUEGA CON LOS NÚMEROS</h1>
-      </div>
-     
+      </div>     
     </div>
 </router-link>
 </template>

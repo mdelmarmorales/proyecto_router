@@ -2,12 +2,10 @@
   <ModalFinTiempo />
    <ModalGranja />
   <ModalRegistro />
-  <!-- <ModalAcceso /> -->
   <ModalPunto />
   <ModalSalir />
   <div class="container-fluid">
     <Header />
-    <!-- Si el usuario no se ha logueado, no mostramos el menú para que no pueda navegar a ninguna página -->
     <Menu />
     <router-view />
     <Footer />
@@ -20,7 +18,6 @@ import Menu from "@/components/Menu.vue";
 import Footer from "@/components/Footer.vue";
 import ModalFinTiempo from "@/components/ModalFinTiempo.vue";
 import ModalRegistro from "@/components/ModalRegistro.vue";
-// import ModalAcceso from "@/components/ModalAcceso.vue";
 import ModalPunto from "@/components/ModalPunto.vue";
 import ModalSalir from "@/components/ModalSalir.vue";
 import ModalGranja from "@/components/ModalGranja.vue";

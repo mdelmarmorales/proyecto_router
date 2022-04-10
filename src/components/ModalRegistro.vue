@@ -14,7 +14,7 @@ Le pedimos que acceda con sus nuevos datos -->
           </p>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btnJuegos" data-dismiss="modal">
+          <button type="button" class="btnJuegos p-1" data-dismiss="modal">
             <router-link :to="{ name: 'Home' }">Acceder</router-link>
           </button>
         </div>

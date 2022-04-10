@@ -21,7 +21,6 @@
         v-if="this.comienzo"
         class="row mx-auto my-4 py-2 d-flex justify-content-around"
       >
-        <!-- <p class="pregunta col-5">¿Qué operación quieres practicar?</p> -->
         <!-- Radio buttons para seleccionar la operación -->
         <b-form-radio-group class="col-6">
           <label class="form-check-label mr-5">
@@ -125,24 +124,4 @@ export default {
 </script>
 
 <style scoped>
-/* #cuadro_blanco {
-  min-height: 31.25em;
-  width: 90%;
-  background-color: #ffffff;
-  border: 2px solid #071488;
-  border-radius: 10px;
-}
-
-.juego {
-  background-color: #faea7d;
-  border: 2px solid #071488;
-  border-radius: 15px;
-}
-
-.enunciado {
-  font-weight: bold;
-  background-color: #e0f7f2;
-  border: 2px solid #071488;
-  border-radius: 10px;
-} */
 </style>
