@@ -2,14 +2,15 @@ import { createApp } from 'vue'
 import App from './App.vue'
 import router from './router'
 import mitt from 'mitt'
-import axios from 'axios'
-import vueAxios from 'vue-axios'
-import VueSimpleAlert from "vue-simple-alert"
+// import axios from 'axios'
+// import vueAxios from 'vue-axios'
+// import VueSimpleAlert from "vue-simple-alert"
 
 
 const emitter = mitt();
 
-const app=createApp(App).use(router, axios, vueAxios, VueSimpleAlert)
+// const app=createApp(App).use(router, axios, vueAxios, VueSimpleAlert)
+const app=createApp(App).use(router)
 app.provide('$router', router);
 
 // Variables globales

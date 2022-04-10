@@ -1,7 +1,7 @@
 <template>
   <div class="row">
     <div id="cuadro_blanco" class="col-10 mx-auto mt-5">
-     <div class="row d-flex my-2">
+      <div class="row d-flex my-2">
         <button
           v-if="!this.comienzo"
           class="btn-comprobar ml-auto mr-2"
@@ -14,10 +14,13 @@
       </div>
       <div class="row d-flex mx-2 mt-3 mb-1 text-left">
         <p class="enunciado col-12 p-2">
-         Elige la operación y luego sigue las instrucciones. Pulsa "Comenzar".
+          Elige la operación y luego sigue las instrucciones. Pulsa "Comenzar".
         </p>
       </div>
-      <div v-if="this.comienzo" class="row mx-auto my-4 py-2 d-flex justify-content-around">
+      <div
+        v-if="this.comienzo"
+        class="row mx-auto my-4 py-2 d-flex justify-content-around"
+      >
         <!-- <p class="pregunta col-5">¿Qué operación quieres practicar?</p> -->
         <!-- Radio buttons para seleccionar la operación -->
         <b-form-radio-group class="col-6">
@@ -45,7 +48,8 @@
             Restar
           </label>
 
-          <label class="form-check-label mr-5">
+          <!-- Sólo aparece si el niño es mayor de 8 años -->
+          <label class="form-check-label mr-5" v-if="this.edad >= 8">
             <input
               type="radio"
               class="form-check-input"
@@ -57,7 +61,8 @@
             Multiplicar
           </label>
 
-          <label class="form-check-label mr-5">
+          <!-- Sólo aparece si el niño es mayor de 8 años -->
+          <label class="form-check-label mr-5" v-if="this.edad >= 8">
             <input
               type="radio"
               class="form-check-input"
@@ -70,7 +75,17 @@
           </label>
         </b-form-radio-group>
       </div>
-      <div class="row mx-auto my-4 py-2 d-flex justify-content-around align-items-center">
+      <div
+        class="
+          row
+          mx-auto
+          my-4
+          py-2
+          d-flex
+          justify-content-around
+          align-items-center
+        "
+      >
         <Calculadora />
         <Manzanas />
       </div>
@@ -88,8 +103,9 @@ export default {
   components: { Calculadora, Manzanas, Temporizador },
   data() {
     return {
-      comienzo:false,
+      comienzo: false,
       radio: "",
+      edad: localStorage.getItem("edadNinyo"),
     };
   },
   methods: {
@@ -100,17 +116,16 @@ export default {
       this.comienzo = true;
     },
     onChange(event) {
-      if(this.comienzo){
+      if (this.comienzo) {
         this.emitter.emit("operacionSelec", event.target.value);
       }
-      
     },
   },
 };
 </script>
 
 <style scoped>
-#cuadro_blanco {
+/* #cuadro_blanco {
   min-height: 31.25em;
   width: 90%;
   background-color: #ffffff;
@@ -129,5 +144,5 @@ export default {
   background-color: #e0f7f2;
   border: 2px solid #071488;
   border-radius: 10px;
-}
+} */
 </style>

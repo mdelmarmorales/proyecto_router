@@ -1,7 +1,7 @@
 <template>
   <div id="cuadroLista" class="col-5 mb-4">
     <h3 id="tituloLista">Lista de la compra</h3>
-    <ul class="lista">
+    <ul id="lista">
       <li v-for="item in listaCompra" v-bind:key="item">
         {{ item.producto }}: {{ item.cantidad }}
       </li>
@@ -95,5 +95,9 @@ export default {
 
 #tituloLista {
   background-color: #fdcc4b;
+}
+
+#lista{
+  list-style: none;
 }
 </style>

@@ -3,10 +3,15 @@
    <router-link style="text-decoration:none" :to="{ name: 'Juegos' }">  
     <div id="cabecera" class="row d-flex align-items-center">
       <div class="col-2">
-        <img
+        <!-- <img
           src="../images/abaco.png"
           id="logo"
           class="img-fluid rounded-circle my-auto"
+        /> -->
+         <img
+          src="../images/abaco.png"
+          id="logo"
+          class="img-fluid my-auto p-3"
         />
 
       </div>
@@ -35,6 +40,7 @@ export default {
 #logo {
   background-color: white;
   height: 8em;
+  border-radius: 10px;
 }
 
 .titulo h1 {

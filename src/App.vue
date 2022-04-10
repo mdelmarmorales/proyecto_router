@@ -73,4 +73,29 @@ a {
   border: 2px solid #071488;
   border-radius: 10px;
 }
+
+.juego {
+  background-color: #faea7d;
+  border: 2px solid #071488;
+  border-radius: 15px;
+}
+
+.btn-comprobar {
+  background-color: #3fcfba;
+  border: 2px solid #071488;
+  border-radius: 5px;
+  width: 6.25em;
+  height:2.5em;
+}
+
+.correcto {
+  height: 1.875em;
+}
+
+.enunciado {
+  font-weight: bold;
+  background-color: #e0f7f2;
+  border: 2px solid #071488;
+  border-radius: 10px;
+}
 </style>

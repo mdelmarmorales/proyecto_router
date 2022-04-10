@@ -74,5 +74,6 @@ export default {
   border: 3px solid #071488;
   border-radius: 5px;
   font-weight: bold;
+  z-index: 1;
 }
 </style>

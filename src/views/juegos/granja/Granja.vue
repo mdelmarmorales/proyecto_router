@@ -1,9 +1,10 @@
 <template>
   <div class="row mt-3">
-    <div id="pregunta" class="col-10 mx-auto">
+    <div class=" enunciado col-10 mx-auto">
       <p class="my-auto py-2">
         En la granja hay muchos animales. Cuenta cuántas veces aparece éste:
-        <span>{{ this.animalABuscar.nombre }}</span>. Pulsa "Comenzar".
+        <span>{{ this.animalABuscar.nombre }}</span
+        >. Pulsa "Comenzar".
       </p>
     </div>
   </div>
@@ -68,11 +69,6 @@ export default {
           contador: 0,
         },
         {
-          imagen: require("@/images/gato.png"),
-          nombre: "Gato",
-          contador: 0,
-        },
-        {
           imagen: require("@/images/oveja.png"),
           nombre: "Oveja",
           contador: 0,
@@ -80,16 +76,6 @@ export default {
         {
           imagen: require("@/images/pato.png"),
           nombre: "Pato",
-          contador: 0,
-        },
-        {
-          imagen: require("@/images/perro.png"),
-          nombre: "Perro",
-          contador: 0,
-        },
-        {
-          imagen: require("@/images/raton.png"),
-          nombre: "Raton",
           contador: 0,
         },
         {
@@ -172,33 +158,36 @@ export default {
     /*Calculamos una posición aleatoria para la imagen */
     posicionImagen() {
       //Obtenemos la posición del div padre
-      let fondo=document.getElementById("cuadro_granja");
-      let posicion =fondo.getBoundingClientRect();
+      let fondo = document.getElementById("cuadro_granja");
+      let posicion = fondo.getBoundingClientRect();
 
       //Obtenemos una referencia para la imagen del animal
       let img = document.getElementById("animal");
       //  console.log(posicion.top, posicion.right, posicion.bottom, posicion.left);
-       console.log(posicion.right,posicion.left)
-        console.log(posicion.bottom,posicion.top);
-      
-      
+      // let altoVentana = posicion.bottom - posicion.top;
 
       let x, y;
 
       // x = this.numeroAleatorio(-(posicion.right+img.width-posicion.left),(posicion.right+img.width-posicion.left));
       // y = this.numeroAleatorio(-(posicion.bottom+img.height-posicion.top), (posicion.bottom+img.height-posicion.top));
-      x = this.numeroAleatorio(-((posicion.right-posicion.left)/2), (posicion.right-posicion.left)/2-img.width);
-      y = this.numeroAleatorio(posicion.top-img.height,posicion.bottom-posicion.top-img.height);
-      //console.log(x,y);
+      x = this.numeroAleatorio(
+        -((posicion.right - posicion.left) / 2),
+        (posicion.right - posicion.left) / 2 - img.width
+      );
+      y = this.numeroAleatorio(
+        posicion.top - img.height,
+        posicion.bottom - posicion.top - img.height
+      );
+      
 
-       img.style.marginLeft = `${x}px`;
+      img.style.marginLeft = `${x}px`;
       img.style.marginTop = `${y}px`;
 
       /* Escalamos para dar un poco de sensación de profundidad */
-      // if (-50 < y && y < 100) {
+      // if (altoVentana*0.1 <= y && y < altoVentana*0.333) {
       //   img.style.transform = "scale(0.7)";
       // } else {
-      //   if (100 < y && y < 200) {
+      //   if (altoVentana*0.333 <= y && y < altoVentana*0.666) {
       //     img.style.transform = "scale(0.9)";
       //   } else {
       //     img.style.transform = "scale(1.2)";
@@ -213,13 +202,13 @@ export default {
 img {
   position: absolute;
   height: 6.25rem;
-  margin-top:0;
-  margin-left:0;
+  margin-top: 0;
+  margin-left: 0;
 }
 
-.correcto {
+/* .correcto {
   height: 3.125em;
-}
+} */
 #cuadro_granja {
   height: 31.25em;
   background-color: #ffffff;
@@ -230,11 +219,11 @@ img {
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-position: center;
-  position:relative;
-   overflow:hidden;
+  position: relative;
+  overflow: hidden;
 }
 
-#pregunta {
+/* #pregunta {
   background-color: #e0f7f2;
   border: 2px solid #071488;
   border-radius: 10px;
@@ -246,9 +235,9 @@ img {
   border-radius: 5px;
   width: 6.25em;
   height: 2.5em;
-}
+} */
 
 span {
-  font-weight: bold;
+  text-decoration: underline;
 }
 </style>

@@ -154,16 +154,16 @@ export default {
 
 
 <style scoped>
-.correcto,
+
 .altavoz {
   height: 30px;
 }
 
-#cuadro_blanco {
+/* #cuadro_blanco {
   min-height: 500px;
   width: 90%;
   background-color: #ffffff;
   border: 2px solid #071488;
   border-radius: 10px;
-}
+} */
 </style>

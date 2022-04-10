@@ -24,7 +24,7 @@
         <div>
           <input class="col-3" v-model="resultado" />
           <button class="btn-comprobar m-2" type="submit">Comprobar</button>
-        </div>
+        
         <img
           class="correcto"
           src="@/images/correcto.png"
@@ -37,6 +37,7 @@
           alt="correcto"
           v-if="this.correcto === false"
         />
+        </div>
       </div>
     </form>
   </div>
@@ -61,7 +62,7 @@ export default {
       let edad=localStorage.getItem("edadNinyo");
 
       if (edad <= 6) {
-        maximo = 10;
+        maximo = 5;
       } else {
         if (edad <= 8) {
           maximo = 30;
@@ -83,7 +84,7 @@ export default {
 
       if (this.operacion === "suma") {
         oper1 = this.numeroAleatorio(MIN, this.max);
-        oper2 = this.numeroAleatorio(MIN, this.max - oper1);
+        oper2 = this.numeroAleatorio(MIN, this.max);
         simbolo = "+";
       } else if (this.operacion === "resta") {
         oper1 = this.numeroAleatorio(MIN, this.max);
@@ -99,11 +100,11 @@ export default {
         el dividendo. Cualquiera de los otros dos será el divisor. Así nos aseguramos
         de tener divisiones exactas. Evitamos que cualquier de los numeros sea 0 */
         do {
-          aux = this.numeroAleatorio(MIN, this.max); //Entre 0 y MAX
+          aux = this.numeroAleatorio(MIN, this.max); 
         } while (aux == 0);
 
         do {
-          oper2 = this.numeroAleatorio(MIN, this.max); //Entre 0 y MAX
+          oper2 = this.numeroAleatorio(MIN, this.max); 
         } while (oper2 == 0);
 
         oper1 = aux * oper2; //Dividendo
@@ -178,9 +179,9 @@ export default {
 </script>
 
 <style scoped>
-.correcto{
+/* .correcto{
   height: 50px;
-}
+} */
 
 #calculos {
   background-color: #fff4ad;
@@ -192,11 +193,11 @@ export default {
   color: #071488;
 }
 
-.btn-comprobar {
+/* .btn-comprobar {
   background-color: #3fcfba;
   border: 2px solid #071488;
    border-radius: 5px;
   width: 100px;
   height:40px;
-}
+} */
 </style>

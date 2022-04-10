@@ -146,9 +146,10 @@ export default {
   background-color: #e0f7f2;
   border-radius: 10px;
 }
-.correcto,
+
 .manzana {
   height: 3.125em;
+  filter: drop-shadow(0 6px 3px rgba(0, 0, 0, 0.7));
 }
 
 .enunciado {
@@ -156,13 +157,13 @@ export default {
   background-color: #3fcfba;
 }
 
-.btn-comprobar {
+/* .btn-comprobar {
   background-color: #3fcfba;
   border: 2px solid #071488;
   border-radius: 5px;
   width: 6.25em;
   height: 2.5em;
-}
+} */
 
 .btn-vaciar {
   background-color: #ffa934;
@@ -172,7 +173,7 @@ export default {
   height: 2.5em;
 }
 
-.manzana {
+/* .manzana {
   filter: drop-shadow(0 6px 3px rgba(0, 0, 0, 0.7));
-}
+} */
 </style>

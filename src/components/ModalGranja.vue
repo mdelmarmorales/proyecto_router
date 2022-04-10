@@ -20,18 +20,18 @@
             <button class="btn-comprobar mt-1 mb-2 mx-2 p-1" type="submit">
               Comprobar
             </button>
-             <img
-        class="correcto"
-        src="@/images/correcto.png"
-        alt="correcto"
-        v-if="this.correcto === true"
-      />
-      <img
-        class="correcto"
-        src="@/images/incorrecto.png"
-        alt="correcto"
-        v-if="this.correcto === false"
-      />
+            <img
+              class="correcto"
+              src="@/images/correcto.png"
+              alt="correcto"
+              v-if="this.correcto === true"
+            />
+            <img
+              class="correcto"
+              src="@/images/incorrecto.png"
+              alt="correcto"
+              v-if="this.correcto === false"
+            />
           </form>
         </div>
       </div>
@@ -47,14 +47,21 @@ export default {
       finTiempo: null,
       animalABuscar: [],
       correcto: null,
-      numAnimales:null
+      numAnimales: "",
     };
+  },
+  computed:{
+    nombrePagina (){
+      return this.$route.name;
+    },
   },
   mounted() {
     //Espera el evento para abrirse
     this.emitter.on("finGranja", (animalABuscar) => {
-      this.animalABuscar=animalABuscar;
-      $("#finGranja").modal("show");
+      this.animalABuscar = animalABuscar;
+      if (this.nombrePagina == "Granja") {
+        $("#finGranja").modal("show");
+      }
     });
   },
   methods: {
@@ -69,8 +76,12 @@ export default {
         //Si acierta, sumamos un punto, paramos el temporizador y mostramos mensaje
         puntos[2]++;
         localStorage.setItem("puntuaciones", JSON.stringify(puntos));
-        /* Cerramos este modal y emitimos el evento para abrir el de punto conseguido */
+
+        /* Cerramos este modal y emitimos el evento para abrir el de punto conseguido.
+        También borramos los resultados para que no aparezcan la próxima vez que juguemos */
         $("#finGranja").modal("hide");
+        this.numAnimales = "";
+        this.correcto = null;
         this.emitter.emit("puntoConseguido", true);
       }
     },

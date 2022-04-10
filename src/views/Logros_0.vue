@@ -1,10 +1,17 @@
 <!-- Mostramos los puntos y medallas conseguidos por el jugador -->
 <template>
-  <div id="cuadro_blanco" class="col-10 mx-auto mt-5 d-flex align-items-center">
+  <div id="cuadro_blanco" class="col-10 mx-auto mt-5">
     <!-- Si el jugador está logueado y no es la primera vez que juega -->
     <div
       v-if="this.idJugador && !this.nuevoJugador"
-      class="row d-flex flex-row justify-content-center"
+      class="
+        row
+        d-flex
+        flex-row
+        w-100
+        justify-content-around
+        align-items-center
+      "
     >
       <table class="table table-striped table-bordered col-9">
         <thead class="thead">
@@ -55,7 +62,7 @@
           </tr>
         </tbody>
       </table>
-      <img src="../images/logros.jpg" alt="logros" class="col-2 my-auto" />
+      <img src="../images/logros.jpg" alt="logros" class="col-2" />
     </div>
     <!-- Si el jugador no está logueado, le pedimos que lo haga -->
     <div
