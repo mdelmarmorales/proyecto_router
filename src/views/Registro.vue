@@ -11,16 +11,17 @@
           alt="niños jugando con números"
         />
 
-<!-- Formulario de registro de un nuevo jugador -->
+        <!-- Formulario de registro de un nuevo jugador -->
         <div class="col-6 d-flex flex-column justify-content-around">
           <h1>Registro</h1>
-          <form id="formulario" class="p-3" @submit.prevent="registrar">
+          <form id="formulario" class="p-3" @submit.prevent="insertar">
             <div class="form-group row">
               <label class="col-4 my-auto">Usuario: </label>
               <input
                 type="text"
                 class="form-control col-7"
-                v-model="jugador.usuario" required
+                v-model="jugador.usuario"
+                required
               />
             </div>
             <div class="form-group row">
@@ -28,7 +29,8 @@
               <input
                 type="email"
                 class="form-control col-7"
-                v-model="jugador.correo" required
+                v-model="jugador.correo"
+                required
               />
             </div>
             <div class="form-group row">
@@ -36,7 +38,8 @@
               <input
                 type="text"
                 class="form-control col-7"
-                v-model="jugador.contrasenya" required
+                v-model="jugador.contrasenya"
+                required
               />
             </div>
             <div class="form-group row">
@@ -44,7 +47,8 @@
               <input
                 type="text"
                 class="form-control col-7"
-                v-model="jugador.nombreNinyo" required
+                v-model="jugador.nombreNinyo"
+                required
               />
             </div>
             <div class="form-group row">
@@ -52,13 +56,14 @@
               <input
                 type="number"
                 class="form-control col-7"
-                v-model="jugador.edadNinyo" required
+                v-model="jugador.edadNinyo"
+                required
               />
             </div>
             <div>
               <input type="submit" class="boton p-1" value="Registrar" />
             </div>
-          </form>
+          </form>           
         </div>
       </div>
     </div>
@@ -71,11 +76,12 @@ export default {
   data() {
     return {
       jugador: {},
+      jugadorExiste: null,
     };
   },
   methods: {
     // Método para insertar un nuevo jugador en la BD
-    async registrar() {
+    async insertar() {
       localStorage.setItem("nuevoJugador", true);
 
       let datosRegistro = {
@@ -86,7 +92,7 @@ export default {
         edadNinyo: this.jugador.edadNinyo,
       };
 
-       await fetch("http://localhost/API_proyecto/insertar", {
+      await fetch("http://localhost/API_proyecto/insertar", {
         method: "POST",
         body: JSON.stringify(datosRegistro),
       })
@@ -95,7 +101,7 @@ export default {
           if (datosRespuesta.success == "1") {
             //Si todo va OK, emitimos un evento para que aparezca el modal
             this.emitter.emit("registroRealizado", true);
-          } 
+          }
         });
     },
   },
