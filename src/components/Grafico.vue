@@ -37,7 +37,7 @@ export default {
     async consultarPuntos() {
       let datosGrafico = {
         idJugador: localStorage.getItem("idJugador"), //Leemos la id del jugador
-        idJuego: this.$route.params.idJuego, //Parámetros para la ruta dinámica
+        idJuego: this.$route.params.idJuego, //Parámetro leído de la ruta dinámica
       };
 
       /* Hacemos la consulta a la BD */
