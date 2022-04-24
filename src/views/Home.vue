@@ -102,7 +102,7 @@ export default {
 
     /* Método para consultar si ya existen puntuaciones para el día de hoy. Con esto
     pretendemos actualizar los registros de puntos que existan en la BD para la fecha actual. 
-    Se crea un array de ceros. Se conulta si ya existen puntuaciones para el día de hoy
+    Se crea un array de ceros. Se consulta si ya existen puntuaciones para el día de hoy
     porque el niño ya haya jugado anteriormente. Estas puntuaciones se almacenan en el vector
     de ceros. Así se pueden actualizar con los puntos que consiga ahora
         Array de puntuaciones. Posiciones:

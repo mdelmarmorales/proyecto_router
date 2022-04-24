@@ -3,7 +3,7 @@
     <div id="cuadro_blanco" class="col-10 mx-auto mt-5">
       <div v-if="this.idJugador" class="row d-flex justify-content-around align-items-center">
         <div
-          v-for="juego in juegosPrimeraFila"
+          v-for="juego in listadoJuegs"
           :key="juego.id"
           class="col-4 mt-2"
         >
@@ -39,7 +39,7 @@ export default {
   data() {
     return {
       idJugador: localStorage.getItem("idJugador"),
-      juegosPrimeraFila: [
+      listadoJuegs: [
         {
           id: 0,
           imagen: require("@/images/boton_operaciones.svg"),
